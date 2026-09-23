@@ -11,6 +11,10 @@ from world.data.quests import register_quest_definition
 from world.data.damage_types import register_damage_type
 from world.data.dialogues import register_dialogue
 from world.data.factions import register_faction
+from world.data.enums import Faction
+from world.data.professions import register_profession
+from world.data.races import update_species_metadata
+from world.data.alignments import register_alignment
 
 
 def import_area(json_path):
@@ -376,10 +380,114 @@ def import_area(json_path):
         if loot_table_id is not None:
             npc.db.loot_table_id = loot_table_id
 
+        # ----------------------------------------------------------------
+        # Build mob-definition parameters from Forge NPC data
+        # ----------------------------------------------------------------
+        stats = npc_data.get("stats") or {}
+
+        level = stats.get("level")
+        max_hp = stats.get("maxHealth")
+        max_mana = stats.get("maxMana")
+        max_stamina = stats.get("maxStamina")
+
+        # base_stats: only Forge keys that exist, mapped to Keystone short keys
+        _BASE_STAT_MAP = {
+            "strength": "str",
+            "agility": "dex",
+            "intellect": "int",
+            "wisdom": "wis",
+            "charm": "con",
+        }
+        base_stats = {
+            _BASE_STAT_MAP[k]: stats[k]
+            for k in _BASE_STAT_MAP
+            if k in stats
+        }
+        if not base_stats:
+            base_stats = None
+
+        # Faction: exact .value match only — no invented mapping
+        faction = None
+        classification = npc_data.get("classification")
+        if classification:
+            raw_faction = classification.get("faction")
+            if raw_faction is not None:
+                for f in Faction:
+                    if f.value == raw_faction:
+                        faction = f
+                        break
+
+        # Equipped items: [{"itemId":..., "slot":...}] → {"<slot>": "<itemId>"}
+        equipment_data = npc_data.get("equipment")
+        equipped_items = None
+        if equipment_data:
+            eq_dict = {}
+            for entry in equipment_data:
+                item_id = entry.get("itemId")
+                slot = entry.get("slot")
+                if item_id and slot:
+                    eq_dict[slot] = item_id
+            if eq_dict:
+                equipped_items = eq_dict
+
+        # Combat: pass Forge combat dict unchanged
+        combat = npc_data.get("combat")
+
+        # ac / damage_reduction: runtime combat properties from Forge combat
+        ac = None
+        damage_reduction = None
+        if combat:
+            ac = combat.get("armorClass")
+            damage_reduction = combat.get("damageReduction")
+
+        # --- Resistance mapping: Forge resistances -> combat["elemental_resistances"]
+        _ELEMENTAL_DAMAGE_TYPES = {"air", "fire", "water", "earth"}
+        resistances = npc_data.get("resistances")
+        if resistances:
+            elemental_resistances = {}
+            for res in resistances:
+                dt = (res.get("damageType") or "").strip().lower()
+                if dt in _ELEMENTAL_DAMAGE_TYPES:
+                    pct = res.get("resistancePercent", 0)
+                    elemental_resistances[dt] = pct
+            if elemental_resistances:
+                if combat is None:
+                    combat = {}
+                combat["elemental_resistances"] = elemental_resistances
+
+        # hostile: map aggressionMode -> bool | None
+        hostile = None
+        behavior = npc_data.get("behavior")
+        if behavior:
+            aggression_mode = behavior.get("aggressionMode")
+            if aggression_mode == "aggressive":
+                hostile = True
+            elif aggression_mode == "passive":
+                hostile = False
+
+        # xp_reward: map experienceReward
+        xp_reward = stats.get("experienceReward")
+
+        # currency_reward: map currencyReward
+        currency_reward = stats.get("currencyReward")
+
         register_mob_definition(
             npc_data["id"],
             npc_data["key"],
             loot_table_id=npc_data.get("lootTableId"),
+            level=level,
+            base_stats=base_stats,
+            faction=faction,
+            max_hp=max_hp,
+            max_mana=max_mana,
+            max_stamina=max_stamina,
+            equipped_items=equipped_items,
+            combat=combat,
+            hostile=hostile,
+            xp_reward=xp_reward,
+            currency_reward=currency_reward,
+            ac=ac,
+            damage_reduction=damage_reduction,
         )
 
         dialogue_id = npc_data.get("dialogueId")
@@ -620,6 +728,33 @@ def import_area(json_path):
             description=faction_data.get("description", ""),
         )
         print(f"FACTION: {faction_data['name']} ({faction_data['id']})")
+
+    for profession_data in data.get("professions", []):
+        register_profession(
+            profession_data["id"],
+            profession_data["name"],
+            profession_data.get("description", ""),
+        )
+        print(f"PROFESSION: {profession_data['name']} ({profession_data['id']})")
+
+    for species_data in data.get("species", []):
+        updated = update_species_metadata(
+            species_data["id"],
+            name=species_data.get("name"),
+            description=species_data.get("description"),
+        )
+        if updated:
+            print(f"SPECIES: {species_data['id']} metadata updated")
+        else:
+            print(f"SKIPPED: unknown species id '{species_data['id']}'")
+
+    for alignment_data in data.get("alignments", []):
+        register_alignment(
+            alignment_data["id"],
+            alignment_data["name"],
+            description=alignment_data.get("description", ""),
+        )
+        print(f"ALIGNMENT: {alignment_data['name']} ({alignment_data['id']})")
 
     print()
     print(f"{area_name} import complete.")

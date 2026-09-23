@@ -459,6 +459,19 @@ def register_mob_definition(
     mob_id: str,
     name: str,
     loot_table_id: str | None = None,
+    level: int | None = None,
+    base_stats: dict | None = None,
+    faction=None,
+    max_hp: int | None = None,
+    max_mana: int | None = None,
+    max_stamina: int | None = None,
+    equipped_items: dict | None = None,
+    combat: dict | None = None,
+    hostile: bool | None = None,
+    xp_reward: int | None = None,
+    currency_reward: int | None = None,
+    ac: int | None = None,
+    damage_reduction: int | float | None = None,
 ) -> dict:
     """Register or update a mob definition in ``MOB_REGISTRY``.
 
@@ -468,6 +481,21 @@ def register_mob_definition(
     Any existing definition fields are preserved; only ``mob_id``, ``name``,
     and ``loot_table_id`` are (re)assigned.  Inline ``loot_table`` entries and
     reward fields (e.g. ``xp_reward``) are left untouched.
+
+    Optional parameters (all default to ``None`` — only overwrite when not
+    ``None``):
+
+        level           → ``"level"``
+        base_stats      → ``"base_stats"``
+        faction         → ``"faction"``
+        max_hp          → ``"max_hp"``
+        max_mana        → ``"max_mana"``
+        max_stamina     → ``"max_stamina"``
+        equipped_items  → ``"equipped_items"``
+        combat          → ``"mw_combat"``
+        ac              → ``"ac"``
+        damage_reduction → ``"damage_reduction"``
+        currency_reward → ``"currency_reward"``
     """
     definition = MOB_REGISTRY.get(mob_id)
     if definition is None:
@@ -477,6 +505,33 @@ def register_mob_definition(
     definition["mob_id"] = mob_id
     definition["name"] = name
     definition["loot_table_id"] = loot_table_id
+
+    if level is not None:
+        definition["level"] = level
+    if base_stats is not None:
+        definition["base_stats"] = dict(base_stats)
+    if faction is not None:
+        definition["faction"] = faction
+    if max_hp is not None:
+        definition["max_hp"] = max_hp
+    if max_mana is not None:
+        definition["max_mana"] = max_mana
+    if max_stamina is not None:
+        definition["max_stamina"] = max_stamina
+    if equipped_items is not None:
+        definition["equipped_items"] = dict(equipped_items)
+    if combat is not None:
+        definition["mw_combat"] = dict(combat)
+    if hostile is not None:
+        definition["hostile"] = hostile
+    if xp_reward is not None:
+        definition["xp_reward"] = xp_reward
+    if currency_reward is not None:
+        definition["currency_reward"] = currency_reward
+    if ac is not None:
+        definition["ac"] = ac
+    if damage_reduction is not None:
+        definition["damage_reduction"] = damage_reduction
 
     return definition
 
@@ -547,3 +602,9 @@ def _apply_mob_definition(cd: CharacterData, definition: dict) -> None:
     equipped = definition.get("equipped_items", {})
     for slot, item_id in equipped.items():
         cd.equipment[slot] = item_id
+
+    # loot_table_id — propagate from definition so reward resolution
+    # can pick it up via cd.loot_table_id.
+    loot_table_id = definition.get("loot_table_id")
+    if loot_table_id:
+        cd.loot_table_id = loot_table_id

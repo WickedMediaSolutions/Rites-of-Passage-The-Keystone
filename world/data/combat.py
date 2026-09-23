@@ -78,7 +78,11 @@ def roll_hit(attacker_cd: "CharacterData",
     Uses BASE_HIT_CHANCE (75 %) as the baseline.  Target dodge
     modifiers reduce hit chance (e.g. Dodge +40 -> -40 to hit chance).
     """
-    hit_chance = BASE_HIT_CHANCE
+    # Apply attacker accuracy modifier (mobs only).
+    attacker_combat = _get_mob_combat_info(attacker_cd)
+    accuracy = attacker_combat.get("accuracyModifier", 0)
+
+    hit_chance = BASE_HIT_CHANCE + accuracy
 
     # Apply target dodge modifier (mobs only).
     target_combat = _get_mob_combat_info(target_cd)
@@ -133,6 +137,16 @@ def calculate_physical_damage(
         wt = get_weapon_damage_type(weapon_id)
         if wt is not None:
             damage_type = wt
+
+    # ---- Forge NPC damageMin/damageMax override -----------------------
+    attacker_combat = _get_mob_combat_info(attacker_cd)
+    if attacker_combat:
+        dmg_min = attacker_combat.get("damageMin")
+        dmg_max = attacker_combat.get("damageMax")
+        if dmg_min is not None and dmg_max is not None:
+            dmg_min = int(dmg_min)
+            dmg_max = int(dmg_max)
+            weapon_damage = random.randint(dmg_min, dmg_max)
 
     # ---- Strength bonus -----------------------------------------------
     strength = attacker_cd.base_stats.get("str", 0)
@@ -339,10 +353,12 @@ def resolve_attack(attacker_cd: "CharacterData",
     roll = random.randint(1, 100)
     result["roll"] = roll
 
-    # Apply target dodge modifier (from mob combat properties).
+    # Apply attacker accuracy + target dodge (from mob combat properties).
+    attacker_combat = _get_mob_combat_info(attacker_cd)
+    accuracy = attacker_combat.get("accuracyModifier", 0)
     target_combat = _get_mob_combat_info(target_cd)
     dodge = target_combat.get("dodge_modifier", 0)
-    hit_chance = _clamp_hit_chance(BASE_HIT_CHANCE - dodge)
+    hit_chance = _clamp_hit_chance(BASE_HIT_CHANCE + accuracy - dodge)
 
     if roll <= hit_chance:
         result["hit"] = True

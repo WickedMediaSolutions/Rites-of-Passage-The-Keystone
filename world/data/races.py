@@ -19,6 +19,7 @@ RACES = {
 
     "human": {
         "name": "Human",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 25, "int": 25, "wis": 25, "dex": 25, "con": 25},
         "stat_limits": {"str": 25, "int": 25, "wis": 25, "dex": 25, "con": 25},
@@ -27,6 +28,7 @@ RACES = {
 
     "stone_giant": {
         "name": "Stone-Giant",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 30, "int": 20, "wis": 20, "dex": 24, "con": 30},
         "stat_limits": {"str": 30, "int": 20, "wis": 20, "dex": 24, "con": 30},
@@ -35,6 +37,7 @@ RACES = {
 
     "azer": {
         "name": "Azer",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 28, "int": 21, "wis": 21, "dex": 26, "con": 28},
         "stat_limits": {"str": 28, "int": 21, "wis": 21, "dex": 26, "con": 28},
@@ -43,6 +46,7 @@ RACES = {
 
     "dwarf": {
         "name": "Dwarf",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 28, "int": 20, "wis": 27, "dex": 20, "con": 29},
         "stat_limits": {"str": 28, "int": 20, "wis": 27, "dex": 20, "con": 29},
@@ -51,6 +55,7 @@ RACES = {
 
     "atomie": {
         "name": "Atomie",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 24, "int": 21, "wis": 23, "dex": 30, "con": 26},
         "stat_limits": {"str": 24, "int": 21, "wis": 23, "dex": 30, "con": 26},
@@ -59,6 +64,7 @@ RACES = {
 
     "wild_elf": {
         "name": "Wild-Elf",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 25, "int": 27, "wis": 20, "dex": 28, "con": 24},
         "stat_limits": {"str": 25, "int": 27, "wis": 20, "dex": 28, "con": 24},
@@ -67,6 +73,7 @@ RACES = {
 
     "dryad": {
         "name": "Dryad",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 20, "int": 30, "wis": 27, "dex": 28, "con": 19},
         "stat_limits": {"str": 20, "int": 30, "wis": 27, "dex": 28, "con": 19},
@@ -75,6 +82,7 @@ RACES = {
 
     "high_elf": {
         "name": "High-Elf",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 20, "int": 29, "wis": 28, "dex": 26, "con": 21},
         "stat_limits": {"str": 20, "int": 29, "wis": 28, "dex": 26, "con": 21},
@@ -83,6 +91,7 @@ RACES = {
 
     "dragonkin": {
         "name": "Dragonkin",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 26, "int": 25, "wis": 27, "dex": 20, "con": 26},
         "stat_limits": {"str": 26, "int": 25, "wis": 27, "dex": 20, "con": 26},
@@ -91,6 +100,7 @@ RACES = {
 
     "svirfneblin": {
         "name": "Svirfneblin",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 22, "int": 25, "wis": 30, "dex": 23, "con": 24},
         "stat_limits": {"str": 22, "int": 25, "wis": 30, "dex": 23, "con": 24},
@@ -99,6 +109,7 @@ RACES = {
 
     "centaur": {
         "name": "Centaur",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 28, "int": 27, "wis": 23, "dex": 19, "con": 27},
         "stat_limits": {"str": 28, "int": 27, "wis": 23, "dex": 19, "con": 27},
@@ -107,6 +118,7 @@ RACES = {
 
     "halfling": {
         "name": "Halfling",
+        "description": "",
         "faction": Faction.GOOD,
         "base_stats": {"str": 26, "int": 24, "wis": 20, "dex": 29, "con": 25},
         "stat_limits": {"str": 26, "int": 24, "wis": 20, "dex": 29, "con": 25},
@@ -119,6 +131,7 @@ RACES = {
 
     "troll": {
         "name": "Troll",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 30, "int": 19, "wis": 19, "dex": 26, "con": 30},
         "stat_limits": {"str": 30, "int": 19, "wis": 19, "dex": 26, "con": 30},
@@ -127,6 +140,7 @@ RACES = {
 
     "ogre": {
         "name": "Ogre",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 29, "int": 18, "wis": 27, "dex": 22, "con": 28},
         "stat_limits": {"str": 29, "int": 18, "wis": 27, "dex": 22, "con": 28},
@@ -135,6 +149,7 @@ RACES = {
 
     "duergar": {
         "name": "Duergar",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 28, "int": 23, "wis": 21, "dex": 24, "con": 28},
         "stat_limits": {"str": 28, "int": 23, "wis": 21, "dex": 24, "con": 28},
@@ -143,6 +158,7 @@ RACES = {
 
     "orc": {
         "name": "Orc",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 27, "int": 22, "wis": 20, "dex": 28, "con": 27},
         "stat_limits": {"str": 27, "int": 22, "wis": 20, "dex": 28, "con": 27},
@@ -151,6 +167,7 @@ RACES = {
 
     "skaven": {
         "name": "Skaven",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 26, "int": 26, "wis": 18, "dex": 29, "con": 25},
         "stat_limits": {"str": 26, "int": 26, "wis": 18, "dex": 29, "con": 25},
@@ -159,6 +176,7 @@ RACES = {
 
     "illithid": {
         "name": "Illithid",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 21, "int": 30, "wis": 28, "dex": 26, "con": 19},
         "stat_limits": {"str": 21, "int": 30, "wis": 28, "dex": 26, "con": 19},
@@ -167,6 +185,7 @@ RACES = {
 
     "drow": {
         "name": "Drow",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 21, "int": 29, "wis": 27, "dex": 26, "con": 21},
         "stat_limits": {"str": 21, "int": 29, "wis": 27, "dex": 26, "con": 21},
@@ -175,6 +194,7 @@ RACES = {
 
     "lich": {
         "name": "Lich",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 21, "int": 27, "wis": 30, "dex": 22, "con": 24},
         "stat_limits": {"str": 21, "int": 27, "wis": 30, "dex": 22, "con": 24},
@@ -183,6 +203,7 @@ RACES = {
 
     "kenku": {
         "name": "Kenku",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 25, "int": 26, "wis": 26, "dex": 21, "con": 26},
         "stat_limits": {"str": 25, "int": 26, "wis": 26, "dex": 21, "con": 26},
@@ -191,6 +212,7 @@ RACES = {
 
     "revenant": {
         "name": "Revenant",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 23, "int": 24, "wis": 28, "dex": 22, "con": 27},
         "stat_limits": {"str": 23, "int": 24, "wis": 28, "dex": 22, "con": 27},
@@ -199,6 +221,7 @@ RACES = {
 
     "minotaur": {
         "name": "Minotaur",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 29, "int": 26, "wis": 19, "dex": 22, "con": 28},
         "stat_limits": {"str": 29, "int": 26, "wis": 19, "dex": 22, "con": 28},
@@ -207,6 +230,7 @@ RACES = {
 
     "goblin": {
         "name": "Goblin",
+        "description": "",
         "faction": Faction.EVIL,
         "base_stats": {"str": 26, "int": 21, "wis": 21, "dex": 30, "con": 26},
         "stat_limits": {"str": 26, "int": 21, "wis": 21, "dex": 30, "con": 26},
@@ -214,6 +238,24 @@ RACES = {
     },
 }
 
+def update_species_metadata(species_id, name=None, description=None):
+    """Update display metadata for an existing race entry.
+
+    Preserves all gameplay data (faction, base_stats, stat_limits, traits).
+    Only updates name and/or description when non-None values are provided.
+    Returns True if the species_id exists and was updated, False otherwise.
+    """
+    if species_id not in RACES:
+        return False
+
+    race = RACES[species_id]
+
+    if name is not None:
+        race["name"] = name
+    if description is not None:
+        race["description"] = description
+
+    return True
 
 # Trait tags — referenced by race data.  Actual mechanical effects are
 # applied by the combat/stat/resistance systems when a character has the

@@ -143,12 +143,20 @@ class CharGenView(View):
 
         # Profession data
         if step in ("profession", "stats", "review"):
-            from world.data.professions import PROFESSIONS
+            from world.data.professions import PROFESSIONS, PROFESSION_REGISTRY
             profs_copy = {}
             for pid, pdef in PROFESSIONS.items():
                 pdef_copy = dict(pdef)
                 pdef_copy["image"] = get_profession_image(pid)
                 profs_copy[pid] = pdef_copy
+            # Append registry-only professions not already present
+            for pid, entry in PROFESSION_REGISTRY.items():
+                if pid not in profs_copy:
+                    profs_copy[pid] = {
+                        "name": entry["name"],
+                        "image": get_profession_image(pid),
+                        "skills": {},
+                    }
             ctx["professions"] = profs_copy
             ctx["chargen_profession"] = session.get(
                 f"{self.SESSION_PREFIX}profession", ""
@@ -190,11 +198,11 @@ class CharGenView(View):
                 ctx["race_display"] = {"id": race_id, "name": race_id}
         if prof_id:
             try:
-                from world.data.professions import PROFESSIONS
-                pdef = PROFESSIONS.get(prof_id, {})
+                from world.data.professions import PROFESSION_REGISTRY
+                display_name = PROFESSION_REGISTRY.get(prof_id, {}).get("name", prof_id)
                 ctx["profession_display"] = {
                     "id": prof_id,
-                    "name": pdef.get("name", prof_id),
+                    "name": display_name,
                 }
             except Exception:
                 ctx["profession_display"] = {"id": prof_id, "name": prof_id}
@@ -273,8 +281,8 @@ class CharGenView(View):
             session[f"{self.SESSION_PREFIX}step"] = "race"
             return redirect(reverse_lazy("rop-chargen"))
         prof_id = request.POST.get("profession", "").strip()
-        from world.data.professions import PROFESSIONS
-        if prof_id not in PROFESSIONS:
+        from world.data.professions import PROFESSION_REGISTRY
+        if prof_id not in PROFESSION_REGISTRY:
             messages.error(request, "Invalid profession selection.")
             return redirect(reverse_lazy("rop-chargen"))
         session[f"{self.SESSION_PREFIX}profession"] = prof_id
@@ -419,7 +427,7 @@ class CharGenView(View):
     def _validate_final(self, request, name, faction, race_id, prof_id, stats):
         from world.data.enums import Faction as FactionEnum
         from world.data.races import RACES
-        from world.data.professions import PROFESSIONS
+        from world.data.professions import PROFESSION_REGISTRY
         fmt_errors = validate_name_format(name)
         if fmt_errors or not name:
             messages.error(
@@ -446,7 +454,7 @@ class CharGenView(View):
            (faction == FactionEnum.EVIL.value and race_faction != FactionEnum.EVIL):
             messages.error(request, "Race does not belong to selected faction.")
             return redirect(reverse_lazy("rop-chargen"))
-        if prof_id not in PROFESSIONS:
+        if prof_id not in PROFESSION_REGISTRY:
             messages.error(request, "Invalid profession.")
             return redirect(reverse_lazy("rop-chargen"))
         expected_keys = {"str", "int", "wis", "dex", "con"}

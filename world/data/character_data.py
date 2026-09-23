@@ -417,7 +417,7 @@ class CharacterData:
         from world.data.professions import PROFESSIONS
 
         race_data = RACES[race_id]
-        prof_data = PROFESSIONS[profession_id]
+        prof_data = PROFESSIONS.get(profession_id, {})
         cd = cls.create(name, race_data, prof_data)
 
         # Override race/profession IDs with the stable keys.

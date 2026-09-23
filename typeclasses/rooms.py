@@ -59,3 +59,28 @@ class Room(ObjectParent, DefaultRoom):
         if not isinstance(value, PvPMode):
             raise TypeError(f"pvp_mode must be a PvPMode, got {type(value).__name__}")
         self.attributes.add(self._PVP_MODE_ATTR, value)
+
+    def at_object_receive(self, obj, source_location, move_type="move", **kwargs):
+        """Called when another object enters this room.
+
+        When a player enters the room, every world NPC in the room is
+        given a chance to start mob combat via try_start_mob_combat.
+        """
+        super().at_object_receive(obj, source_location, move_type=move_type, **kwargs)
+
+        # Ignore entering world NPCs — only players trigger the scan.
+        if obj.attributes.get("world_npc"):
+            return
+
+        # Ignore objects with no account (non-player objects).
+        if not obj.account:
+            return
+
+        from world.world_integration import try_start_mob_combat
+
+        for other in self.contents:
+            if not other.attributes.get("world_npc"):
+                continue
+            spawn_id = other.attributes.get("world_spawn_id")
+            if spawn_id is not None:
+                try_start_mob_combat(other, spawn_id)

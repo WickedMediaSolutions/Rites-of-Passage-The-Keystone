@@ -17,6 +17,7 @@ Design constraints (Phase 12 foundation only):
 import random
 
 from world.data.character_data import CharacterData
+from world.data.economy import add_currency
 from world.data.items import item_exists
 from world.data.mobs import get_mob_definition
 from world.data.progression import award_xp
@@ -51,6 +52,7 @@ def _make_reward_result(
     errors: list[str] | None = None,
     already_rewarded: bool = False,
     mob_unknown: bool = False,
+    currency_awarded: int = 0,
 ) -> dict:
     """Construct a consistent reward-result dict."""
     return {
@@ -59,6 +61,7 @@ def _make_reward_result(
         "errors": errors if errors is not None else [],
         "already_rewarded": already_rewarded,
         "mob_unknown": mob_unknown,
+        "currency_awarded": currency_awarded,
         "success": len(errors or []) == 0 and not already_rewarded and not mob_unknown,
     }
 # ---------------------------------------------------------------------------
@@ -168,6 +171,9 @@ def calculate_mob_rewards(mob_cd: CharacterData) -> dict:
     # XP reward
     xp_reward = definition.get("xp_reward", 0)
 
+    # Currency reward
+    currency_reward = definition.get("currency_reward", 0)
+
     # Loot table
     # Precedence:
     #   1. mob_cd.loot_table_id  →  get_loot_table()  (named registry table)
@@ -196,6 +202,7 @@ def calculate_mob_rewards(mob_cd: CharacterData) -> dict:
         xp_awarded=xp_reward,
         items_granted=valid_drops,
         errors=errors,
+        currency_awarded=currency_reward,
     )
 
 
@@ -224,6 +231,10 @@ def grant_mob_rewards(
     # Grant items
     for drop in result["items_granted"]:
         killer_cd.add_item(drop["item_id"], drop["quantity"])
+
+    # Grant currency
+    if result["currency_awarded"] > 0:
+        add_currency(killer_cd, result["currency_awarded"])
 
     # Mark as rewarded
     _mark_rewarded(mob_cd)

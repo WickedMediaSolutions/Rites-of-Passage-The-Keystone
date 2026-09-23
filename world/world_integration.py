@@ -127,6 +127,7 @@ def create_npc_from_spawn(spawn_id: str, room) -> object | None:
 
     # Sync game data.
     _sync_npc_game_data(npc, mob_cd)
+    try_start_mob_combat(npc, spawn_id)
 
     return npc
 
@@ -413,6 +414,307 @@ def initialize_world_population(room_search_fn=None) -> dict:
             )
 
     return summary
+
+
+# ---------------------------------------------------------------------------
+# Mob Combat Ticker
+# ---------------------------------------------------------------------------
+
+_COMBAT_TICKER_IDSTRING = "rop_combat"
+
+# Maps spawn_id -> Evennia NPC object so the combat tick callback can
+# synchronise game data back to the database object every round.
+_combat_npcs: dict[str, object] = {}
+
+# Maps spawn_id -> callback instance so TICKER_HANDLER.add / .remove
+# receive the exact same callable object and produce matching store keys.
+_combat_callbacks: dict[str, object] = {}
+
+
+class _CombatTickerCallback:
+    """Callable wrapper whose ``__name__`` is stable for Evennia's
+    TickerHandler store-key generation."""
+
+    __name__ = "_combat_tick_callback"
+
+    def __init__(self, spawn_id: str) -> None:
+        self.spawn_id = spawn_id
+
+    def __call__(self) -> None:
+        _combat_tick_callback(self.spawn_id)
+
+
+# ---------------------------------------------------------------------------
+# Tick identity helpers
+# ---------------------------------------------------------------------------
+
+
+def _combat_ticker_id(spawn_id: str) -> str:
+    """Return the unique Evennia TickerHandler idstring for a spawn."""
+    return f"{_COMBAT_TICKER_IDSTRING}_{spawn_id}"
+
+
+# ---------------------------------------------------------------------------
+# NPC registry (used by the tick callback to sync game data)
+# ---------------------------------------------------------------------------
+
+
+def _set_combat_npc(spawn_id: str, npc: object) -> None:
+    """Register the Evennia NPC object that backs *spawn_id*."""
+    _combat_npcs[spawn_id] = npc
+
+
+def _get_combat_npc(spawn_id: str) -> object | None:
+    """Return the registered Evennia NPC for *spawn_id*, or None."""
+    return _combat_npcs.get(spawn_id)
+
+
+def _clear_combat_npc(spawn_id: str) -> None:
+    """Remove the registered Evennia NPC for *spawn_id*."""
+    _combat_npcs.pop(spawn_id, None)
+
+
+# ---------------------------------------------------------------------------
+# Interval calculation
+# ---------------------------------------------------------------------------
+
+
+def _combat_interval_for_spawn(spawn_id: str) -> float:
+    """Calculate the effective combat-round interval for *spawn_id*.
+
+    Reads ``attackSpeed`` from the mob definition's ``mw_combat`` block.
+    AttackSpeed is a multiplier:
+
+        * 1.0  → normal speed
+        * >1.0 → faster (shorter interval)
+        * 0 < value < 1.0 → slower (longer interval)
+
+    Effective interval = ``COMBAT_ROUND_INTERVAL / attackSpeed``,
+    clamped to a minimum of **1 second**.
+
+    Missing, invalid, or ≤0 ``attackSpeed`` defaults to **1.0**.
+    """
+    from world.data.mob_spawner import get_live_mob
+    from world.data.mobs import get_mob_definition
+    from world.data.mob_ai import COMBAT_ROUND_INTERVAL
+
+    attack_speed: float = 1.0
+
+    live_mob = get_live_mob(spawn_id)
+    if live_mob is not None:
+        definition = get_mob_definition(live_mob.profession_id)
+        if definition is not None:
+            mw_combat = definition.get("mw_combat", {})
+            if isinstance(mw_combat, dict):
+                raw = mw_combat.get("attackSpeed")
+                if isinstance(raw, (int, float)) and raw > 0:
+                    attack_speed = float(raw)
+
+    interval = COMBAT_ROUND_INTERVAL / attack_speed
+    return max(interval, 1.0)
+
+
+# ---------------------------------------------------------------------------
+# Ticker lifecycle
+# ---------------------------------------------------------------------------
+
+
+def try_start_mob_combat(npc, spawn_id: str) -> bool:
+    """Attempt to start AI-driven combat for the mob identified by *spawn_id*.
+
+    This is the single entry-point that wires together the plain-Python
+    mob AI layer (can_engage / select_hostile_target / engage_target) and
+    the Evennia ticker lifecycle (start_mob_combat_ticker).
+
+    The authoritative mob state is always resolved from the spawn registry
+    via ``get_live_mob(spawn_id)`` — the *npc* parameter is only used for
+    room-location (player lookup) and ticker registration.
+
+    Returns True when a valid hostile target was acquired and the combat
+    ticker was successfully started; False otherwise (no live mob, already
+    in combat, mob cannot engage, no valid target, or ticker failure).
+    """
+    from world.data.character_data import CharacterData
+    from world.data.mob_spawner import get_live_mob
+    from world.data.mob_ai import (
+        can_engage,
+        select_hostile_target,
+        engage_target,
+        force_end_combat,
+    )
+
+    # 1. Resolve the authoritative live mob.
+    live_mob = get_live_mob(spawn_id)
+    if live_mob is None:
+        return False
+
+    # 2. Already in combat?
+    if _combat_ticker_active(spawn_id):
+        return False
+
+    # 3. Mob capable of engaging?
+    if not can_engage(live_mob):
+        return False
+
+    # 4. Collect valid PLAYER CharacterData objects from the room.
+    player_cds: list[CharacterData] = []
+    for obj in npc.location.contents:
+        # Skip the NPC itself.
+        if obj is npc:
+            continue
+        # Skip objects marked as world NPCs (no mob-vs-mob).
+        if obj.attributes.get("world_npc"):
+            continue
+        # Skip objects without a usable .game CharacterData.
+        try:
+            cd = obj.game
+        except Exception:
+            continue
+        if cd is None or not isinstance(cd, CharacterData):
+            continue
+        # Do not include dead players.
+        if not cd.is_alive():
+            continue
+        player_cds.append(cd)
+
+    # 5. Select a hostile target.
+    target_cd = select_hostile_target(live_mob, player_cds)
+    if target_cd is None:
+        return False
+
+    # 6. Begin AI engagement.
+    err = engage_target(live_mob, target_cd)
+    if err is not None:
+        return False
+
+    # 7. Start the combat ticker.
+    try:
+        ticker_ok = start_mob_combat_ticker(npc, spawn_id)
+    except Exception:
+        # Roll back the AI engagement so the mob isn't left in a
+        # half-engaged state with no ticker driving its rounds.
+        force_end_combat(live_mob)
+        raise
+    if not ticker_ok:
+        # Roll back the AI engagement so the mob isn't left in a
+        # half-engaged state with no ticker driving its rounds.
+        force_end_combat(live_mob)
+        return False
+
+    return True
+
+
+def start_mob_combat_ticker(npc, spawn_id: str) -> bool:
+    """Start the combat ticker for *spawn_id*.
+
+    Returns True if the ticker was successfully subscribed;
+    False if no live mob exists or a ticker is already active.
+    """
+    from world.data.mob_spawner import get_live_mob
+    from evennia import TICKER_HANDLER
+
+    live_mob = get_live_mob(spawn_id)
+    if live_mob is None:
+        return False
+
+    if _combat_ticker_active(spawn_id):
+        return False
+
+    interval = _combat_interval_for_spawn(spawn_id)
+
+    cb = _CombatTickerCallback(spawn_id)
+
+    _combat_callbacks[spawn_id] = cb
+    _set_combat_npc(spawn_id, npc)
+
+    try:
+        TICKER_HANDLER.add(
+            interval=interval,
+            callback=cb,
+            idstring=_combat_ticker_id(spawn_id),
+            persistent=False,
+        )
+    except Exception:
+        _combat_callbacks.pop(spawn_id, None)
+        _clear_combat_npc(spawn_id)
+        raise
+
+    return True
+
+
+def _combat_ticker_active(spawn_id: str) -> bool:
+    """Return True if a combat ticker is currently subscribed for *spawn_id*."""
+    try:
+        from evennia import TICKER_HANDLER
+    except ImportError:
+        return False
+
+    ticker_id = _combat_ticker_id(spawn_id)
+    interval = _combat_interval_for_spawn(spawn_id)
+    store_key = TICKER_HANDLER._store_key(
+        spawn_id,
+        None,
+        interval,
+        "_combat_tick_callback",
+        ticker_id,
+        False,
+    )
+    return store_key in TICKER_HANDLER.ticker_storage
+
+
+def _combat_tick_callback(spawn_id: str) -> None:
+    """Execute one combat round for *spawn_id*.
+
+    Called by the Evennia TickerHandler at the spawn's effective combat
+    interval.  Automatically stops the ticker when the live mob is gone
+    or the combat round signals ``combat_ended``.
+    """
+    from world.data.mob_spawner import get_live_mob
+    from world.data.mob_ai import execute_combat_round
+
+    live_mob = get_live_mob(spawn_id)
+    if live_mob is None:
+        _stop_combat_ticker(spawn_id)
+        return
+
+    outcome = execute_combat_round(live_mob)
+
+    # Sync the updated CharacterData back to the Evennia NPC so that
+    # database attributes (HP, state, etc.) stay in sync.
+    npc = _get_combat_npc(spawn_id)
+    if npc is not None:
+        _sync_npc_game_data(npc, live_mob)
+
+    if outcome.get("combat_ended"):
+        _stop_combat_ticker(spawn_id)
+
+
+def _stop_combat_ticker(spawn_id: str) -> bool:
+    """Stop the combat ticker for *spawn_id*.
+
+    Returns True if a ticker was removed; False if none was running.
+    """
+    try:
+        from evennia import TICKER_HANDLER
+    except ImportError:
+        return False
+
+    if not _combat_ticker_active(spawn_id):
+        return False
+
+    try:
+        interval = _combat_interval_for_spawn(spawn_id)
+        ticker_id = _combat_ticker_id(spawn_id)
+        callback = _combat_callbacks.pop(spawn_id, None)
+        TICKER_HANDLER.remove(
+            interval=interval,
+            callback=callback,
+            idstring=ticker_id,
+        )
+        _clear_combat_npc(spawn_id)
+        return True
+    except KeyError:
+        return False
 
 
 # ---------------------------------------------------------------------------
