@@ -1,0 +1,18 @@
+{% load static %}
+<label class="rop-chargen__card" for="prof-{{ prof_id }}">
+  <input type="radio" name="profession" value="{{ prof_id }}" id="prof-{{ prof_id }}" class="rop-chargen__card-radio" {% if chargen_profession == prof_id %}checked{% endif %}>
+  <span class="rop-chargen__card-inner">
+    <span class="rop-chargen__card-image">
+      <img src="{% static 'website/images/'|add:prof_def.image %}" alt="{{ prof_def.name }}" loading="lazy"
+           onerror="this.onerror=null;this.src='{% static 'website/images/profession-fallback.webp' %}'">
+    </span>
+    <span class="rop-chargen__card-body">
+      <span class="rop-chargen__card-title">{{ prof_def.name }}</span>
+      {% if prof_def.mana_stat %}
+      <span class="rop-chargen__card-subtitle">Mana Stat: {{ prof_def.mana_stat.value|title }}</span>
+      {% else %}
+      <span class="rop-chargen__card-subtitle">No Mana</span>
+      {% endif %}
+    </span>
+  </span>
+</label>

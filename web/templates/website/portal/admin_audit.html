@@ -1,0 +1,54 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Audit Log{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Audit Log</h1>
+  <p class="rop-subtitle">Administrative Action History</p>
+</div>
+
+<div class="mb-3">
+  <a href="{% url 'rop-admin-index' %}" class="rop-btn rop-btn--secondary rop-btn--sm">&larr; Back to Accounts</a>
+</div>
+
+<section class="rop-panel rop-panel--ornate" aria-label="Audit log entries">
+  <div class="rop-panel__header">Audit Entries</div>
+  <div class="rop-panel__body p-0">
+    {% if audit_entries %}
+    <div class="table-responsive">
+      <table class="table table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Actor</th>
+            <th>Action</th>
+            <th>Target</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in audit_entries %}
+          <tr>
+            <td>{{ entry.timestamp|date:"Y-m-d H:i" }}</td>
+            <td>{{ entry.actor_name }}</td>
+            <td>
+              <span class="rop-badge rop-badge--warning">{{ entry.action }}</span>
+            </td>
+            <td>{{ entry.target_name }}</td>
+            <td>{{ entry.details|default:"—" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="rop-panel__body rop-text-center">
+      <p class="rop-text-muted">No audit entries recorded.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

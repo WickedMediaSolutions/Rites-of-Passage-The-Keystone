@@ -1,0 +1,102 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Command Reference{% endblock %}
+
+{% block content %}
+<div class="rop-page-title">
+  <h1>Command Reference</h1>
+  <p class="rop-subtitle">Every documented in-game command</p>
+</div>
+
+{# -- SEARCH / FILTER -- #}
+<div class="rop-panel">
+  <div class="rop-panel__header">Search Commands</div>
+  <div class="rop-panel__body">
+    <form method="get" class="rop-form-inline">
+      <input type="text" name="q" class="rop-input"
+             placeholder="Search by command name, alias, or keyword…"
+             value="{{ search_query|default:'' }}"
+             style="width:100%;max-width:500px;">
+      <button type="submit" class="rop-btn rop-btn--primary rop-btn--sm ml-2">Search</button>
+      {% if search_query %}
+        <a href="{% url 'commands' %}" class="rop-btn rop-btn--link rop-btn--sm ml-2">Clear</a>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+{# -- SEARCH RESULTS -- #}
+{% if search_results is not None %}
+<div class="rop-panel mt-3">
+  <div class="rop-panel__header">
+    Results for "{{ search_query }}" ({{ search_results|length }} found)
+  </div>
+  <div class="rop-panel__body">
+    {% if search_results %}
+      <table class="rop-table">
+        <thead>
+          <tr><th>Command</th><th>Category</th><th>Summary</th></tr>
+        </thead>
+        <tbody>
+          {% for cmd_key, doc in search_results %}
+          <tr>
+            <td>
+              <a href="{% url 'command-detail' command_key=cmd_key %}"><code>{{ cmd_key }}</code></a>
+              {% if doc.aliases %}
+                <br><small class="rop-text-muted">aka {{ doc.aliases|join:", " }}</small>
+              {% endif %}
+            </td>
+            <td><span class="rop-badge rop-badge--info">{{ doc.category }}</span></td>
+            <td>{{ doc.summary|truncatewords:20 }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="rop-empty-state">
+        <div class="rop-empty-state__icon">&#128269;</div>
+        <h3>No Commands Found</h3>
+        <p>No commands matched "{{ search_query }}".  Try a different keyword or browse all commands below.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{# -- COMMANDS BY CATEGORY -- #}
+{% if not search_results %}
+  {% for category, cmd_list in categories.items %}
+    <div class="rop-divider">{{ category }}</div>
+    <div class="rop-panel">
+      <div class="rop-panel__header">{{ category }} Commands</div>
+      <div class="rop-panel__body">
+        <table class="rop-table">
+          <thead>
+            <tr>
+              <th style="width:15%">Command</th>
+              <th style="width:20%">Aliases</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cmd_key, doc in cmd_list %}
+            <tr>
+              <td><a href="{% url 'command-detail' command_key=cmd_key %}"><code>{{ cmd_key }}</code></a></td>
+              <td>
+                {% if doc.aliases %}
+                  <small class="rop-text-muted">{{ doc.aliases|join:", " }}</small>
+                {% else %}
+                  <span class="rop-text-muted">—</span>
+                {% endif %}
+              </td>
+              <td>{{ doc.summary|truncatewords:25 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}

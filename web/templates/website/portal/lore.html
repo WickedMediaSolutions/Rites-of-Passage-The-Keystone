@@ -1,0 +1,607 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Lore &amp; World{% endblock %}
+
+{% block content %}
+
+{# CINEMATIC WORLD MASTHEAD #}
+<div class="rop-container">
+  <div class="rop-lore-masthead">
+    <div class="rop-lore-masthead__frame">
+      <img
+        src="{% static 'website/images/lore-world.webp' %}"
+        alt=""
+        width="1600"
+        height="900"
+        aria-hidden="true"
+      >
+    </div>
+    <div class="rop-lore-masthead__overlay">
+      <h1 class="rop-lore-masthead__title">Lore &amp; World</h1>
+      <p class="rop-lore-masthead__subtitle">
+        Two powers. One divided realm. A war older than any living crown.
+      </p>
+    </div>
+  </div>
+</div>
+
+{# STONE DIVIDER #}
+<div class="rop-container">
+  <div class="rop-start-divider" aria-hidden="true">
+    <img
+      src="{% static 'website/images/rop-stone-divider.png' %}"
+      alt=""
+      width="1480"
+      height="40"
+    >
+  </div>
+</div>
+
+{# TABLE OF CONTENTS #}
+<div class="rop-container">
+  <div class="rop-lore-toc">
+    <div class="rop-lore-toc__heading">Codex Contents</div>
+    <div class="rop-lore-toc__links">
+      <a href="#divided" class="rop-lore-toc__link">I &nbsp;The Divided Realm</a>
+      <a href="#war" class="rop-lore-toc__link">II &nbsp;The War of Passage</a>
+      <a href="#valroian-west" class="rop-lore-toc__link">III &nbsp;The Valroian West</a>
+      <a href="#mordrath-east" class="rop-lore-toc__link">IV &nbsp;The Mordrath East</a>
+      <a href="#marches" class="rop-lore-toc__link">V &nbsp;The Contested Marches</a>
+      <a href="#valroian-sects" class="rop-lore-toc__link">VI &nbsp;The Valroian Sects</a>
+      <a href="#mordrath-sects" class="rop-lore-toc__link">VII &nbsp;The Mordrath Sects</a>
+      <a href="#faith" class="rop-lore-toc__link">VIII &nbsp;Faith, Power &amp; Allegiance</a>
+      <a href="#life" class="rop-lore-toc__link">IX &nbsp;Life in a Divided World</a>
+      <a href="#age-ahead" class="rop-lore-toc__link">X &nbsp;The Age Ahead</a>
+    </div>
+  </div>
+</div>
+
+{# STONE DIVIDER #}
+<div class="rop-container">
+  <div class="rop-start-divider" aria-hidden="true">
+    <img
+      src="{% static 'website/images/rop-stone-divider.png' %}"
+      alt=""
+      width="1480"
+      height="40"
+    >
+  </div>
+</div>
+
+{# BEGIN CODEX #}
+<div class="rop-container">
+
+{# I · THE DIVIDED REALM #}
+<div class="rop-lore-section" id="divided">
+  <div class="rop-lore-section__numeral">I</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading">The Divided Realm</h2>
+
+    <p class="rop-lore-dropcap">For longer than any living chronicle can measure, the known realm has been divided between two great powers.</p>
+
+    <p>To the west lie the lands of the <strong>Valroian</strong>: old kingdoms, fortified valleys, high citadels, sacred groves, merchant roads, monasteries, and ancestral holds bound together by uneasy vows of mutual defense. Among their chief domains are the ancient kingdom of <strong>Aldemar</strong>, the fortress-valley of <strong>Ironvale</strong>, the sacred woodlands of <strong>Elyndor</strong>, the merchant city-state of <strong>Highcrest</strong>, and the great mountain citadel of <strong>Thornhold</strong>.</p>
+
+    <p>To the east stretches the dominion of <strong>Mordrath</strong>: a harsher realm of black fortresses, iron principalities, volcanic highlands, ancient ruins, war camps, hidden temples, and territories ruled by strength, fear, oath, and ambition. Its greatest powers include the ruling seat of <strong>Zod's Reach</strong>, the volcanic forges of <strong>Korrath</strong>, the iron-walled city of <strong>Dreadmarch</strong>, the shadow-haunted <strong>Ravenspire</strong>, and the deep ruins of <strong>Vorgoth</strong>, whose builders were forgotten before the Sundering.</p>
+
+    <p>Between them lies no clean border.</p>
+
+    <p>The center of the realm is a broad scar of disputed territory known collectively as the <strong>Contested Marches</strong>. Within this vast frontier lie the ruined province of <strong>Caldern</strong>, the ever-shifting <strong>Grey Fords</strong>, the blighted <strong>Ashen Corridor</strong>, the fortress-town of <strong>Broken Gate</strong>, and the lawless trade-hub of <strong>Wyrm's Hollow</strong> &mdash; a place where Valroian coin and Mordrath iron change hands in the same hour.</p>
+
+    <div class="rop-lore-callout">
+      <p>The realm is bounded by natural barriers that have shaped centuries of strategy. To the north, the <strong>Frostveil Mountains</strong> form an impassable wall of ice and stone. The southern coasts are dominated by the <strong>Sea of Shattered Glass</strong> &mdash; named for the treacherous reefs that have claimed more invasion fleets than any navy. Between the faction territories runs the great river known as the <strong>Severed Spine</strong>, whose bridges and fords have been contested in every major campaign of the war. Fortresses change hands. Villages swear new allegiance to survive. Old roads disappear beneath siegeworks. Mercenaries become lords. Heroes become traitors. Traitors become kings.</p>
+    </div>
+
+    <p>Neither faction has ever permanently controlled the Marches. Both believe they eventually must.</p>
+  </div>
+</div>
+
+{# II · THE WAR OF PASSAGE #}
+<div class="rop-lore-section" id="war">
+  <div class="rop-lore-section__numeral">II</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading">The War of Passage</h2>
+
+    <p>The people of the realm call the struggle by many names. The oldest surviving chronicles call it:</p>
+
+    <div class="rop-lore-quote">
+      <span class="rop-lore-quote__mark">&#8220;</span>
+      <p class="rop-lore-quote__text">The War of Passage. It is not a single war. It is centuries of wars, truces, betrayals, crusades, invasions, dynastic feuds, holy campaigns, rebellions and uneasy peace &#8212; all pieces of one conflict that has never truly ended.</p>
+    </div>
+
+    <h3>The Sundering of Crowns</h3>
+
+    <p>According to the oldest surviving accounts, the realm was not always divided. There are fragments of chronicles describing an earlier age when western and eastern kingdoms traded, intermarried and fought smaller wars without viewing one another as enemies by nature.</p>
+
+    <p>That age ended during an event remembered as the <strong>Sundering of Crowns</strong>.</p>
+
+    <p>No single account agrees on exactly what happened.</p>
+
+    <p>Valroian historians claim eastern warlords attempted to seize relics said to grant authority over the ancient kingdoms.</p>
+
+    <p>Mordrath chroniclers insist western rulers betrayed a sacred accord and used the crisis to justify conquest.</p>
+
+    <p>Religious texts claim something far worse occurred: that powers older than kings interfered directly in mortal affairs.</p>
+
+    <p>Whatever the truth, several royal lines collapsed almost simultaneously. The <strong>Throne of Aldemar</strong> was abandoned mid-session. The <strong>Warden-Kings of Elyndor</strong> sealed their inner sanctums and vanished. The eastern <strong>Forge-Lords of Korrath</strong> turned on one another in a single bloody night. Armies crossed borders. Temples burned. Old alliances shattered. In the chaos, a warlord calling himself <strong>Zod</strong> &mdash; whether a name, a title, or an idea &mdash; bound the surviving eastern powers under a single iron will.</p>
+
+    <p>From the chaos emerged two competing visions of civilization. The western kingdoms increasingly bound themselves through mutual defense, law, oath and shared institutions. The eastern powers embraced sovereignty through strength, personal allegiance, conquest and the belief that authority belongs to those capable of keeping it.</p>
+
+    <p>Those philosophies eventually hardened into the two great factions known today: <strong>Valroian</strong> and <strong>Mordrath</strong>.</p>
+
+    <p>The War of Passage has continued ever since. Its chapters are written in the names the chroniclers gave them: the <strong>Siege of the Seven Standards</strong>, the <strong>Burning of the Grey March</strong>, the <strong>Winter of False Truces</strong>, the <strong>Red Harvest Campaign</strong>, the <strong>Sack of Thornhold's Outer Ward</strong>, the <strong>Night of the Shattered Crown</strong>, the <strong>Accord of Ashes</strong> (which lasted eleven years before both sides accused the other of violating its terms), and a hundred lesser conflicts whose names have been forgotten by all but the scholars who catalogue them.</p>
+  </div>
+</div>
+
+{# III · THE VALROIAN WEST #}
+<div class="rop-lore-section" id="valroian-west">
+  <div class="rop-lore-section__numeral rop-lore-section__numeral--valroian">III</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading rop-lore-section__heading--valroian">The Valroian West</h2>
+
+    <p>The Valroian are not a single kingdom. They are a vast alliance of crowns, free cities, ancestral houses, temples, military orders and independent peoples who have agreed that survival requires cooperation.</p>
+
+    <div class="rop-lore-pillars">
+      <div class="rop-lore-pillar rop-lore-pillar--valroian">
+        <span class="rop-lore-pillar__word">OATH</span>
+        <span class="rop-lore-pillar__desc">Freely given, never broken</span>
+      </div>
+      <div class="rop-lore-pillar rop-lore-pillar--valroian">
+        <span class="rop-lore-pillar__word">DUTY</span>
+        <span class="rop-lore-pillar__desc">To protect those beneath the banner</span>
+      </div>
+      <div class="rop-lore-pillar rop-lore-pillar--valroian">
+        <span class="rop-lore-pillar__word">LEGACY</span>
+        <span class="rop-lore-pillar__desc">What we leave behind defines us</span>
+      </div>
+    </div>
+
+    <p>To a Valroian, an oath freely given has weight. A ruler is expected to protect those beneath their banner. A warrior earns honor not merely by victory but by what they choose to defend.</p>
+
+    <p>This does not make the West peaceful. Valroian nobles feud. Merchant houses sabotage rivals. Priests argue doctrine. Ancient races remember insults mortals have forgotten. Generals compete for glory. Kings distrust other kings.</p>
+
+    <p>The alliance survives because its members believe Mordrath domination would be worse than their disagreements with one another.</p>
+
+    <h3>Western Realms &amp; Strongholds</h3>
+    <p>Western fortifications are traditionally built to endure. The capital-citadel of <strong>Thornhold</strong> anchors the northern passes. <strong>Ironvale</strong> controls the valley roads that feed half the alliance's armies. The walled city of <strong>Highcrest</strong> serves as the West's primary mercantile hub, its counting-houses and guild halls as influential as any throne room. <strong>Aldemar</strong> remains the ceremonial heart of the old kingdom &mdash; its courts host the alliance councils, its archives preserve the oldest western chronicles. The sacred woodlands of <strong>Elyndor</strong> are less a kingdom than a trust: ancient forest realms guarded by the Wardens, dotted with standing stones, glades consecrated to forgotten pacts, and ruins whose age predates human settlement in the region. The monastic fortress of <strong>Whitehold</strong> in the southern highlands serves as the Sanctum of the White Flame's primary archive and hospital.</p>
+
+    <p>Valroian warfare emphasizes organized defense, disciplined formations, protected supply lines, trained orders and the gradual destruction of an enemy's ability to continue fighting.</p>
+
+    <p>Yet the West has produced conquerors of its own. Its chronicles are filled with rulers who spoke of defense while marching east beneath banners of liberation. To the people of Mordrath, Valroian honor often looks remarkably similar to conquest once an army crosses the Marches.</p>
+
+    <a href="#valroian-sects" class="rop-btn rop-btn--steel rop-btn--sm">The Valroian Sects &darr;</a>
+  </div>
+</div>
+
+{# IV · THE MORDRATH EAST #}
+<div class="rop-lore-section" id="mordrath-east">
+  <div class="rop-lore-section__numeral rop-lore-section__numeral--mordrath">IV</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading rop-lore-section__heading--mordrath">The Mordrath East</h2>
+
+    <p>Mordrath is less an alliance than a hierarchy of powers. Its eastern territories are dominated by great houses, warlords, cults, military brotherhoods, arcane orders and ancient bloodlines that recognize strength as the ultimate foundation of political authority.</p>
+
+    <div class="rop-lore-pillars">
+      <div class="rop-lore-pillar rop-lore-pillar--mordrath">
+        <span class="rop-lore-pillar__word">POWER</span>
+        <span class="rop-lore-pillar__desc">Authority belongs to the capable</span>
+      </div>
+      <div class="rop-lore-pillar rop-lore-pillar--mordrath">
+        <span class="rop-lore-pillar__word">WILL</span>
+        <span class="rop-lore-pillar__desc">The furnace that forges leaders</span>
+      </div>
+      <div class="rop-lore-pillar rop-lore-pillar--mordrath">
+        <span class="rop-lore-pillar__word">ASCENDANCY</span>
+        <span class="rop-lore-pillar__desc">Rise. Or be forgotten.</span>
+      </div>
+    </div>
+
+    <p>A Mordrath ruler who cannot hold power does not deserve it. A commander who cannot inspire fear or loyalty will soon serve someone who can. A promise has value because breaking it has consequences.</p>
+
+    <p>Mordrath society can appear chaotic to outsiders, yet beneath the brutality lies an intricate network of debts, blood ties, patronage, challenges, vendettas and sworn loyalties. Eastern rulers frequently fight one another. Those conflicts do not necessarily weaken Mordrath. They are viewed by many eastern traditions as the furnace through which worthy leaders are discovered.</p>
+
+    <h3>Eastern Dominions &amp; Strongholds</h3>
+    <p>Mordrath fortifications favor intimidation as much as defense. <strong>Zod's Reach</strong> is the political center of the eastern dominion &mdash; a vast fortress-palace carved into the shoulder of a mountain, its throne hall known as the <strong>Hall of Reckoning</strong>. From here House Zod commands the obedience of every power that wishes to remain relevant. <strong>Korrath</strong> is the industrial heart of the East: volcanic forges, smelting pits, and armories that have supplied eastern armies for generations, controlled by a council of forge-barons who answer to Zod. The iron-walled city of <strong>Dreadmarch</strong> guards the primary eastern approach to the Marches &mdash; its garrison is the largest permanent military encampment in the known realm. <strong>Ravenspire</strong> is a tower-city built atop older, nameless ruins; its libraries and spires house the Ashen Covenant's most dangerous archives. The deep ruins of <strong>Vorgoth</strong> are older than any surviving civilization &mdash; even Mordrath warlords send only expendable expeditions into its depths.</p>
+
+    <p>The Mordrath do not generally regard themselves as evil. They believe the western kingdoms hide weakness behind laws, councils and inherited privilege. To them, Valroian mercy preserves the incapable. Valroian peace protects corrupt rulers. Valroian law allows lesser people to command greater ones.</p>
+
+    <p>Mordrath philosophy offers a harsher promise: rise high enough, and no birthright can deny you. Fail, and the realm owes you nothing.</p>
+
+    <a href="#mordrath-sects" class="rop-btn rop-btn--crimson rop-btn--sm">The Mordrath Sects &darr;</a>
+  </div>
+</div>
+
+{# V · THE CONTESTED MARCHES #}
+<div class="rop-lore-section" id="marches">
+  <div class="rop-lore-section__numeral">V</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading">The Contested Marches</h2>
+
+    <p>Between West and East lies the region most players will hear spoken of with fear, ambition and opportunity: <strong>the Contested Marches</strong>.</p>
+
+    <p>The Marches are not one province. They are the shifting central territories where Valroian and Mordrath influence collide. No treaty has ever permanently settled them.</p>
+
+    <div class="rop-lore-callout">
+      <p>Some communities have changed allegiance so many times that their oldest buildings contain both western heraldry and eastern battle marks. Ruined watchtowers stand beside rebuilt keeps. Old battlefields become farmland. Farm fields become battlefields again. Abandoned roads lead toward fortresses whose names have been erased from surviving maps.</p>
+    </div>
+
+    <h3>Who Walks the Marches</h3>
+
+    <div class="rop-lore-marches-grid">
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Soldiers</span>
+        <span class="rop-lore-marches-grid__desc">Assigned to frontier duty by both factions</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Adventurers</span>
+        <span class="rop-lore-marches-grid__desc">Seeking fortune, fame, or answers</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Mercenaries</span>
+        <span class="rop-lore-marches-grid__desc">Paid by whoever holds the coin</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Spies</span>
+        <span class="rop-lore-marches-grid__desc">Information is worth more than gold</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Merchants</span>
+        <span class="rop-lore-marches-grid__desc">Dangerous routes. Greater profits.</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Scholars</span>
+        <span class="rop-lore-marches-grid__desc">Studying ruins older than the war</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Refugees</span>
+        <span class="rop-lore-marches-grid__desc">Displaced by centuries of conflict</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Criminals</span>
+        <span class="rop-lore-marches-grid__desc">Where laws end, outlaws begin</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Priests</span>
+        <span class="rop-lore-marches-grid__desc">Serving faiths that predate the factions</span>
+      </div>
+      <div class="rop-lore-marches-grid__item">
+        <span class="rop-lore-marches-grid__label">Aspiring Heroes</span>
+        <span class="rop-lore-marches-grid__desc">&hellip;and future tyrants</span>
+      </div>
+    </div>
+
+    <p>For ordinary people, the Marches are dangerous. For ambitious people, they are irresistible.</p>
+
+    {# PvP Gameplay Callout #}
+    <div class="rop-lore-pvp-callout">
+      <div class="rop-lore-pvp-callout__header">
+        <span class="rop-lore-pvp-callout__icon" aria-hidden="true">&#9876;</span>
+        <span>Gameplay &mdash; PvP in the Marches</span>
+      </div>
+      <div class="rop-lore-pvp-callout__rules">
+        <div class="rop-lore-pvp-callout__rule rop-lore-pvp-callout__rule--safe">
+          <strong>SAFE Zones</strong>
+          <span>No PvP of any kind. You cannot attack or be attacked by other players.</span>
+        </div>
+        <div class="rop-lore-pvp-callout__rule rop-lore-pvp-callout__rule--contested">
+          <strong>CONTESTED Zones</strong>
+          <span>Opposing-faction characters may fight. Same-faction PvP is <em>never</em> permitted.</span>
+        </div>
+      </div>
+      <p class="rop-lore-pvp-callout__note">There is no PvP toggle. Whether you can fight another player depends entirely on your location and faction alignment. <strong>Same-faction PvP is never permitted anywhere.</strong></p>
+    </div>
+
+  </div>
+</div>
+
+{# VI · THE VALROIAN SECTS #}
+<div class="rop-lore-section" id="valroian-sects">
+  <div class="rop-lore-section__numeral rop-lore-section__numeral--valroian">VI</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading rop-lore-section__heading--valroian">The Valroian Sects</h2>
+
+    <p>The Valroian alliance contains many lesser orders and houses, but four institutions command influence across much of the western realm.</p>
+
+    {# SECT 1: Dawnshield #}
+    <div class="rop-lore-sect rop-lore-sect--valroian">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#9788;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">The Order of the Dawnshield</h3>
+          <span class="rop-lore-sect__role">Primary Military Defenders &middot; Fortress Order</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p>The Dawnshield is the most publicly recognized military order of the Valroian alliance. Its members traditionally serve as defenders of western settlements, roads, fortifications and civilians during times of war.</p>
+        <p>Their symbol is a rising sun behind a battered shield. Their doctrine teaches that victory is meaningless if nothing remains worth protecting afterward.</p>
+        <p>Dawnshield knights and soldiers are known for discipline, defensive warfare, fortress fighting and refusing to surrender positions others would abandon. Their current Lord-Commander, <strong>Marshal Aldric Veyne</strong>, is said to have held the <strong>Gate of Sorrows</strong> for seventeen days against a Mordrath siege with fewer than two hundred defenders &mdash; and refused to retreat even after reinforcements arrived, claiming the walls themselves had earned the right to keep the ground. Their critics accuse them of being rigid, self-righteous and too willing to sacrifice soldiers in defense of symbolic ground. Their supporters call them the wall behind which civilization survives.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">When the last gate breaks, the Dawnshield becomes the gate.</span>
+        </div>
+      </div>
+    </div>
+
+    {# SECT 2: Silver Hart #}
+    <div class="rop-lore-sect rop-lore-sect--valroian">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#129420;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">The Silver Hart Compact</h3>
+          <span class="rop-lore-sect__role">Diplomacy &middot; Intelligence &middot; Political Unity</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p>The Silver Hart Compact is a coalition of nobles, scouts, diplomats, merchants and frontier houses whose influence reaches far beyond the western courts. Where the Dawnshield represents open military strength, the Silver Hart survives through relationships.</p>
+        <p>Its agents negotiate treaties, secure supply routes, settle disputes, organize intelligence networks and quietly prevent western rivalries from becoming civil wars. The current Compact-First is <strong>Lady Seraphine Calder</strong>, a diplomat so subtle that three separate wars are believed to have ended without either side realizing she had brokered the peace. The emblem of the Compact is a silver stag beneath a crown of winter branches.</p>
+        <p>Some members are honorable diplomats. Others are spies who have spent entire lives maintaining false identities. The Compact believes unity is the West's greatest weapon. Its enemies claim unity achieved through secrets is merely another form of control. Among its most shadowed agents is <strong>Kael Morrow</strong>, who has spent twenty-three years posing as a Mordrath grain merchant named Torvin Ash &mdash; and who has reportedly spoken with House Zod's inner circle on three separate occasions without being discovered.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">A sword may win the field. A promise decides who owns it tomorrow.</span>
+        </div>
+      </div>
+    </div>
+
+    {# SECT 3: Wardens of Elyndor #}
+    <div class="rop-lore-sect rop-lore-sect--valroian">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#10052;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">The Wardens of Elyndor</h3>
+          <span class="rop-lore-sect__role">Wilderness &middot; Ancient Sites &middot; Forgotten Threats</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p>The Wardens of Elyndor are guardians of ancient western lands, wilderness routes, sacred places and ruins predating the current factional age. They include rangers, wardens, druids, scholars, hunters and warriors whose loyalties frequently lie with the land itself as much as any crown.</p>
+        <p>The name <em>Elyndor</em> comes from an old western word whose exact meaning has been lost. It is variously translated as <em>The Living Realm</em>, <em>The First Green</em>, or <em>That Which Remembers</em>. Their symbol is a pale tree surrounded by seven stars.</p>
+        <p>The Wardens are especially suspicious of reckless magic, uncontrolled expansion, cursed ruins and anyone who disturbs places deliberately sealed by earlier civilizations. Their First Warden, an ancient dryad known only as <strong>Orenth</strong>, is believed to have walked the western forests for over three hundred years &mdash; and speaks of the Sundering as though it happened last season. They often know paths absent from royal maps. They also possess records hinting that the War of Passage may be younger than the threat buried beneath it.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">Kings remember generations. The earth remembers everything.</span>
+        </div>
+      </div>
+    </div>
+
+    {# SECT 4: White Flame #}
+    <div class="rop-lore-sect rop-lore-sect--valroian">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#9778;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">The Sanctum of the White Flame</h3>
+          <span class="rop-lore-sect__role">Faith &middot; Healing &middot; Knowledge &middot; Archives</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p>The White Flame is one of the most powerful religious and scholarly institutions in the Valroian West. Its temples maintain archives, hospitals, sanctuaries, schools and reliquaries. The White Flame itself is symbolic rather than literal in most traditions &mdash; it represents truth that survives corruption.</p>
+        <p>Members believe darkness is not defeated through ignorance but through understanding. Their priests therefore preserve forbidden histories that other western institutions would rather destroy. The current High Luminary is <strong>Archivist Elowen Thrace</strong>, a scholar who personally transcribed seventeen banned Mordrath texts into secure Valroian vaults &mdash; and who argues publicly that the West's refusal to study enemy philosophy is its greatest strategic weakness. The Sanctum's healers are respected throughout the alliance. Its inquisitors are feared almost as much as Mordrath assassins. The chief Inquisitor, <strong>Varen Ashford</strong>, has never lost a subject who had information he wanted &mdash; a fact that disturbs his colleagues nearly as much as it impresses them.</p>
+        <p>The order's greatest controversy lies in its belief that knowledge itself cannot be evil &mdash; only its use. This has led White Flame scholars to study artifacts, sorcery and texts that many western rulers consider dangerous.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">The flame does not fear the darkness. It reveals what waits inside it.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{# VII · THE MORDRATH SECTS #}
+<div class="rop-lore-section" id="mordrath-sects">
+  <div class="rop-lore-section__numeral rop-lore-section__numeral--mordrath">VII</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading rop-lore-section__heading--mordrath">The Mordrath Sects</h2>
+
+    <p>Mordrath contains countless houses, warbands and cults, but four organizations possess exceptional influence throughout the eastern dominion.</p>
+
+    {# SECT 1: House of Zod — DOMINANT #}
+    <div class="rop-lore-sect rop-lore-sect--mordrath rop-lore-sect--dominant">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#9764;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">House of Zod</h3>
+          <span class="rop-lore-sect__role">Dominant Mordrath Power &middot; Political &middot; Military</span>
+          <span class="rop-lore-sect__badge">PRIMARY SECT</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p><strong>House of Zod is the primary and most powerful Mordrath sect.</strong> It is among the oldest surviving eastern powers and currently stands as the dominant political and military force within Mordrath society. The current ruling authority is <strong>High Lord Maelkor Zod</strong>, the ninth to bear the name in unbroken succession &mdash; though whether that succession represents bloodline, appointment, or something stranger is a question House Zod treats as a capital offense to ask publicly.</p>
+        <p>Its origins are surrounded by deliberate contradiction. Some histories describe the first Zod as a warlord who united seven armies. Others call Zod a dynasty. Some forbidden eastern texts suggest Zod was originally a title rather than a name. House Zod rarely clarifies the matter.</p>
+        <p>Its symbol is traditionally a dark crown suspended above a crimson blade. The House believes power must constantly prove its legitimacy. Weak rulers invite rebellion. Weak armies invite invasion. Weak civilizations invite extinction.</p>
+        <p>Unlike many eastern warbands, House Zod values organization intensely. Its officers maintain disciplined military structures, intelligence networks, taxation systems, fortified territories and carefully recorded obligations. This is one reason the House has survived while hundreds of louder conquerors disappeared.</p>
+        <p>Its greatest leaders understand a lesson many Mordrath warlords never learn: fear can seize a throne. Administration keeps it. House Zod serves as the principal force capable of compelling rival Mordrath powers to act together against Valroian campaigns. When Zod calls the eastern banners, even ancient enemies listen. Not always willingly.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">Power is not inherited. It is inherited only until someone stronger arrives.</span>
+        </div>
+      </div>
+    </div>
+
+    {# SECT 2: Ashen Covenant #}
+    <div class="rop-lore-sect rop-lore-sect--mordrath">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#9851;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">The Ashen Covenant</h3>
+          <span class="rop-lore-sect__role">Arcane &middot; Transformation &middot; Forbidden Knowledge</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p>The Ashen Covenant is an arcane and religious order obsessed with transformation through destruction. Its members believe fire exposes truth. Metal becomes stronger in flame. Forests become fertile after burning. Civilizations, they argue, obey the same law.</p>
+        <p>The Covenant includes sorcerers, warlocks, alchemists, priests and scholars willing to experiment with forces rejected by western institutions. Their current leader is <strong>Pyremaster Sycorax</strong>, a warlock of such advanced age that even House Zod's genealogists cannot determine when she was born &mdash; some records suggest she predates the Sundering itself, though the Covenant dismisses this as superstition. Their emblem is a black hand holding a coal that never cools. They maintain hidden libraries containing texts stolen, purchased or recovered from ruins across the realm. The Covenant's most dangerous keeper is <strong>Archivist-Major Vorn</strong>, an illithid whose memory spans centuries and whose catalog of forbidden spells is said to fill a chamber whose door has not been opened in forty years.</p>
+        <p>House Zod tolerates the Covenant because its knowledge is invaluable. House Zod also watches it constantly. There are persistent rumors that senior members of the Ashen Covenant believe Mordrath itself is merely another structure that must eventually burn.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">Nothing reveals what it truly is until the fire reaches it.</span>
+        </div>
+      </div>
+    </div>
+
+    {# SECT 3: Black Thorn Synod #}
+    <div class="rop-lore-sect rop-lore-sect--mordrath">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#10047;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">The Black Thorn Synod</h3>
+          <span class="rop-lore-sect__role">Eastern Law &middot; Oaths &middot; Judgment &middot; Legitimacy</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p>The Black Thorn Synod is a network of priests, judges, interrogators and political advisers who maintain many of the eastern traditions governing oath, punishment and legitimacy. Their current High Justiciar, <strong>Magister Severa Korr</strong>, has personally overseen the oath-binding of twelve Mordrath warlords and the oath-breaking executions of four more &mdash; one of whom was her own nephew. Her presence at a negotiation is said to be worth an extra legion. Their emblem is a black thorn wrapped around a crimson circle.</p>
+        <p>Despite Mordrath's reputation for lawlessness, eastern political life depends heavily upon recognized custom. Challenges must sometimes follow formal rules. Debts may transfer through bloodlines. Certain sanctuaries cannot be violated without consequence. Some oaths remain binding even between enemies.</p>
+        <p>The Synod remembers these laws. It also interprets them. This gives it enormous power. A warlord may command ten thousand soldiers and still hesitate before being declared oathless by the Synod. An oathless ruler may retain an army. They rarely retain allies.</p>
+        <p>Critics claim the Black Thorn manipulates ancient custom to control leaders stronger than itself. The Synod's response is simple: strength without order is merely an animal with a weapon.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">Every crown rests upon an oath, whether its wearer admits it or not.</span>
+        </div>
+      </div>
+    </div>
+
+    {# SECT 4: Iron Veil #}
+    <div class="rop-lore-sect rop-lore-sect--mordrath">
+      <div class="rop-lore-sect__header">
+        <div class="rop-lore-sect__icon" aria-hidden="true">&#128736;</div>
+        <div class="rop-lore-sect__titles">
+          <h3 class="rop-lore-sect__name">The Iron Veil</h3>
+          <span class="rop-lore-sect__role">Espionage &middot; Assassination &middot; Counterintelligence</span>
+        </div>
+      </div>
+      <div class="rop-lore-sect__body">
+        <p>The Iron Veil is the least understood of the great Mordrath sects. Officially, it is a brotherhood devoted to protecting eastern rulers from espionage, assassination and internal betrayal. Unofficially, it is Mordrath's most feared intelligence network.</p>
+        <p>The Veil recruits scouts, killers, informants, infiltrators, poisoners, couriers and individuals whose names never appear in official records. Its current leadership is unknown. Some believe a figure called <strong>the Masked</strong> directs the Veil's operations from a location that shifts with the moon. Others insist the Masked does not exist &mdash; that the Veil is a collective hallucination maintained by operatives who each believe someone else is in charge. Its emblem is a blank iron mask divided by a vertical red line. The organization does not maintain a public hierarchy. Members often know only a handful of other operatives. One of the few confirmed operatives whose name is known outside the Veil is <strong>Shrike</strong> &mdash; though whether Shrike is a single person, a rotating identity, or a legend deliberately cultivated is a question not even House Zod's intelligence apparatus can answer with certainty.</p>
+        <p>Rumors claim the Veil has agents inside Valroian courts, merchant houses, military orders and even western temples. More disturbing rumors claim it maintains equal numbers inside Mordrath itself. House Zod employs the Veil. Whether House Zod controls it is another question entirely.</p>
+        <div class="rop-lore-saying">
+          <span class="rop-lore-saying__mark">&#8220;</span>
+          <span class="rop-lore-saying__text">If you saw the knife, it was not the Veil.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{# VIII · FAITH, POWER & ALLEGIANCE #}
+<div class="rop-lore-section" id="faith">
+  <div class="rop-lore-section__numeral">VIII</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading">Faith, Power &amp; Allegiance</h2>
+
+    <p>Religion throughout the realm is complicated. Neither Valroian nor Mordrath represents a single faith. Different races, regions and cultures maintain their own gods, ancestors, spirits, philosophies and sacred traditions.</p>
+
+    <p>Faction allegiance is political and cultural rather than a simple division between holy and unholy.</p>
+
+    <div class="rop-lore-faith-grid">
+      <div class="rop-lore-faith-grid__item">
+        <p>Valroian temples may disagree violently with one another.</p>
+      </div>
+      <div class="rop-lore-faith-grid__item">
+        <p>Mordrath priests may serve deities of law, war, death, knowledge or conquest.</p>
+      </div>
+      <div class="rop-lore-faith-grid__item">
+        <p>Some gods are worshipped on both sides under different names.</p>
+      </div>
+      <div class="rop-lore-faith-grid__item">
+        <p>Others appear to have chosen sides.</p>
+      </div>
+    </div>
+
+    <p>A few ancient traditions claim the gods themselves are divided because of something that happened before mortal history began. No surviving scripture proves the claim. No surviving scripture completely disproves it either.</p>
+
+    <div class="rop-lore-callout rop-lore-callout--subtle">
+      <p>This ambiguity is deliberate. The true nature of the divine in Rites of Passage remains one of the deepest mysteries of the realm &mdash; and one that players may help uncover.</p>
+    </div>
+
+  </div>
+</div>
+
+{# IX · LIFE IN A DIVIDED WORLD #}
+<div class="rop-lore-section" id="life">
+  <div class="rop-lore-section__numeral">IX</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading">Life in a Divided World</h2>
+
+    <p>Most people are not kings, knights or warlords.</p>
+
+    <div class="rop-lore-life-list">
+      <p>They are farmers trying to harvest before armies arrive.</p>
+      <p>Blacksmiths repairing tools during peace and weapons during war.</p>
+      <p>Merchants calculating whether a dangerous road is worth the profit.</p>
+      <p>Innkeepers listening to soldiers boast about battles they barely survived.</p>
+      <p>Parents hoping their children inherit a trade instead of a feud.</p>
+      <p>Refugees carrying the keys to homes that no longer exist.</p>
+      <p>Scholars preserving books whose authors belonged to forgotten kingdoms.</p>
+    </div>
+
+    <h3>Adventurers Are Different</h3>
+
+    <p>They travel where sensible people do not. They enter ruins sealed for generations. They accept work from dangerous patrons. They discover objects governments would kill to possess. They cross borders. They uncover old truths. And sometimes they become powerful enough that factions must notice them.</p>
+
+    <div class="rop-lore-quote rop-lore-quote--player">
+      <span class="rop-lore-quote__mark">&#8220;</span>
+      <p class="rop-lore-quote__text">This is where the player enters the history of Rites of Passage. Not as the chosen ruler of the world. Not as a guaranteed hero. But as someone with the opportunity to become important.</p>
+    </div>
+
+    <p>Reputation must be earned. Enemies will remember. Allies will have expectations. Power creates choices. Choices create consequences. Legends begin long before anyone realizes they are watching one.</p>
+
+  </div>
+</div>
+
+{# X · THE AGE AHEAD #}
+<div class="rop-lore-section" id="age-ahead">
+  <div class="rop-lore-section__numeral">X</div>
+  <div class="rop-lore-section__body">
+    <h2 class="rop-lore-section__heading">The Age Ahead</h2>
+
+    <p>The current age is unstable.</p>
+
+    <p>Neither Valroian nor Mordrath has achieved decisive victory. The Contested Marches remain divided. Ancient ruins are being uncovered. Old bloodlines are resurfacing. Forgotten relics have begun appearing in markets and battlefields.</p>
+
+    <p>Scholars argue over prophecies previously dismissed as allegory. Rulers on both sides prepare for wars they publicly insist they do not want.</p>
+
+    <div class="rop-lore-age-signs">
+      <div class="rop-lore-age-sign rop-lore-age-sign--valroian">
+        <span class="rop-lore-age-sign__label">In the West</span>
+        <span class="rop-lore-age-sign__text">Western orders quietly reinforce the frontier. The Silver Hart sends agents east. The Wardens warn that something beneath the oldest lands has begun to stir.</span>
+      </div>
+      <div class="rop-lore-age-sign rop-lore-age-sign--mordrath">
+        <span class="rop-lore-age-sign__label">In the East</span>
+        <span class="rop-lore-age-sign__text">House Zod strengthens its grip upon the eastern powers. The Ashen Covenant searches for knowledge buried before the Sundering. The Iron Veil sends agents everywhere.</span>
+      </div>
+    </div>
+
+    <p>And ordinary people continue living beneath banners that may change before the next harvest.</p>
+
+    <div class="rop-lore-closing">
+      <p>Whatever comes next will not be written by historians alone.</p>
+      <p>It will be written by those willing to enter the realm.</p>
+    </div>
+
+    {# LINKS TO OTHER PAGES #}
+    <div class="rop-lore-next">
+      <h4>Continue Your Journey</h4>
+      <div class="rop-lore-next__grid">
+        <a href="{% url 'races' %}" class="rop-lore-next__item">
+          <span class="rop-lore-next__label">Races of the Realm</span>
+          <span class="rop-lore-next__desc">Explore the twenty-four races &mdash; twelve for each faction</span>
+        </a>
+        <a href="{% url 'professions' %}" class="rop-lore-next__item">
+          <span class="rop-lore-next__label">Professions</span>
+          <span class="rop-lore-next__desc">Ten paths &mdash; choose your destiny</span>
+        </a>
+        <a href="{% url 'game-guide' %}" class="rop-lore-next__item">
+          <span class="rop-lore-next__label">Game Guide</span>
+          <span class="rop-lore-next__desc">Learn the mechanics of survival, combat, and progression</span>
+        </a>
+        <a href="{% url 'getting-started' %}" class="rop-lore-next__item">
+          <span class="rop-lore-next__label">Getting Started</span>
+          <span class="rop-lore-next__desc">Create your account and enter the game</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>{# END .rop-container #}
+
+{% endblock %}

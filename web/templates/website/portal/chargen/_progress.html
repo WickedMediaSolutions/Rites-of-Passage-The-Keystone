@@ -1,0 +1,27 @@
+{% comment %}
+  Chargen wizard step progress bar.
+  Expects: chargen_step (current step key), chargen_steps (list of step keys).
+{% endcomment %}
+<div class="rop-chargen__progress mb-4" role="navigation" aria-label="Character creation steps">
+  <div class="rop-chargen__progress-steps">
+    {% for s in chargen_steps %}
+      <div class="rop-chargen__step
+        {% if s == chargen_step %}rop-chargen__step--current{% endif %}
+      ">
+        <span class="rop-chargen__step-number">{{ forloop.counter }}</span>
+        <span class="rop-chargen__step-label">
+          {% if s == 'name' %}Name
+          {% elif s == 'faction' %}Faction
+          {% elif s == 'race' %}Race
+          {% elif s == 'profession' %}Profession
+          {% elif s == 'stats' %}Attributes
+          {% elif s == 'review' %}Confirm
+          {% endif %}
+        </span>
+      </div>
+      {% if not forloop.last %}
+        <div class="rop-chargen__step-connector"></div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

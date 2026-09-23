@@ -1,0 +1,19 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Access Denied{% endblock %}
+
+{% block content %}
+<div class="rop-page-title">
+  <h1>Access Denied</h1>
+  <p class="rop-subtitle">You do not have permission to access this area.</p>
+</div>
+
+<section class="rop-panel rop-panel--ornate">
+  <div class="rop-panel__body rop-text-center">
+    <p>This area is restricted to server administrators only.</p>
+    <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--primary">
+      Return to Dashboard
+    </a>
+  </div>
+</section>
+{% endblock %}

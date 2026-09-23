@@ -1,0 +1,17 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}404 — Not Found{% endblock %}
+
+{% block header_ext %}
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+{% endblock %}
+
+{% block content %}
+<div class="rop-error-page">
+  <div class="rop-error-page__icon">&#128270;</div>
+  <div class="rop-error-page__code">404</div>
+  <h2>Page Not Found</h2>
+  <p>The page you seek lies beyond the known realms. It may have been moved, destroyed, or never existed at all.</p>
+  <a href="/" class="rop-btn rop-btn--secondary">Return Home</a>
+</div>
+{% endblock %}

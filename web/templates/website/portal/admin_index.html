@@ -1,0 +1,89 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Portal Administration{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Portal Administration</h1>
+  <p class="rop-subtitle">Account Management</p>
+</div>
+
+{# -- NAVIGATION -- #}
+<div class="mb-3">
+  <a href="{% url 'rop-admin-index' %}" class="rop-btn rop-btn--secondary rop-btn--sm">Accounts</a>
+  <a href="{% url 'rop-admin-audit' %}" class="rop-btn rop-btn--secondary rop-btn--sm">Audit Log</a>
+</div>
+
+{# -- SEARCH -- #}
+<section class="rop-panel rop-panel--ornate mb-4" aria-label="Account search">
+  <div class="rop-panel__body">
+    <form method="get" action="{% url 'rop-admin-index' %}" class="form-inline">
+      <label for="admin-search" class="sr-only">Search accounts</label>
+      <input
+        id="admin-search"
+        type="text"
+        name="q"
+        value="{{ search_query|default:'' }}"
+        placeholder="Search by username or email…"
+        class="rop-input mr-2"
+        autocomplete="off"
+      >
+      <button type="submit" class="rop-btn rop-btn--primary rop-btn--sm">Search</button>
+      {% if search_query %}
+      <a href="{% url 'rop-admin-index' %}" class="rop-btn rop-btn--secondary rop-btn--sm ml-2">Clear</a>
+      {% endif %}
+    </form>
+    <p class="rop-text-muted mt-2 mb-0">
+      <small>{{ total_count }} account{{ total_count|pluralize }} found</small>
+    </p>
+  </div>
+</section>
+
+{# -- ACCOUNT TABLE -- #}
+<section class="rop-panel rop-panel--ornate" aria-label="Account list">
+  <div class="rop-panel__header">Accounts</div>
+  <div class="rop-panel__body p-0">
+    {% if accounts %}
+    <div class="table-responsive">
+      <table class="table table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Superuser</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for acc in accounts %}
+          <tr>
+            <td>{{ acc.username }}</td>
+            <td>{{ acc.email }}</td>
+            <td>{% if acc.is_superuser %}Yes{% else %}No{% endif %}</td>
+            <td>
+              {% if acc.is_banned %}
+              <span class="rop-badge rop-badge--danger">Banned</span>
+              {% else %}
+              <span class="rop-badge rop-badge--success">Active</span>
+              {% endif %}
+            </td>
+            <td>
+              <a href="{% url 'rop-admin-account' username=acc.username %}"
+                 class="rop-btn rop-btn--secondary rop-btn--sm">View</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="rop-panel__body rop-text-center">
+      <p class="rop-text-muted">No accounts found.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,180 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Character Creation — Review{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Character Creation</h1>
+  <p class="rop-subtitle">Your Passage Awaits</p>
+</div>
+
+{% include "website/portal/chargen/_progress.html" %}
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8">
+
+    <section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="chargen-review-heading">
+      <div class="rop-panel__header" id="chargen-review-heading">
+        Step 6 &mdash; Final Review &amp; Creation
+      </div>
+      <div class="rop-panel__body">
+
+        {# Faction-themed banner — only when faction is set #}
+        {% if race_display.faction %}
+        <div class="rop-chargen__review-banner mb-4
+          {% if race_display.faction == 'good' %}rop-chargen__review-banner--good
+          {% elif race_display.faction == 'evil' %}rop-chargen__review-banner--evil
+          {% endif %}">
+          <span class="rop-chargen__review-banner-text">Your Passage Awaits</span>
+        </div>
+        {% endif %}
+
+        {# Character summary cards #}
+        <div class="rop-chargen__review-grid mb-4">
+
+          {# Name #}
+          <div class="rop-chargen__review-item">
+            <span class="rop-chargen__review-label">Character Name</span>
+            <span class="rop-chargen__review-value rop-chargen__review-value--name">
+              {{ chargen_name }}
+            </span>
+          </div>
+
+          {# Faction #}
+          <div class="rop-chargen__review-item">
+            <span class="rop-chargen__review-label">Faction</span>
+            <span class="rop-chargen__review-value
+              {% if race_display.faction == 'good' %}rop-chargen__review-value--good
+              {% elif race_display.faction == 'evil' %}rop-chargen__review-value--evil
+              {% endif %}">
+              {{ race_display.faction_label|default:"—" }}
+            </span>
+          </div>
+
+          {# Race #}
+          <div class="rop-chargen__review-item">
+            <span class="rop-chargen__review-label">Race</span>
+            <div class="rop-chargen__review-value">
+              <span>{{ race_display.name|default:"—" }}</span>
+              {% if race_display.traits %}
+              <div class="mt-2">
+                {% for trait in race_display.traits %}
+                  <span class="rop-badge rop-badge--info">{{ trait|title|cut:"_" }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          {# Profession #}
+          <div class="rop-chargen__review-item">
+            <span class="rop-chargen__review-label">Profession</span>
+            <span class="rop-chargen__review-value">
+              {{ profession_display.name|default:"—" }}
+            </span>
+          </div>
+
+        </div>
+
+        {# Final Stats #}
+        <h4 class="text-center mb-3 rop-text-heading">Final Attributes</h4>
+        <div class="rop-chargen__stat-grid rop-chargen__stat-grid--review mb-4">
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">STR</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.str|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">{{ stat_labels.str }}</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">INT</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.int|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">{{ stat_labels.int }}</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">WIS</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.wis|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">{{ stat_labels.wis }}</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">DEX</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.dex|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">{{ stat_labels.dex }}</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">CON</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.con|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">{{ stat_labels.con }}</span>
+          </div>
+        </div>
+
+        {# Permanent warning #}
+        <div class="rop-alert rop-alert--warning text-center mb-4" role="alert">
+          <strong>&#9888; These choices are PERMANENT.</strong><br>
+          Your name, faction, race, profession, and attributes <em>cannot</em> be changed after creation.
+        </div>
+
+        {# Confirmation form #}
+        <form method="post" action="{% url 'rop-chargen' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="form-check text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chargen-confirm"
+                name="confirm"
+                value="1"
+                required
+              >
+              <label class="form-check-label rop-text-primary" for="chargen-confirm">
+                I confirm that name, faction, race, profession, and attributes are
+                <strong>PERMANENT</strong> and cannot be changed.
+              </label>
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <button type="submit" class="rop-btn rop-btn--primary rop-btn--lg">
+              Forge Character &mdash; Enter the Realm
+            </button>
+          </div>
+        </form>
+
+        {# Cancel / Start Over #}
+        <form method="post" action="{% url 'rop-chargen' %}" id="chargen-cancel-form" style="display:none;">
+          {% csrf_token %}
+          <input type="hidden" name="cancel" value="1">
+        </form>
+
+        <div class="text-center mt-3">
+          <a href="{% url 'rop-chargen' %}" class="rop-btn rop-btn--link rop-btn--sm">
+            &larr; Go Back
+          </a>
+        </div>
+
+        <div class="text-center mt-4 mb-2">
+          <button type="button" id="chargen-cancel-btn" class="rop-btn rop-btn--danger rop-btn--sm">
+            CANCEL / START OVER
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+document.getElementById('chargen-cancel-btn').addEventListener('click', function() {
+  var confirmed = confirm(
+    "Abandon this character and start over?\n\n" +
+    "Your saved character creation progress will be cleared."
+  );
+  if (confirmed) {
+    document.getElementById('chargen-cancel-form').submit();
+  }
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Character Creation{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Character Creation</h1>
+  <p class="rop-subtitle">Your legend begins here</p>
+</div>
+
+{# -- WIZARD PROGRESS BAR -- #}
+{% include "website/portal/chargen/_progress.html" %}
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+
+    <section class="rop-panel rop-panel--ornate" aria-labelledby="chargen-name-heading">
+      <div class="rop-panel__header" id="chargen-name-heading">
+        Step 1 &mdash; Begin Your Passage
+      </div>
+      <div class="rop-panel__body">
+
+        {# -- CINEMATIC HEADER ART -- #}
+        <div class="rop-art-mount mb-4">
+          <div class="rop-art-mount__frame">
+            <img src="{% static 'website/images/chargen-background.png' %}" alt="Character Creation" class="rop-art-mount__img" loading="lazy">
+          </div>
+          <span class="rop-art-mount__shade" aria-hidden="true"></span>
+        </div>
+        <p class="rop-text-muted text-center">Every legend begins with a name.</p>
+
+        <form method="post" action="{% url 'rop-chargen' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="chargen-name-input" class="rop-label">Character Name</label>
+            <input
+              type="text"
+              id="chargen-name-input"
+              name="name"
+              class="rop-input rop-input--lg text-center"
+              maxlength="14"
+              minlength="3"
+              pattern="[a-zA-Z\-]+"
+              placeholder="Enter character name"
+              value="{{ chargen_name|default:'' }}"
+              required
+              autofocus
+            >
+            <small class="rop-text-muted form-text mt-2">
+              3&ndash;14 characters &middot; letters and hyphens only &middot; no spaces or numbers &middot; no consecutive hyphens
+            </small>
+          </div>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="rop-btn rop-btn--primary rop-btn--lg">
+              Continue to Faction Selection &rarr;
+            </button>
+          </div>
+        </form>
+
+        <div class="text-center mt-3">
+          <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--link rop-btn--sm">
+            &larr; Back to Dashboard
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+
+{% endblock %}

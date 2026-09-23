@@ -1,0 +1,87 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Races{% endblock %}
+
+{% block content %}
+
+<div class="rop-container">
+  <div class="rop-cap">The Lineages of the Realm</div>
+  <h1 style="text-align:center;margin-bottom:0.3rem;">Races of the Realm</h1>
+  <p class="rop-muted" style="text-align:center;margin-bottom:1.5rem;">Twenty-four lineages — twelve of Valroian, twelve of Mordrath</p>
+</div>
+
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+{# ===== VALROIAN ===== #}
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h2>Valroian — {{ good_races|length }} Races</h2></div>
+      <p class="rop-muted" style="text-align:center;margin-bottom:1rem;">Champions of order, nobility, and the enduring light in a dark world.</p>
+      <div class="rop-grid rop-grid--4">
+        {% for race_id, race_def in good_races.items %}
+        <div class="rop-card">
+          <div class="rop-card__img">
+            <img src="{% static 'website/images/'|add:race_def.image %}" alt="{{ race_def.name }}" width="1400" height="800" loading="lazy"
+                 onerror="this.onerror=null;this.src='{% static 'website/images/race-fallback.webp' %}'">
+          </div>
+          <div class="rop-card__body">
+            <div class="rop-card__title">{{ race_def.name }}</div>
+            {% if race_def.traits %}
+            <div class="rop-card__info" style="color:var(--rop-steel-blue-light);">
+              {% for trait in race_def.traits %}<span class="rop-badge rop-badge--steel" style="margin:0.1rem;">{{ trait|title|cut:"_" }}</span>{% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+{# ===== MORDRATH ===== #}
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h2>Mordrath — {{ evil_races|length }} Races</h2></div>
+      <p class="rop-muted" style="text-align:center;margin-bottom:1rem;">Agents of darkness, ambition, and brutal power.</p>
+      <div class="rop-grid rop-grid--4">
+        {% for race_id, race_def in evil_races.items %}
+        <div class="rop-card">
+          <div class="rop-card__img">
+            <img src="{% static 'website/images/'|add:race_def.image %}" alt="{{ race_def.name }}" width="1400" height="800" loading="lazy"
+                 onerror="this.onerror=null;this.src='{% static 'website/images/race-fallback.webp' %}'">
+          </div>
+          <div class="rop-card__body">
+            <div class="rop-card__title">{{ race_def.name }}</div>
+            {% if race_def.traits %}
+            <div class="rop-card__info" style="color:#d88070;">
+              {% for trait in race_def.traits %}<span class="rop-badge rop-badge--crimson" style="margin:0.1rem;">{{ trait|title|cut:"_" }}</span>{% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rop-container" style="text-align:center;margin:2rem 0;">
+  <p class="rop-muted">Find your kin and begin your legend.</p>
+  {% if not user.is_authenticated %}
+  <a href="{% url 'rop-register' %}" class="rop-btn rop-btn--crimson">Create Account</a>
+  {% else %}
+  <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--gold">Enter Dashboard</a>
+  {% endif %}
+</div>
+
+{% endblock %}

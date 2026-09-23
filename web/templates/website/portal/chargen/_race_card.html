@@ -1,0 +1,23 @@
+{% load static %}
+<label class="rop-chargen__card" for="race-{{ race_id }}">
+  <input type="radio" name="race" value="{{ race_id }}" id="race-{{ race_id }}" class="rop-chargen__card-radio" {% if chargen_race == race_id %}checked{% endif %}>
+  <span class="rop-chargen__card-inner">
+    <span class="rop-chargen__card-image">
+      <img src="{% static 'website/images/'|add:race_def.image %}" alt="{{ race_def.name }}" loading="lazy"
+           onerror="this.onerror=null;this.src='{% static 'website/images/race-fallback.webp' %}'">
+    </span>
+    <span class="rop-chargen__card-body">
+      <span class="rop-chargen__card-title">{{ race_def.name }}</span>
+      <span class="rop-chargen__card-stats">
+        STR {{ race_def.base_stats.str }} &middot; INT {{ race_def.base_stats.int }}
+        &middot; WIS {{ race_def.base_stats.wis }} &middot; DEX {{ race_def.base_stats.dex }}
+        &middot; CON {{ race_def.base_stats.con }}
+      </span>
+      {% if race_def.traits %}
+      <span class="rop-chargen__card-traits">
+        {% for trait in race_def.traits %}<span class="rop-badge">{{ trait|title|cut:"_" }}</span>{% endfor %}
+      </span>
+      {% endif %}
+    </span>
+  </span>
+</label>

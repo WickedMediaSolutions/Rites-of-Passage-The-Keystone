@@ -1,0 +1,336 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Dashboard{% endblock %}
+
+{% block content %}
+
+{# ===== DASHBOARD MASTHEAD ===== #}
+<div class="rop-container">
+  <div class="rop-dashboard-masthead">
+    <div class="rop-dashboard-masthead__frame">
+      <img src="{% static 'website/images/dashboard-header.png' %}" alt="Dashboard" width="1600" height="500">
+    </div>
+    <div class="rop-dashboard-masthead__overlay">
+      <div class="rop-dashboard-masthead__title">DASHBOARD</div>
+      <div class="rop-dashboard-masthead__greeting">WELCOME BACK, {{ user.username|upper }}</div>
+
+      {% if has_character and char_display %}
+      <div class="rop-dashboard-masthead__char-name">{{ char_display.name }}</div>
+      <div class="rop-dashboard-masthead__char-meta">
+        <strong>{{ char_display.race|default:"—" }}</strong>
+        &nbsp;&bull;&nbsp;
+        {{ char_display.profession|default:"—" }}
+        &nbsp;&bull;&nbsp;
+        <strong>{{ char_display.faction_label|default:"—" }}</strong>
+        &nbsp;&bull;&nbsp;
+        LEVEL {{ char_display.level|default:"—" }}
+      </div>
+      {% if webclient_enabled %}
+      <a href="{% url 'webclient:index' %}" class="rop-dashboard-masthead__cta">Enter the Realm</a>
+      {% endif %}
+
+      {% else %}
+      <p class="rop-dashboard-masthead__char-meta" style="margin-top:0.3rem;">Your passage has not yet begun.</p>
+      <a href="{% url 'rop-chargen' %}" class="rop-dashboard-masthead__cta">Create Your Character</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{# ===== QUICK STATUS RAIL ===== #}
+<div class="rop-container">
+  <div class="rop-dashboard-status">
+    <div class="rop-dashboard-status__item">
+      <span class="rop-dashboard-status__label">Server</span>
+      <span class="rop-dashboard-status__value {% if server_status.online %}rop-dashboard-status__value--online{% else %}rop-dashboard-status__value--offline{% endif %}">
+        <span class="rop-dashboard-status__dot {% if server_status.online %}rop-dashboard-status__dot--online{% else %}rop-dashboard-status__dot--offline{% endif %}"></span>
+        {% if server_status.online %}Online{% else %}Offline{% endif %}
+      </span>
+    </div>
+
+    <div class="rop-dashboard-status__item">
+      <span class="rop-dashboard-status__label">Character</span>
+      <span class="rop-dashboard-status__value {% if has_character %}rop-dashboard-status__value--online{% else %}rop-dashboard-status__value--offline{% endif %}">
+        {% if has_character %}Ready{% else %}Not Created{% endif %}
+      </span>
+    </div>
+
+    {% if has_character and char_display %}
+    <div class="rop-dashboard-status__item">
+      <span class="rop-dashboard-status__label">Faction</span>
+      <span class="rop-dashboard-status__value {% if char_display.faction_label == 'Valroian' %}rop-dashboard-status__value--valroian{% elif char_display.faction_label == 'Mordrath' %}rop-dashboard-status__value--mordrath{% endif %}">
+        {{ char_display.faction_label|default:"—" }}
+      </span>
+    </div>
+
+    <div class="rop-dashboard-status__item">
+      <span class="rop-dashboard-status__label">Level</span>
+      <span class="rop-dashboard-status__value">{{ char_display.level|default:"—" }}</span>
+    </div>
+    {% endif %}
+
+    <div class="rop-dashboard-status__item">
+      <span class="rop-dashboard-status__label">Account</span>
+      <span class="rop-dashboard-status__value">{{ user.username }}</span>
+    </div>
+
+    {% if webclient_enabled and has_character %}
+    <div class="rop-dashboard-status__item">
+      <span class="rop-dashboard-status__label">Play</span>
+      <span class="rop-dashboard-status__value rop-dashboard-status__value--online">Browser Available</span>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+{# ===== CHARACTER EMPTY STATE ===== #}
+{% if not has_character %}
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__corners">
+      <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+      <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+      <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+      <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+    </div>
+    <div class="rop-panel__inner">
+      <div class="rop-dashboard-empty">
+        <div class="rop-dashboard-empty__icon">&#9876;</div>
+        <div class="rop-dashboard-empty__title">Your Passage Has Not Yet Begun</div>
+        <p class="rop-dashboard-empty__desc">Create your character to enter the realm. Choose your race, profession, and forge your legend.</p>
+        <a href="{% url 'rop-chargen' %}" class="rop-btn rop-btn--crimson rop-btn--lg">Create Character</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{# ===== CHARACTER OVERVIEW ===== #}
+{% if has_character and char_display %}
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__corners">
+      <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+      <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+      <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+      <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+    </div>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h2>Character Overview</h2></div>
+      <div class="rop-dashboard-char-summary">
+        {% if char_display.race_id %}
+        <div style="flex-shrink:0;max-width:260px;">
+          <div class="rop-art" style="margin-bottom:0;">
+            <div class="rop-art__frame">
+              <img src="{% static 'website/images/'|add:char_display.race_image %}" alt="{{ char_display.race }}" width="1400" height="800"
+                   onerror="this.src='{% static 'website/images/armory-character-fallback.png' %}';this.onerror=null;">
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <div class="rop-dashboard-char-summary__stats">
+          <div class="rop-dashboard-char-stat">
+            <span class="rop-dashboard-char-stat__label">Name</span>
+            <span class="rop-dashboard-char-stat__value">{{ char_display.name }}</span>
+          </div>
+          <div class="rop-dashboard-char-stat">
+            <span class="rop-dashboard-char-stat__label">Level</span>
+            <span class="rop-dashboard-char-stat__value">{{ char_display.level|default:"—" }}</span>
+          </div>
+          <div class="rop-dashboard-char-stat">
+            <span class="rop-dashboard-char-stat__label">Race</span>
+            <span class="rop-dashboard-char-stat__value">{{ char_display.race|default:"—" }}</span>
+          </div>
+          <div class="rop-dashboard-char-stat">
+            <span class="rop-dashboard-char-stat__label">Profession</span>
+            <span class="rop-dashboard-char-stat__value">{{ char_display.profession|default:"—" }}</span>
+          </div>
+          <div class="rop-dashboard-char-stat">
+            <span class="rop-dashboard-char-stat__label">Faction</span>
+            <span class="rop-dashboard-char-stat__value {% if char_display.faction_label == 'Valroian' %}rop-dashboard-char-stat__value--valroian{% elif char_display.faction_label == 'Mordrath' %}rop-dashboard-char-stat__value--mordrath{% endif %}">
+              {{ char_display.faction_label|default:"—" }}
+            </span>
+          </div>
+          {% if char_display.guild_id %}
+          <div class="rop-dashboard-char-stat">
+            <span class="rop-dashboard-char-stat__label">Guild</span>
+            <span class="rop-dashboard-char-stat__value">{{ char_display.guild_id }}</span>
+          </div>
+          {% endif %}
+          {% if char_display.sect_id %}
+          <div class="rop-dashboard-char-stat">
+            <span class="rop-dashboard-char-stat__label">Sect</span>
+            <span class="rop-dashboard-char-stat__value">{{ char_display.sect_id }}</span>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+{# ===== COMMAND CENTER ===== #}
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h2>Command Center</h2></div>
+
+      {% if not has_character %}
+      <p style="text-align:center;margin-bottom:1rem;color:#a0a2a4;">
+        Welcome, <strong style="color:#d6d8d9;">{{ user.username }}</strong>. The realm awaits your first champion.
+      </p>
+      {% endif %}
+
+      <div class="rop-dashboard-cc">
+
+        {% if webclient_enabled and has_character %}
+        <a href="{% url 'webclient:index' %}" class="rop-dashboard-cc__tile rop-dashboard-cc__tile--primary">
+          <div class="rop-dashboard-cc__tile-header">
+            <div class="rop-dashboard-cc__tile-icon">&#9876;</div>
+            <div class="rop-dashboard-cc__tile-title">Play in Browser</div>
+          </div>
+          <div class="rop-dashboard-cc__tile-desc">Enter the realm and continue your journey.</div>
+          <div class="rop-dashboard-cc__tile-footer">
+            <span class="rop-dashboard-cc__tile-action">Play Now</span>
+          </div>
+        </a>
+        {% endif %}
+
+        {% if not has_character %}
+        <a href="{% url 'rop-chargen' %}" class="rop-dashboard-cc__tile rop-dashboard-cc__tile--primary">
+          <div class="rop-dashboard-cc__tile-header">
+            <div class="rop-dashboard-cc__tile-icon">&#9876;</div>
+            <div class="rop-dashboard-cc__tile-title">Create Character</div>
+          </div>
+          <div class="rop-dashboard-cc__tile-desc">Forge your champion and begin your legend.</div>
+          <div class="rop-dashboard-cc__tile-footer">
+            <span class="rop-dashboard-cc__tile-action">Begin</span>
+          </div>
+        </a>
+        {% endif %}
+
+        {% if has_character %}
+        <a href="{% url 'rop-armory-character' char_display.name %}" class="rop-dashboard-cc__tile">
+          <div class="rop-dashboard-cc__tile-header">
+            <div class="rop-dashboard-cc__tile-icon">&#9813;</div>
+            <div class="rop-dashboard-cc__tile-title">Character</div>
+          </div>
+          <div class="rop-dashboard-cc__tile-desc">View your champion's profile and equipment.</div>
+          <div class="rop-dashboard-cc__tile-footer">
+            <span class="rop-dashboard-cc__tile-action">View Profile</span>
+          </div>
+        </a>
+        {% endif %}
+
+        <a href="{% url 'rop-armory' %}" class="rop-dashboard-cc__tile">
+          <div class="rop-dashboard-cc__tile-header">
+            <div class="rop-dashboard-cc__tile-icon">&#9733;</div>
+            <div class="rop-dashboard-cc__tile-title">Armory</div>
+          </div>
+          <div class="rop-dashboard-cc__tile-desc">Hall of Legends — view all champions of the realm.</div>
+          <div class="rop-dashboard-cc__tile-footer">
+            <span class="rop-dashboard-cc__tile-action">Browse</span>
+          </div>
+        </a>
+
+        <a href="{% url 'rop-account-settings' %}" class="rop-dashboard-cc__tile">
+          <div class="rop-dashboard-cc__tile-header">
+            <div class="rop-dashboard-cc__tile-icon">&#9881;</div>
+            <div class="rop-dashboard-cc__tile-title">Account Settings</div>
+          </div>
+          <div class="rop-dashboard-cc__tile-desc">Manage your account, email, and password.</div>
+          <div class="rop-dashboard-cc__tile-footer">
+            <span class="rop-dashboard-cc__tile-action">Settings</span>
+          </div>
+        </a>
+
+        <a href="{% url 'downloads' %}" class="rop-dashboard-cc__tile">
+          <div class="rop-dashboard-cc__tile-header">
+            <div class="rop-dashboard-cc__tile-icon">&#8650;</div>
+            <div class="rop-dashboard-cc__tile-title">Downloads</div>
+          </div>
+          <div class="rop-dashboard-cc__tile-desc">View client downloads and resources.</div>
+          <div class="rop-dashboard-cc__tile-footer">
+            <span class="rop-dashboard-cc__tile-action">View</span>
+          </div>
+        </a>
+
+        {% if is_superuser %}
+        <a href="{% url 'rop-admin-index' %}" class="rop-dashboard-cc__tile rop-dashboard-cc__tile--admin">
+          <div class="rop-dashboard-cc__tile-header">
+            <div class="rop-dashboard-cc__tile-icon">&#9879;</div>
+            <div class="rop-dashboard-cc__tile-title">Portal Administration</div>
+          </div>
+          <div class="rop-dashboard-cc__tile-desc">Superuser tools: manage accounts, bans, and audit logs.</div>
+          <div class="rop-dashboard-cc__tile-footer">
+            <span class="rop-dashboard-cc__tile-action">Admin</span>
+          </div>
+        </a>
+        {% endif %}
+
+      </div>
+
+      {% if has_character %}
+      <div class="rop-dashboard-controls">
+        <span class="rop-dashboard-controls__label">Account Controls</span>
+        <a href="{% url 'rop-character-delete' %}" class="rop-btn rop-btn--crimson rop-btn--sm">Delete Character</a>
+        <a href="{% url 'rop-account-delete' %}" class="rop-btn rop-btn--crimson rop-btn--sm">Delete Account</a>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{# ===== NEWS & UPDATES ===== #}
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>News &amp; Updates</h3></div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:0.5rem;">
+        <a href="{% url 'news' %}" class="rop-btn rop-btn--iron rop-btn--sm">All News &rarr;</a>
+      </div>
+      <div class="rop-grid rop-grid--3">
+        <div class="rop-card">
+          <div class="rop-card__body">
+            <span class="rop-badge">Announcement</span>
+            <div class="rop-card__title" style="font-size:0.7rem;margin-top:0.3rem;">Welcome to Rites of Passage</div>
+            <div class="rop-card__info">The portal is now live. News and updates will appear here.</div>
+          </div>
+        </div>
+        <div class="rop-card">
+          <div class="rop-card__body">
+            <span class="rop-badge">Development</span>
+            <div class="rop-card__title" style="font-size:0.7rem;margin-top:0.3rem;">World Taking Shape</div>
+            <div class="rop-card__info">The realm is being forged. Watch for updates.</div>
+          </div>
+        </div>
+        <div class="rop-card">
+          <div class="rop-card__body">
+            <span class="rop-badge">Community</span>
+            <div class="rop-card__title" style="font-size:0.7rem;margin-top:0.3rem;">Adventurers Gather</div>
+            <div class="rop-card__info">Community news and events will be listed here.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Character Creation — Attributes{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Character Creation</h1>
+  <p class="rop-subtitle">Roll your destiny</p>
+</div>
+
+{% include "website/portal/chargen/_progress.html" %}
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8">
+
+    <section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="chargen-stats-heading">
+      <div class="rop-panel__header" id="chargen-stats-heading">
+        Step 5 &mdash; Attributes
+      </div>
+      <div class="rop-panel__body">
+
+        {# Selected choices summary #}
+        <div class="rop-chargen__summary mb-4">
+          {% if chargen_race %}
+          <span>Race: <strong>
+            {% for rid, rdef in all_races.items %}
+              {% if rid == chargen_race %}{{ rdef.name }}{% endif %}
+            {% endfor %}
+          </strong></span>
+          <span class="mx-2">&middot;</span>
+          {% endif %}
+          {% if chargen_profession %}
+          <span>Profession: <strong>
+            {% for pid, pdef in professions.items %}
+              {% if pid == chargen_profession %}{{ pdef.name }}{% endif %}
+            {% endfor %}
+          </strong></span>
+          {% endif %}
+        </div>
+
+        {# Roll indicator #}
+        <div class="rop-chargen__roll-indicator mb-4">
+          <div class="rop-chargen__roll-badge
+            {% if chargen_roll_number >= max_rolls %}rop-chargen__roll-badge--final{% endif %}">
+            Roll {{ chargen_roll_number }} of {{ max_rolls }}
+            {% if chargen_roll_number >= max_rolls %}&mdash; FINAL{% endif %}
+          </div>
+        </div>
+
+        {# -- STAT DISPLAY -- #}
+        <div class="rop-chargen__stat-grid mb-4">
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">STR</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.str|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">Strength</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">INT</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.int|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">Intelligence</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">WIS</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.wis|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">Wisdom</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">DEX</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.dex|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">Dexterity</span>
+          </div>
+          <div class="rop-chargen__stat-item">
+            <span class="rop-chargen__stat-label">CON</span>
+            <span class="rop-chargen__stat-value">{{ chargen_stats.con|default:"—" }}</span>
+            <span class="rop-chargen__stat-name">Constitution</span>
+          </div>
+        </div>
+
+        <form method="post" action="{% url 'rop-chargen' %}">
+          {% csrf_token %}
+          <div class="rop-chargen__stat-actions text-center">
+            {% if chargen_roll_number < max_rolls %}
+            <button type="submit" name="action" value="reroll"
+                    class="rop-btn rop-btn--secondary rop-btn--lg mr-2 mb-2">
+              &#x21bb; Reroll
+            </button>
+            {% endif %}
+            <button type="submit" name="action" value="accept"
+                    class="rop-btn rop-btn--primary rop-btn--lg mb-2">
+              {% if chargen_roll_number >= max_rolls %}Accept These Stats &amp; Continue &rarr;
+              {% else %}Accept These Stats &amp; Continue &rarr;{% endif %}
+            </button>
+          </div>
+        </form>
+
+        <div class="text-center mt-3">
+          <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--link rop-btn--sm">
+            &larr; Cancel
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+
+{% endblock %}

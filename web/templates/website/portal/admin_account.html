@@ -1,0 +1,122 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Admin — {{ target_user.username }}{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>{{ target_user.username }}</h1>
+  <p class="rop-subtitle">Account Administration</p>
+</div>
+
+{# -- NAVIGATION -- #}
+<div class="mb-3">
+  <a href="{% url 'rop-admin-index' %}" class="rop-btn rop-btn--secondary rop-btn--sm">&larr; Back to Accounts</a>
+  <a href="{% url 'rop-admin-audit' %}" class="rop-btn rop-btn--secondary rop-btn--sm">Audit Log</a>
+</div>
+
+{# -- ACCOUNT INFO -- #}
+<section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="panel-info">
+  <div class="rop-panel__header" id="panel-info">Account Information</div>
+  <div class="rop-panel__body">
+    <div class="rop-grid-2">
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Username</span>
+        <span class="rop-stat-item__value">{{ target_user.username }}</span>
+      </div>
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Email</span>
+        <span class="rop-stat-item__value">{{ target_user.email }}</span>
+      </div>
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Superuser</span>
+        <span class="rop-stat-item__value">{% if target_user.is_superuser %}Yes{% else %}No{% endif %}</span>
+      </div>
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Staff</span>
+        <span class="rop-stat-item__value">{% if target_user.is_staff %}Yes{% else %}No{% endif %}</span>
+      </div>
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Status</span>
+        <span class="rop-stat-item__value">
+          {% if is_banned %}
+          <span class="rop-badge rop-badge--danger">Banned</span>
+          {% else %}
+          <span class="rop-badge rop-badge--success">Active</span>
+          {% endif %}
+        </span>
+      </div>
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Date Joined</span>
+        <span class="rop-stat-item__value">{{ target_user.date_joined|date:"Y-m-d H:i" }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# -- BAN INFO (IF BANNED) -- #}
+{% if is_banned and ban_record %}
+<section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="panel-baninfo">
+  <div class="rop-panel__header rop-panel__header--danger" id="panel-baninfo">Ban Details</div>
+  <div class="rop-panel__body">
+    <div class="rop-grid-2">
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Reason</span>
+        <span class="rop-stat-item__value">{{ ban_record.reason }}</span>
+      </div>
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Banned By</span>
+        <span class="rop-stat-item__value">{{ ban_record.banned_by_name }}</span>
+      </div>
+      <div class="rop-stat-item">
+        <span class="rop-stat-item__label">Banned At</span>
+        <span class="rop-stat-item__value">{{ ban_record.created_at|date:"Y-m-d H:i" }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# -- BAN / UNBAN ACTIONS -- #}
+<section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="panel-actions">
+  <div class="rop-panel__header" id="panel-actions">Actions</div>
+  <div class="rop-panel__body">
+
+    {% if not is_banned %}
+    {# -- BAN FORM -- #}
+    <form method="post" action="{% url 'rop-admin-ban' username=target_user.username %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="ban-reason"><strong>Ban Reason</strong></label>
+        <textarea
+          id="ban-reason"
+          name="reason"
+          class="rop-input"
+          rows="3"
+          placeholder="Enter the reason for this ban…"
+          required
+        ></textarea>
+        <small class="rop-text-muted">This reason will be shown to the banned player.</small>
+      </div>
+      <button type="submit" class="rop-btn rop-btn--danger">
+        Ban {{ target_user.username }}
+      </button>
+    </form>
+    {% else %}
+    {# -- UNBAN FORM -- #}
+    <form method="post" action="{% url 'rop-admin-unban' username=target_user.username %}">
+      {% csrf_token %}
+      <p>{{ target_user.username }} is currently <strong>banned</strong>.</p>
+      <p class="rop-text-muted">
+        <strong>Reason:</strong> {{ ban_record.reason }}
+      </p>
+      <button type="submit" class="rop-btn rop-btn--primary">
+        Unban {{ target_user.username }}
+      </button>
+    </form>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

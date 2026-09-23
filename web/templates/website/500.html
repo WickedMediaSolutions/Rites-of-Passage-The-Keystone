@@ -1,0 +1,18 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}500 — Internal Server Error{% endblock %}
+
+{% block header_ext %}
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+{% endblock %}
+
+{% block content %}
+<div class="rop-error-page">
+  <div class="rop-error-page__icon">&#9760;</div>
+  <div class="rop-error-page__code">500</div>
+  <h2>Internal Server Error</h2>
+  <p>A rift in the aether has disrupted the realm. Our arcanists have been alerted and are working to restore order.</p>
+  <p class="rop-text-muted">If this error persists, please contact the server administrator.</p>
+  <a href="/" class="rop-btn rop-btn--secondary">Return Home</a>
+</div>
+{% endblock %}

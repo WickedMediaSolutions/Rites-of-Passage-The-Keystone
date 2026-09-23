@@ -1,0 +1,54 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Log In{% endblock %}
+
+{% block content %}
+
+<div class="rop-auth-hero">
+  <div class="rop-auth-hero__bg">
+    <img src="{% static 'website/images/login-background.png' %}" alt="" aria-hidden="true" width="1024" height="687">
+  </div>
+  <span class="rop-auth-hero__shade"></span>
+
+  <div class="rop-auth-hero__panel">
+    <div class="rop-panel">
+      <span class="rop-panel__rail rop-panel__rail--top"></span>
+      <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+      <div class="rop-panel__corners">
+        <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+      </div>
+      <div class="rop-panel__inner">
+        <div class="rop-panel__plaque"><h2>Return to the Realm</h2></div>
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% if form.non_field_errors %}<div class="rop-alert rop-alert--warning">{{ form.non_field_errors }}</div>{% endif %}
+          <div class="rop-form-group">
+            <label class="rop-label" for="id_username">Username</label>
+            <input type="text" name="username" id="id_username" required autofocus class="rop-input">
+          </div>
+          <div class="rop-form-group">
+            <label class="rop-label" for="id_password">Password</label>
+            <input type="password" name="password" id="id_password" required class="rop-input">
+          </div>
+          <div style="text-align:center;margin-top:1rem;">
+            <button type="submit" class="rop-btn rop-btn--crimson">Log In</button>
+          </div>
+        </form>
+
+        <div style="border-top:1px solid var(--rop-steel-border);margin-top:1rem;padding-top:0.75rem;text-align:center;">
+          <p class="rop-muted"><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+          {% if register_enabled %}
+          <p class="rop-muted">New to the realm? <a href="{% url 'rop-register' %}">Create an account</a>.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

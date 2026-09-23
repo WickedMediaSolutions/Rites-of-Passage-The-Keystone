@@ -1,0 +1,247 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Home{% endblock %}
+
+{% block content %}
+
+{# ===== HERO ===== #}
+<section class="rop-hero" aria-label="Welcome to Rites of Passage">
+  <div class="rop-hero__art">
+    <img src="{% static 'website/images/home-hero.webp' %}" alt="Rites of Passage — Fortress Entrance" width="1920" height="800">
+  </div>
+  <div class="rop-hero__overlay">
+    <img src="{% static 'website/images/rop-hero-logo.webp' %}" alt="Rites of Passage" class="rop-hero__logo" width="1200" height="300">
+    <p class="rop-hero__tagline">Every Legend Begins in the Dirt</p>
+    <p class="rop-hero__copy">Two factions. One realm. Your passage begins here.</p>
+    <div class="rop-hero__actions">
+      {% if not user.is_authenticated %}
+      <a href="{% url 'rop-register' %}" class="rop-btn rop-btn--crimson rop-btn--lg">Create Account</a>
+      {% endif %}
+      {% if webclient_enabled %}
+      <a href="{% url 'webclient:index' %}" class="rop-btn rop-btn--gold rop-btn--lg">Play Now</a>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--crimson rop-btn--lg">Enter Dashboard</a>
+      {% endif %}
+      <a href="{% url 'getting-started' %}" class="rop-btn rop-btn--iron rop-btn--lg">Getting Started</a>
+    </div>
+  </div>
+</section>
+
+{# ===== TOP ROW — NEWS / STATUS / ACCOUNT ===== #}
+<div class="rop-container">
+  <div class="rop-grid rop-grid--3">
+
+    {# --- LATEST NEWS --- #}
+    <div class="rop-panel">
+      <span class="rop-panel__rail rop-panel__rail--top"></span>
+      <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+      <div class="rop-panel__corners">
+        <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+      </div>
+      <div class="rop-panel__inner">
+        <div class="rop-panel__plaque"><h3>Latest News</h3></div>
+        <p class="rop-muted"><strong>Welcome to Rites of Passage</strong></p>
+        <p class="rop-muted">The portal is now live. News and updates will appear here.</p>
+        <a href="{% url 'news' %}" class="rop-btn rop-btn--iron rop-btn--sm" style="margin-top:0.5rem;">View All News</a>
+      </div>
+    </div>
+
+    {# --- SERVER STATUS --- #}
+    <div class="rop-panel">
+      <span class="rop-panel__rail rop-panel__rail--top"></span>
+      <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+      <div class="rop-panel__corners">
+        <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+      </div>
+      <div class="rop-panel__inner">
+        <div class="rop-panel__plaque"><h3>Server Status</h3></div>
+        {% if server_status.online %}
+        <p class="rop-status"><span class="rop-status__dot rop-status__dot--online"></span> Online</p>
+        <p class="rop-muted">{{ server_status.player_count }} player{{ server_status.player_count|pluralize }} connected</p>
+        {% else %}
+        <p class="rop-status"><span class="rop-status__dot rop-status__dot--offline"></span> Offline</p>
+        {% endif %}
+        <p class="rop-muted">Web client available</p>
+        {% if webclient_enabled %}
+        <a href="{% url 'webclient:index' %}" class="rop-btn rop-btn--gold rop-btn--sm" style="margin-top:0.5rem;">Play Now</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {# --- YOUR ACCOUNT --- #}
+    <div class="rop-panel">
+      <span class="rop-panel__rail rop-panel__rail--top"></span>
+      <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+      <div class="rop-panel__corners">
+        <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+      </div>
+      <div class="rop-panel__inner">
+        <div class="rop-panel__plaque"><h3>Your Account</h3></div>
+        {% if user.is_authenticated %}
+        <p class="rop-muted"><a href="{% url 'rop-dashboard' %}">Dashboard</a></p>
+        {% if has_character %}
+        <p class="rop-muted"><a href="{% url 'rop-chargen' %}">Character</a></p>
+        {% endif %}
+        <p class="rop-muted"><a href="{% url 'rop-armory' %}">Armory</a></p>
+        <p class="rop-muted"><a href="{% url 'rop-account-settings' %}">Account Settings</a></p>
+        {% else %}
+        <p class="rop-muted"><a href="{% url 'rop-register' %}">Create Account</a></p>
+        <p class="rop-muted"><a href="{% url 'rop-login' %}">Log In</a></p>
+        <p class="rop-muted"><a href="{% url 'getting-started' %}">Getting Started</a></p>
+        <p class="rop-muted"><a href="{% url 'downloads' %}">Downloads</a></p>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{# ===== ORNATE DIVIDER ===== #}
+<div class="rop-container">
+  <div class="rop-divider"><span class="rop-divider__icon"></span></div>
+</div>
+
+{# ===== THE FACTIONS ===== #}
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__plaque"><h2>The Factions</h2></div>
+    <div class="rop-faction-split">
+      <div class="rop-faction-split__side">
+        <div class="rop-faction-split__art">
+          <img src="{% static 'website/images/faction-good.webp' %}" alt="Valroian" width="1920" height="1080">
+        </div>
+        <span class="rop-faction-split__shade rop-faction-split__shade--valroian"></span>
+        <div class="rop-faction-split__info">
+          <img src="{% static 'website/images/faction-good-emblem.webp' %}" class="rop-faction-split__emblem" alt="" width="1024" height="1024">
+          <div class="rop-faction-split__name rop-faction-split__name--valroian">Valroian</div>
+          <p class="rop-faction-split__desc">Order &middot; Nobility &middot; Strength</p>
+          <a href="{% url 'lore' %}" class="rop-faction-split__link">Discover Valroian</a>
+        </div>
+      </div>
+      <div class="rop-faction-split__side">
+        <div class="rop-faction-split__art">
+          <img src="{% static 'website/images/faction-evil.webp' %}" alt="Mordrath" width="1920" height="1080">
+        </div>
+        <span class="rop-faction-split__shade rop-faction-split__shade--mordrath"></span>
+        <div class="rop-faction-split__info">
+          <img src="{% static 'website/images/faction-evil-emblem.webp' %}" class="rop-faction-split__emblem" alt="" width="1024" height="1024">
+          <div class="rop-faction-split__name rop-faction-split__name--mordrath">Mordrath</div>
+          <p class="rop-faction-split__desc">Darkness &middot; Ambition &middot; Power</p>
+          <a href="{% url 'lore' %}" class="rop-faction-split__link">Discover Mordrath</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# ===== ORNATE DIVIDER ===== #}
+<div class="rop-container">
+  <div class="rop-divider"><span class="rop-divider__icon"></span></div>
+</div>
+
+{# ===== EXPLORE + BEGIN ===== #}
+<div class="rop-container">
+  <div class="rop-grid rop-grid--2">
+
+    {# --- EXPLORE THE REALM --- #}
+    <div class="rop-panel">
+      <span class="rop-panel__rail rop-panel__rail--top"></span>
+      <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+      <div class="rop-panel__corners">
+        <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+      </div>
+      <div class="rop-panel__inner">
+        <div class="rop-panel__plaque"><h3>Explore the Realm</h3></div>
+        <div class="rop-art" style="margin-bottom:0.75rem;">
+          <div class="rop-art__frame">
+            <img src="{% static 'website/images/lore-world.webp' %}" alt="Lore &amp; World" width="1600" height="900" loading="lazy">
+          </div>
+          <span class="rop-art__shade"></span>
+        </div>
+        <div class="rop-grid rop-grid--2" style="gap:0.5rem;">
+          <a href="{% url 'lore' %}" class="rop-btn rop-btn--iron rop-btn--sm">Lore &amp; World</a>
+          <a href="{% url 'races' %}" class="rop-btn rop-btn--iron rop-btn--sm">Races</a>
+          <a href="{% url 'professions' %}" class="rop-btn rop-btn--iron rop-btn--sm">Professions</a>
+          <a href="{% url 'game-guide' %}" class="rop-btn rop-btn--iron rop-btn--sm">Game Guide</a>
+        </div>
+      </div>
+    </div>
+
+    {# --- BEGIN YOUR PASSAGE --- #}
+    <div class="rop-panel">
+      <span class="rop-panel__rail rop-panel__rail--top"></span>
+      <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+      <div class="rop-panel__corners">
+        <img src="{% static 'website/images/ornate/corner-tl.png' %}" class="rop-panel__corner rop-panel__corner--tl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-tr.png' %}" class="rop-panel__corner rop-panel__corner--tr" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-bl.png' %}" class="rop-panel__corner rop-panel__corner--bl" alt="" aria-hidden="true" width="48" height="48">
+        <img src="{% static 'website/images/ornate/corner-br.png' %}" class="rop-panel__corner rop-panel__corner--br" alt="" aria-hidden="true" width="48" height="48">
+      </div>
+      <div class="rop-panel__inner">
+        <div class="rop-panel__plaque"><h3>Begin Your Passage</h3></div>
+        <div class="rop-art" style="margin-bottom:0.75rem;">
+          <div class="rop-art__frame">
+            <img src="{% static 'website/images/getting-started.webp' %}" alt="Getting Started" width="1200" height="675" loading="lazy">
+          </div>
+          <span class="rop-art__shade"></span>
+        </div>
+        <div class="rop-grid rop-grid--2" style="gap:0.5rem;">
+          <a href="{% url 'getting-started' %}" class="rop-btn rop-btn--iron rop-btn--sm">Getting Started</a>
+          <a href="{% url 'downloads' %}" class="rop-btn rop-btn--iron rop-btn--sm">Downloads</a>
+          <a href="{% url 'rop-armory' %}" class="rop-btn rop-btn--iron rop-btn--sm">Armory</a>
+          {% if not user.is_authenticated %}
+          <a href="{% url 'rop-register' %}" class="rop-btn rop-btn--crimson rop-btn--sm">Create Account</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{# ===== ORNATE DIVIDER ===== #}
+<div class="rop-container">
+  <div class="rop-divider"><span class="rop-divider__icon"></span></div>
+</div>
+
+{# ===== LOWER FEATURES ===== #}
+<div class="rop-container">
+  <div class="rop-grid rop-grid--2">
+    <a href="{% url 'rop-armory' %}" class="rop-card" style="text-decoration:none;">
+      <div class="rop-card__img">
+        <img src="{% static 'website/images/armory.webp' %}" alt="Armory" width="1024" height="439" loading="lazy">
+      </div>
+      <div class="rop-card__body">
+        <div class="rop-card__title">Armory</div>
+        <div class="rop-card__info">Hall of Legends — browse the heroes of the realm.</div>
+      </div>
+    </a>
+    <a href="{% url 'downloads' %}" class="rop-card" style="text-decoration:none;">
+      <div class="rop-card__img">
+        <img src="{% static 'website/images/downloads-nexus.webp' %}" alt="Downloads" width="1200" height="675" loading="lazy">
+      </div>
+      <div class="rop-card__body">
+        <div class="rop-card__title">Downloads</div>
+        <div class="rop-card__info">Get the Nexus client.</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+{% endblock %}

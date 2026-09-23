@@ -1,0 +1,127 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}{{ page_title }}{% endblock %}
+
+{% block content %}
+
+{% if command_doc %}
+
+<div class="rop-page-title">
+  <h1><code>{{ command_doc.key }}</code></h1>
+  <p class="rop-subtitle">{{ command_doc.summary }}</p>
+</div>
+
+<div class="rop-panel">
+  <div class="rop-panel__header">Command Details</div>
+  <div class="rop-panel__body">
+
+    {# Category & Aliases #}
+    <div class="rop-grid-2 mb-3">
+      <div>
+        <strong>Category:</strong>
+        <span class="rop-badge rop-badge--info">{{ command_doc.category }}</span>
+      </div>
+      <div>
+        <strong>Aliases:</strong>
+        {% if command_doc.aliases %}
+          {% for alias in command_doc.aliases %}
+            <code>{{ alias }}</code>{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        {% else %}
+          <span class="rop-text-muted">none</span>
+        {% endif %}
+      </div>
+    </div>
+
+    {# Usage / Syntax #}
+    <h4 class="rop-text-heading">Syntax</h4>
+    <div class="rop-panel rop-panel--ornate mb-3">
+      <div class="rop-panel__body">
+        {% for line in command_doc.usage %}
+          <pre class="rop-code"><code>{{ line }}</code></pre>
+        {% endfor %}
+      </div>
+    </div>
+
+    {# Subcommands #}
+    {% if command_doc.subcommands %}
+    <h4 class="rop-text-heading">Subcommands</h4>
+    <div class="rop-grid-3 mb-3">
+      {% for sub in command_doc.subcommands %}
+        <span class="rop-badge rop-badge--gold">{{ sub }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {# Arguments #}
+    {% if command_doc.arguments %}
+    <h4 class="rop-text-heading">Arguments</h4>
+    <ul>
+      {% for arg in command_doc.arguments %}
+        <li>{{ arg }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {# Examples #}
+    {% if command_doc.examples %}
+    <h4 class="rop-text-heading">Examples</h4>
+    <div class="rop-panel rop-panel--ornate mb-3">
+      <div class="rop-panel__body">
+        {% for example in command_doc.examples %}
+          <pre class="rop-code"><code>{{ example }}</code></pre>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {# Notes #}
+    {% if command_doc.notes %}
+    <h4 class="rop-text-heading">Notes</h4>
+    <p class="rop-text-muted">{{ command_doc.notes }}</p>
+    {% endif %}
+
+    {# Related Commands #}
+    {% if command_doc.related %}
+    <h4 class="rop-text-heading">Related Commands</h4>
+    <p>
+      {% for related_key in command_doc.related %}
+        <a href="{% url 'command-detail' command_key=related_key %}"
+           class="rop-btn rop-btn--link rop-btn--sm"><code>{{ related_key }}</code></a>
+        {% if not forloop.last %}&nbsp;{% endif %}
+      {% endfor %}
+    </p>
+    {% endif %}
+
+  </div>
+</div>
+
+<p class="mt-3">
+  <a href="{% url 'commands' %}" class="rop-btn rop-btn--secondary rop-btn--sm">&larr; Back to Command Reference</a>
+</p>
+
+{% else %}
+
+{# -- NOT FOUND -- #}
+<div class="rop-page-title">
+  <h1>Command Not Found</h1>
+  <p class="rop-subtitle">No documented command matches "{{ not_found_key }}"</p>
+</div>
+
+<div class="rop-panel">
+  <div class="rop-panel__body">
+    <div class="rop-empty-state">
+      <div class="rop-empty-state__icon">&#128269;</div>
+      <h3>Not Found</h3>
+      <p>The command <code>{{ not_found_key }}</code> is not in the public documentation.</p>
+      <p class="rop-text-muted"><small>Only commands that are implemented and registered in the game are documented here.</small></p>
+    </div>
+    <p class="text-center mt-3">
+      <a href="{% url 'commands' %}" class="rop-btn rop-btn--primary rop-btn--sm">Browse All Commands</a>
+    </p>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

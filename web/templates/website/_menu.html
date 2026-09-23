@@ -1,0 +1,50 @@
+{% load static %}
+<header class="rop-header" role="banner">
+  <nav class="rop-nav" aria-label="Primary navigation">
+    <a class="rop-nav__brand" href="/">
+      <img src="{% static 'website/images/rop-header-logo.png' %}" alt="Rites of Passage" width="150" height="37">
+    </a>
+    <button class="rop-nav__toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+    <div class="rop-nav__links">
+      <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+      <a href="{% url 'getting-started' %}" class="{% if request.resolver_match.url_name == 'getting-started' %}active{% endif %}">Getting Started</a>
+      <a href="{% url 'game-guide' %}" class="{% if request.resolver_match.url_name == 'game-guide' %}active{% endif %}">Game Guide</a>
+      <a href="{% url 'lore' %}" class="{% if request.resolver_match.url_name == 'lore' %}active{% endif %}">Lore &amp; World</a>
+      <a href="{% url 'races' %}" class="{% if request.resolver_match.url_name == 'races' %}active{% endif %}">Races</a>
+      <a href="{% url 'professions' %}" class="{% if request.resolver_match.url_name == 'professions' %}active{% endif %}">Professions</a>
+      <a href="{% url 'news' %}" class="{% if request.resolver_match.url_name == 'news' %}active{% endif %}">News</a>
+      <a href="{% url 'downloads' %}" class="{% if request.resolver_match.url_name == 'downloads' %}active{% endif %}">Downloads</a>
+      {% if webclient_enabled %}
+      <a href="{% url 'webclient:index' %}" class="rop-nav__play">Play Now</a>
+      {% endif %}
+    </div>
+    <div class="rop-nav__user">
+      {% if user and user.is_authenticated %}
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if rop_character %}{{ rop_character.key }}{% else %}{{ user.username }}{% endif %}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" style="background:var(--rop-stone-deep);border:1px solid var(--rop-steel-border);">
+          <a class="dropdown-item" href="{% url 'rop-dashboard' %}" style="color:var(--rop-text);">Dashboard</a>
+          <a class="dropdown-item" href="{% url 'rop-armory' %}" style="color:var(--rop-text);">Armory</a>
+          <a class="dropdown-item" href="{% url 'rop-account-settings' %}" style="color:var(--rop-text);">Account Settings</a>
+          {% if user.is_superuser %}
+          <div class="dropdown-divider" style="border-color:var(--rop-steel-border);"></div>
+          <a class="dropdown-item" href="{% url 'rop-admin-index' %}" style="color:var(--rop-text);">Portal Admin</a>
+          {% endif %}
+          <div class="dropdown-divider" style="border-color:var(--rop-steel-border);"></div>
+          <form method="post" action="{% url 'rop-logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-item" style="color:var(--rop-text);">Log Out</button>
+          </form>
+        </div>
+      </div>
+      {% else %}
+      <a href="{% url 'rop-login' %}">Log In</a>
+      {% if register_enabled %}
+      <a href="{% url 'rop-register' %}">Register</a>
+      {% endif %}
+      {% endif %}
+    </div>
+  </nav>
+</header>

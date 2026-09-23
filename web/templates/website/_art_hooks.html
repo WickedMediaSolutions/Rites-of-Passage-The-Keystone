@@ -1,0 +1,71 @@
+{% comment %}
+=============================================================================
+Rites of Passage — Centralized Art / Image Hooks
+=============================================================================
+Include this template to get a consistent image in any portal page.
+
+Usage:
+  {% include "website/_art_hooks.html" with hook="hero-logo" %}
+  {% include "website/_art_hooks.html" with hook="header-logo" %}
+  {% include "website/_art_hooks.html" with hook="card-fallback" %}
+  {% include "website/_art_hooks.html" with hook="hero-logo" css_class="my-class" %}
+  {% include "website/_art_hooks.html" with hook="dashboard-header" %}
+
+Supported hooks:
+  hero-logo         — Large hero/branding artwork for the homepage hero area
+  header-logo       — Small square logo used in the navigation bar header
+  card-fallback     — Fallback artwork for cards/sections
+  dashboard-header  — Banner artwork displayed at the top of the dashboard
+
+If the image file does not exist, the hook renders nothing (no broken <img>).
+Upload your artwork to the paths listed below when ready.
+=============================================================================
+
+Image upload locations (server/.static/website/images/):
+  rop-hero-logo.png       — Large hero/logo artwork (recommended: ~800x400px or wider)
+  rop-header-logo.png     — Website header logo (recommended: 64x64px square)
+  rop-card-fallback.png   — Fallback card/section artwork (recommended: ~600x300px)
+  dashboard-header.png    — Dashboard banner image
+
+All paths are relative to {% static 'website/images/' %}.
+=============================================================================
+{% endcomment %}
+{% load static %}
+
+{% if hook == "dashboard-header" %}
+  {# Dashboard banner artwork #}
+  {% with dash_path="website/images/dashboard-header.png" %}
+    {% static dash_path as dash_url %}
+    <img src="{{ dash_url }}" alt="Dashboard"
+         class="rop-dashboard__banner {{ css_class }}" loading="lazy"
+         onerror="this.style.display='none'">
+  {% endwith %}
+
+{% elif hook == "hero-logo" %}
+  {# Large hero/branding artwork for the homepage hero area #}
+  {% with hero_path="website/images/rop-hero-logo.png" %}
+    {% static hero_path as hero_url %}
+    <img src="{{ hero_url }}" alt="Rites of Passage"
+         class="rop-hero__image {{ css_class }}" loading="lazy"
+         onerror="this.style.display='none'">
+  {% endwith %}
+
+{% elif hook == "header-logo" %}
+  {# Small square logo used in the navigation bar header #}
+  {% with header_path="website/images/rop-header-logo.png" %}
+    {% static header_path as header_url %}
+    <img class="d-flex navbar-brand-logo mx-3" src="{{ header_url }}"
+         alt="{{ game_name }} logo"
+         onerror="this.style.display='none'">
+  {% endwith %}
+
+{% elif hook == "card-fallback" %}
+  {# Fallback artwork for cards/sections #}
+  {% with card_path="website/images/rop-card-fallback.png" %}
+    {% static card_path as card_url %}
+    <img src="{{ card_url }}" alt=""
+         class="rop-card-fallback-img {{ css_class }}" loading="lazy"
+         onerror="this.style.display='none'">
+  {% endwith %}
+
+{% endif %}

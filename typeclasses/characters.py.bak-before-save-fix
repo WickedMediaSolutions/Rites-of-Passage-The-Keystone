@@ -1,0 +1,546 @@
+"""
+Rites of Passage — Character Typeclass
+
+Gameplay data is persisted via Evennia attributes and accessed through
+the ``CharacterData`` handler so combat, progression, and resources
+all read from a single authoritative source.
+"""
+
+from evennia.objects.objects import DefaultCharacter
+
+from world.data.character_data import CharacterData
+from world.data import progression as _prog
+from world.data.constants import REGENERATION_TICK_SECONDS
+from world.data.enums import CharacterState, Faction, Stat
+from world.data.regeneration import regen_tick
+from .objects import ObjectParent
+
+# Single attribute key for the serialised CharacterData dict.
+GAME_DATA_ATTR = "rop_game_data"
+# Set after first _init_game_data so reloads don't re-init.
+INIT_FLAG_ATTR = "rop_initialised"
+
+
+class Character(ObjectParent, DefaultCharacter):
+    """Rites of Passage player character."""
+
+    # ------------------------------------------------------------------
+    # at_object_creation — idempotent initialisation
+    # ------------------------------------------------------------------
+
+    def at_object_creation(self):
+        """Called once when the object is first created."""
+        super().at_object_creation()
+        # Defensive: ensure db_date_created is never None, which would
+        # cause a crash in Evennia's _TO_DATESTRING serialization.
+        from django.utils import timezone as _tz
+        if self.__dict__.get("db_date_created") is None:
+            object.__setattr__(self, "db_date_created", _tz.now())
+        if not self.attributes.has(INIT_FLAG_ATTR):
+            self._init_game_data()
+            self.attributes.add(INIT_FLAG_ATTR, True)
+
+    def _init_game_data(self):
+        """Create a fresh empty game-data block."""
+        self._save_game_data(CharacterData())
+
+    # ------------------------------------------------------------------
+    # game property — load / save bridge
+    # ------------------------------------------------------------------
+
+    @property
+    def game(self) -> CharacterData:
+        """Return CharacterData loaded from persistent storage."""
+        if not hasattr(self, "_game_cache"):
+            raw = self.attributes.get(GAME_DATA_ATTR, default={})
+            self._game_cache = CharacterData.from_dict(raw)
+        return self._game_cache
+
+    def _save_game_data(self, cd: CharacterData) -> None:
+        """Persist a CharacterData instance back to Evennia attrs."""
+        self.attributes.add(GAME_DATA_ATTR, cd.to_dict())
+        self._game_cache = cd
+
+    def save(self) -> None:
+        """Persist any in-memory CharacterData changes."""
+        if hasattr(self, "_game_cache") and self._game_cache is not None:
+            self._save_game_data(self._game_cache)
+
+    # ------------------------------------------------------------------
+    # Character initialisation (called by chargen)
+    # ------------------------------------------------------------------
+
+    def init_character(self, race_id: str, profession_id: str) -> None:
+        """Initialise a newly created character with rolled stats and
+        Level-1 skill grants."""
+        cd = CharacterData.create_from_race_profession(
+            self.key, race_id, profession_id,
+        )
+        cd.max_hp = 100; cd.hp = 100
+        cd.max_mana = 100; cd.mana = 100
+        cd.max_stamina = 100; cd.stamina = 100
+        cd.race_id = race_id
+        cd.profession_id = profession_id
+
+        # Grant Level-1 universal + profession skills.
+        _prog.grant_starting_skills(cd)
+
+        self._save_game_data(cd)
+
+    # ------------------------------------------------------------------
+    # Identity
+    # ------------------------------------------------------------------
+
+    @property
+    def race_id(self) -> str: return self.game.race_id
+
+    @property
+    def profession_id(self) -> str: return self.game.profession_id
+
+    @property
+    def faction(self) -> Faction | None: return self.game.faction
+
+    # ------------------------------------------------------------------
+    # Progression (Phase 3)
+    # ------------------------------------------------------------------
+
+    @property
+    def level(self) -> int: return self.game.level
+
+    @level.setter
+    def level(self, value: int) -> None:
+        self.game.level = value
+
+    @property
+    def xp(self) -> int: return self.game.xp
+
+    @xp.setter
+    def xp(self, value: int) -> None:
+        self.game.xp = value
+
+
+    @property
+    def tutorial_completed(self) -> bool:
+        return self.game.tutorial_completed
+
+    @tutorial_completed.setter
+    def tutorial_completed(self, value: bool) -> None:
+        self.game.tutorial_completed = value
+
+    def award_xp(self, amount: int) -> int:
+        """Add XP and process any level-ups.  Returns new level."""
+        new_level, _ = _prog.award_xp(self.game, amount)
+        self.save()
+        return new_level
+
+    def xp_to_next(self) -> int:
+        """XP still needed for the next level."""
+        return _prog.xp_to_next_level(self.level)
+
+    def xp_progress(self) -> int:
+        """XP earned since the current level's threshold (for death penalty)."""
+        return _prog.xp_progress_toward_next(self.xp, self.level)
+
+    def current_level_threshold(self) -> int:
+        """Minimum XP that anchors the current level (never de-level below)."""
+        return _prog.xp_for_level(self.level)
+
+    # ------------------------------------------------------------------
+    # Stats
+    # ------------------------------------------------------------------
+
+
+    def get_stat(self, stat: Stat | str) -> int:
+        return self.game.get_stat(stat)
+
+    def effective_stat(self, stat: Stat | str) -> int:
+        return self.game.effective_stat(stat)
+
+    @property
+    def base_stats(self) -> dict:
+        return dict(self.game.base_stats)
+
+    # ------------------------------------------------------------------
+    # State
+    # ------------------------------------------------------------------
+
+
+    @property
+    def state(self) -> CharacterState:
+        return self.game.state
+
+    @state.setter
+    def state(self, value: CharacterState) -> None:
+        if not isinstance(value, CharacterState):
+            raise TypeError(f"Invalid state: {value!r}")
+        self.game.state = value
+
+    # ------------------------------------------------------------------
+    # Resources
+    # ------------------------------------------------------------------
+
+    @property
+    def hp(self) -> int: return self.game.hp
+
+    @hp.setter
+    def hp(self, value: int) -> None:
+        self.game.hp = max(0, min(value, self.max_hp))
+
+    @property
+    def max_hp(self) -> int: return self.game.max_hp
+
+    @max_hp.setter
+    def max_hp(self, value: int) -> None:
+        self.game.max_hp = max(1, value)
+        if self.hp > self.max_hp:
+            self.game.hp = self.max_hp
+
+    @property
+    def mana(self) -> int: return self.game.mana
+
+    @mana.setter
+    def mana(self, value: int) -> None:
+        self.game.mana = max(0, min(value, self.max_mana))
+
+    @property
+    def max_mana(self) -> int: return self.game.max_mana
+
+    @max_mana.setter
+    def max_mana(self, value: int) -> None:
+        self.game.max_mana = max(1, value)
+        if self.mana > self.max_mana:
+            self.game.mana = self.max_mana
+
+    @property
+    def stamina(self) -> int: return self.game.stamina
+
+    @stamina.setter
+    def stamina(self, value: int) -> None:
+        self.game.stamina = max(0, min(value, self.max_stamina))
+
+    @property
+    def max_stamina(self) -> int: return self.game.max_stamina
+
+    @max_stamina.setter
+    def max_stamina(self, value: int) -> None:
+        self.game.max_stamina = max(1, value)
+        if self.stamina > self.max_stamina:
+            self.game.stamina = self.max_stamina
+
+    def heal(self, amount: int) -> int:
+        result = self.game.heal(amount)
+        self.save()
+        return result
+
+    def take_damage(self, amount: int) -> bool:
+        killed = self.game.take_damage(amount)
+        self.save()
+        return killed
+
+    def restore_mana(self, amount: int) -> int:
+        result = self.game.restore_mana(amount)
+        self.save()
+        return result
+
+    def restore_stamina(self, amount: int) -> int:
+        result = self.game.restore_stamina(amount)
+        self.save()
+        return result
+
+    def is_alive(self) -> bool:
+        return self.game.is_alive()
+
+    # ------------------------------------------------------------------
+    # Death / Respawn
+    # ------------------------------------------------------------------
+
+    def die(self) -> None:
+        """Authoritative death — delegates to data-layer ``CharacterData.die()``.
+
+        All death paths (combat, commands, environment) MUST route through
+        this single method.  It sets state=DEAD and hp=0 via the unified
+        data-layer API, then persists.
+        """
+        self.game.die()
+        self.save()
+
+    def respawn(self, xp_toward_next: int | None = None) -> None:
+        """Restore to respawn state and apply death XP penalty.
+
+        The XP penalty is 5% of progress toward the NEXT level.
+        XP is clamped at the current level's threshold so death
+        can NEVER cause a level loss.
+        """
+        if xp_toward_next is None:
+            xp_toward_next = self.xp_progress()
+        if xp_toward_next > 0:
+            penalty = self.game.calc_death_xp_penalty(xp_toward_next)
+            threshold = self.current_level_threshold()
+            self.game.xp = max(threshold, self.game.xp - penalty)
+        self.game.respawn_restore()
+        self.save()
+
+    # ------------------------------------------------------------------
+    # Combat — Evennia integration layer for world/data/combat.py
+    # ------------------------------------------------------------------
+
+    def attack_target(self, target: "Character") -> dict:
+        """Execute a combat attack against another Character.
+
+        Wraps ``resolve_attack()`` from ``world.data.combat`` and ensures:
+
+        * PvP eligibility is checked before the attack when both attacker
+          and target are player characters.
+        * Death always routes through ``Character.die()`` — the single
+          authoritative death lifecycle.
+        * PvP kills are recorded using faction-based eligibility.
+        * Both attacker and target are persisted after the attack.
+        * The result dict is returned for command-layer use.
+
+        Args:
+            target: Another Character instance to attack.
+
+        Returns:
+            The result dict from ``resolve_attack()`` (see combat.py docs).
+            May include a "pvp_blocked" key with an error message when
+            PvP is not allowed.
+        """
+        from world.data.combat import resolve_attack, record_pvp_kill, is_pvp_eligible
+        from world.data.enums import PvPMode
+
+        # ---- PvP eligibility check (player-vs-player only) -----------
+        target_is_player = hasattr(target, 'has_account') and target.has_account
+        attacker_is_player = hasattr(self, 'has_account') and self.has_account
+        room_pvp_mode = PvPMode.SAFE
+        both_players = attacker_is_player and target_is_player
+
+        if both_players:
+            room = self.location
+            if room is not None and hasattr(room, 'pvp_mode'):
+                room_pvp_mode = room.pvp_mode
+
+            if not is_pvp_eligible(self.game, target.game, room_pvp_mode):
+                return {
+                    "valid": False,
+                    "error": "PvP is not allowed in this area.",
+                    "hit": False,
+                    "roll": None,
+                    "raw_damage": None,
+                    "actual_damage": 0,
+                    "target_hp_before": 0,
+                    "target_hp_after": 0,
+                    "target_killed": False,
+                    "attacker_combat": False,
+                    "target_combat": False,
+                    "pvp_blocked": True,
+                }
+
+        result = resolve_attack(self.game, target.game)
+
+        if result["target_killed"]:
+            # Route through the authoritative death lifecycle.
+            target.die()
+
+            # Record PvP statistics (only for player-vs-player kills).
+            if both_players:
+                record_pvp_kill(self.game, target.game, room_pvp_mode)
+
+        else:
+            target.save()
+
+        self.save()
+        return result
+
+    # ------------------------------------------------------------------
+    # Affiliations
+    # ------------------------------------------------------------------
+
+    @property
+    def sect_id(self) -> str | None: return self.game.sect_id
+
+    @sect_id.setter
+    def sect_id(self, value: str | None) -> None:
+        self.game.sect_id = value
+
+    @property
+    def guild_id(self) -> str | None: return self.game.guild_id
+
+    @guild_id.setter
+    def guild_id(self, value: str | None) -> None:
+        self.game.guild_id = value
+
+    # ------------------------------------------------------------------
+    # PvP
+    # ------------------------------------------------------------------
+
+
+    @property
+    def war_points(self) -> int: return self.game.war_points
+
+    @war_points.setter
+    def war_points(self, value: int) -> None:
+        self.game.war_points = value
+
+    @property
+    def pvp_kills(self) -> int: return self.game.pvp_kills
+
+    @pvp_kills.setter
+    def pvp_kills(self, value: int) -> None:
+        self.game.pvp_kills = value
+
+    @property
+    def pvp_deaths(self) -> int: return self.game.pvp_deaths
+
+    @pvp_deaths.setter
+    def pvp_deaths(self, value: int) -> None:
+        self.game.pvp_deaths = value
+
+    # ------------------------------------------------------------------
+    # Preferences
+    # ------------------------------------------------------------------
+
+    @property
+    def auto_loot(self) -> bool: return self.game.auto_loot
+
+    @auto_loot.setter
+    def auto_loot(self, value: bool) -> None:
+        self.game.auto_loot = value
+
+    @property
+    def ignore_list(self) -> set: return self.game.ignore_list
+
+    @ignore_list.setter
+    def ignore_list(self, value: set) -> None:
+        self.game.ignore_list = value
+
+    # ------------------------------------------------------------------
+    # Skills / Proficiencies (storage — Phase 3 does the granting)
+    # ------------------------------------------------------------------
+
+    @property
+    def unlocked_skills(self) -> set: return self.game.unlocked_skills
+
+    @property
+    def proficiencies(self) -> dict: return self.game.proficiencies
+
+    def set_proficiency(self, skill_id: str, value: int) -> None:
+        self.game.proficiencies[skill_id] = value
+
+    def get_proficiency(self, skill_id: str) -> int:
+        return self.game.proficiencies.get(skill_id, 0)
+
+    def has_skill(self, skill_id: str) -> bool:
+        return skill_id in self.game.unlocked_skills
+
+    # ------------------------------------------------------------------
+    # Regeneration — periodic HP / Mana / Stamina recovery
+    # ------------------------------------------------------------------
+
+    _REGEN_IDSTRING = "rop_regen"
+
+    def _regen_tick_callback(self) -> None:
+        """Called by the TickerHandler every REGENERATION_TICK_SECONDS."""
+        regen_tick(self.game)
+        self.save()
+
+    def start_regeneration(self) -> bool:
+        """
+        Start periodic resource regeneration.
+
+        Idempotent: if a regeneration ticker is already subscribed for this
+        character, returns False without creating a duplicate.
+
+        Returns True if a new ticker was started; False if one was already
+        running.
+        """
+        try:
+            from evennia import TICKER_HANDLER
+        except ImportError:
+            return False  # not in a server environment
+        if self.regeneration_active():
+            return False
+        TICKER_HANDLER.add(
+            interval=REGENERATION_TICK_SECONDS,
+            callback=self._regen_tick_callback,
+            idstring=self._REGEN_IDSTRING,
+            persistent=True,
+        )
+        return True
+
+    def stop_regeneration(self) -> bool:
+        """
+        Stop periodic resource regeneration.
+
+        Returns True if a ticker was stopped; False if none was running.
+        """
+        try:
+            from evennia import TICKER_HANDLER
+        except ImportError:
+            return False  # not in a server environment
+        if not self.regeneration_active():
+            return False
+        try:
+            TICKER_HANDLER.remove(
+                interval=REGENERATION_TICK_SECONDS,
+                callback=self._regen_tick_callback,
+                idstring=self._REGEN_IDSTRING,
+            )
+            return True
+        except KeyError:
+            return False
+
+    def regeneration_active(self) -> bool:
+        """Check whether a regeneration ticker is currently subscribed."""
+        try:
+            from evennia import TICKER_HANDLER
+        except ImportError:
+            return False
+        store_key = TICKER_HANDLER._store_key(
+            self, None,
+            REGENERATION_TICK_SECONDS,
+            "_regen_tick_callback",
+            self._REGEN_IDSTRING,
+            True,
+        )
+        return store_key in TICKER_HANDLER.ticker_storage
+
+    # ------------------------------------------------------------------
+    # Migration — detect / handle legacy characters
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def needs_migration(cls, character) -> bool:
+        return not character.attributes.has(GAME_DATA_ATTR)
+
+    def migrate(self) -> None:
+        """Idempotent: create empty game data without overwriting."""
+        if not self.attributes.has(GAME_DATA_ATTR):
+            self._init_game_data()
+
+    # ------------------------------------------------------------------
+    # Hooks — keep data consistent across server lifecycle
+    # ------------------------------------------------------------------
+
+    def at_post_puppet(self, **kwargs):
+        super().at_post_puppet(**kwargs)
+        _ = self.game  # trigger lazy load
+
+        # Phase 18 — First-puppet starting experience.
+        # Idempotent: only runs once per character lifetime.
+        try:
+            from world.starting_experience import handle_first_puppet
+            handle_first_puppet(self)
+        except Exception:
+            pass  # Never break puppeting for tutorial failure.
+
+    def at_pre_unpuppet(self, **kwargs):
+        self.save()
+        super().at_pre_unpuppet(**kwargs)
+
+    def at_server_reload(self):
+        self.save()
+        super().at_server_reload()
+
+    def at_server_shutdown(self):
+        self.save()
+        super().at_server_shutdown()

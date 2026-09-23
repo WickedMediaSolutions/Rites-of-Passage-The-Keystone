@@ -1,0 +1,74 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Account Settings{% endblock %}
+
+{% block content %}
+
+<div class="rop-container">
+  <div class="rop-cap">Account Management</div>
+  <h1>Account Settings</h1>
+</div>
+
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+<div class="rop-container">
+
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Username</h3></div>
+      <div class="rop-form-group">
+        <label class="rop-label">Username</label>
+        <input type="text" value="{{ user.username }}" readonly disabled class="rop-input" style="background:rgba(0,0,0,0.3);">
+        <p class="rop-muted">Usernames are permanent and cannot be changed. Rules: {{ min_length }}–{{ max_length }} characters, letters and hyphens only.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Change Email</h3></div>
+      <form method="post" action="{% url 'rop-email-change' %}" novalidate>
+        {% csrf_token %}
+        <div class="rop-form-group">
+          <label class="rop-label" for="id_email">Email</label>
+          <input type="email" name="email" id="id_email" value="{{ user.email }}" required class="rop-input">
+          {% if email_form and email_form.email.errors %}<ul class="errorlist">{% for e in email_form.email.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+        <button type="submit" class="rop-btn rop-btn--gold">Update Email</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Change Password</h3></div>
+      <form method="post" action="{% url 'rop-password-change' %}" novalidate>
+        {% csrf_token %}
+        {% if password_form and password_form.non_field_errors %}<div class="rop-alert rop-alert--warning">{{ password_form.non_field_errors }}</div>{% endif %}
+        <div class="rop-form-group"><label class="rop-label" for="id_current_password">Current Password</label><input type="password" name="current_password" id="id_current_password" required class="rop-input"></div>
+        <div class="rop-form-group"><label class="rop-label" for="id_new_password1">New Password</label><input type="password" name="new_password1" id="id_new_password1" required class="rop-input"></div>
+        <div class="rop-form-group"><label class="rop-label" for="id_new_password2">Confirm New Password</label><input type="password" name="new_password2" id="id_new_password2" required class="rop-input"></div>
+        <button type="submit" class="rop-btn rop-btn--gold">Change Password</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="rop-panel" style="border-color:rgba(180,60,50,0.2);">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3 style="color:#d87060;">Delete Account</h3></div>
+      <div class="rop-alert rop-alert--warning">Deleting your account is permanent and will also remove your character. This cannot be undone.</div>
+      <a href="{% url 'rop-account-delete' %}" class="rop-btn rop-btn--crimson">Delete My Account</a>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

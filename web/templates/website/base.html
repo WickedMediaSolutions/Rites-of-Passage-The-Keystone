@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Rites of Passage">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'website/css/portal/portal.css' %}">
+  <link rel="icon" type="image/png" sizes="512x512" href="{% static 'website/images/rop-favicon.png' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'website/images/rop-favicon.png' %}">
+  {% block header_ext %}{% endblock %}
+  <title>Rites of Passage{% if page_title %} — {{ page_title }}{% endif %}</title>
+</head>
+<body>
+<div id="top"><a href="#main-content" class="sr-only sr-only-focusable">Skip to main content.</a></div>
+{% include "website/_menu.html" %}
+<div class="rop-wrap">
+<main id="main-content">
+{% block messages_area %}
+  {% include 'website/messages.html' %}
+{% endblock %}
+{% block content %}{% endblock %}
+</main>
+<footer class="rop-footer">
+  <div class="rop-container">
+    &copy; {% now "Y" %} Rites of Passage &mdash; Every Legend Begins in the Dirt
+  </div>
+</footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

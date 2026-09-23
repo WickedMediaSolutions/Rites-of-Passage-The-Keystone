@@ -1,0 +1,40 @@
+/* Evennia / Rites of Passage — website foundation styles */
+/* Ornate Stone theme overrides are in rop-theme.css, loaded after this file. */
+
+/* ---- Layout Foundation ---- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* ---- Logo sizing (used by art hooks) ---- */
+.navbar-brand-logo {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+}
+
+/* ---- Legacy responsive helpers ---- */
+@media (max-width: 570px) {
+  .oneThird {
+    width: 100%;
+    border-left: none;
+  }
+
+  .quarter {
+    width: 100%;
+    border-left: none;
+  }
+
+  .headerTitle {
+    text-align: right;
+  }
+
+  .headerSubTitle {
+    text-align: right;
+  }
+
+  .headerLinks {
+    position: static;
+  }
+}

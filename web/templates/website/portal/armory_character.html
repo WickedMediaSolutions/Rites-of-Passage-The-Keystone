@@ -1,0 +1,149 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Armory — {{ profile.name|default:"Unknown" }}{% endblock %}
+
+{% block content %}
+
+<div style="margin-bottom:0.75rem;">
+  <a href="{% url 'rop-armory' %}" class="rop-btn rop-btn--iron rop-btn--sm">&larr; Back to Armory</a>
+</div>
+
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start;">
+        <div style="flex-shrink:0;max-width:280px;">
+          {% if profile.race_id %}
+          <div class="rop-art">
+            <div class="rop-art__frame">
+              <img src="{% static '' %}website/images/{{ profile.race_image }}" alt="{{ profile.race }}" width="1400" height="800"
+                   onerror="this.onerror=null;this.src='{% static 'website/images/armory-character-fallback.png' %}';">
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        <div style="flex:1;min-width:240px;">
+          <h1 style="margin-bottom:0.3rem;font-size:1.8rem;">{{ profile.name|default:"Unknown" }}</h1>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+            {% if profile.level is not None %}<span class="rop-badge">Level {{ profile.level }}</span>{% endif %}
+            {% if profile.race %}<span class="rop-badge">{{ profile.race }}</span>{% endif %}
+            {% if profile.profession %}<span class="rop-badge">{{ profile.profession }}</span>{% endif %}
+            {% if profile.faction_label %}
+            <span class="rop-badge {% if profile.faction == 'good' %}rop-badge--steel{% else %}rop-badge--crimson{% endif %}">{{ profile.faction_label }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rop-container" style="margin-top:1rem;">
+
+  {# Identity #}
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Identity</h3></div>
+      <div class="rop-grid rop-grid--2">
+        <div class="rop-stat"><span class="rop-stat__label">Name</span><span class="rop-stat__value">{{ profile.name|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">Level</span><span class="rop-stat__value">{{ profile.level|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">Race</span><span class="rop-stat__value">{{ profile.race|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">Profession</span><span class="rop-stat__value">{{ profile.profession|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">Faction</span><span class="rop-stat__value">{{ profile.faction_label|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">State</span><span class="rop-stat__value">{{ profile.state|default:"—" }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  {# Stats #}
+  {% if profile.base_stats %}
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Stats</h3></div>
+      <div class="rop-grid rop-grid--2">
+        {% for stat, val in profile.base_stats.items %}
+        <div class="rop-stat"><span class="rop-stat__label">{{ stat|upper }}</span><span class="rop-stat__value">{{ val }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {# Resources #}
+  {% if profile.max_hp is not None %}
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Resources</h3></div>
+      <div class="rop-grid rop-grid--3">
+        <div class="rop-stat"><span class="rop-stat__label">HP</span><span class="rop-stat__value">{{ profile.hp|default:"—" }} / {{ profile.max_hp|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">Mana</span><span class="rop-stat__value">{{ profile.mana|default:"—" }} / {{ profile.max_mana|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">Stamina</span><span class="rop-stat__value">{{ profile.stamina|default:"—" }} / {{ profile.max_stamina|default:"—" }}</span></div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {# Equipment #}
+  {% if profile.equipment %}
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Equipment</h3></div>
+      <div class="rop-grid rop-grid--2">
+        {% for slot, item_id in profile.equipment.items %}
+        <div class="rop-stat"><span class="rop-stat__label">{{ slot|title|cut:"_" }}</span><span class="rop-stat__value">{{ item_id|default:"—" }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {# PvP #}
+  {% if profile.war_points is not None %}
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>PvP Record</h3></div>
+      <div class="rop-grid rop-grid--3">
+        <div class="rop-stat"><span class="rop-stat__label">War Points</span><span class="rop-stat__value">{{ profile.war_points|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">PvP Kills</span><span class="rop-stat__value">{{ profile.pvp_kills|default:"—" }}</span></div>
+        <div class="rop-stat"><span class="rop-stat__label">PvP Deaths</span><span class="rop-stat__value">{{ profile.pvp_deaths|default:"—" }}</span></div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {# Skills #}
+  {% if profile.unlocked_skills %}
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3>Unlocked Skills</h3></div>
+      <div>
+        {% for skill in profile.unlocked_skills %}
+        <span class="rop-badge" style="margin:0.1rem;">{{ skill }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div style="margin-top:1.5rem;">
+    <a href="{% url 'rop-armory' %}" class="rop-btn rop-btn--iron rop-btn--sm">&larr; Back to Armory</a>
+  </div>
+
+</div>
+
+{% endblock %}

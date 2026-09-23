@@ -1,0 +1,89 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Character Creation — Race{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Character Creation</h1>
+  <p class="rop-subtitle">Choose your kin</p>
+</div>
+
+{% include "website/portal/chargen/_progress.html" %}
+
+<section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="chargen-race-heading">
+  <div class="rop-panel__header" id="chargen-race-heading">
+    Step 3 &mdash; Select Your Race
+  </div>
+  <div class="rop-panel__body">
+
+    {# Faction banner — only rendered when a valid faction has been selected #}
+    {% if chargen_faction %}
+    <div class="rop-chargen__faction-banner mb-4
+      {% if chargen_faction == 'good' %}rop-chargen__faction-banner--good
+      {% elif chargen_faction == 'evil' %}rop-chargen__faction-banner--evil
+      {% endif %}">
+      <span class="rop-chargen__faction-banner-label">Faction:</span>
+      <span class="rop-chargen__faction-banner-name">
+        {% if chargen_faction == 'good' %}Valroian
+        {% elif chargen_faction == 'evil' %}Mordrath
+        {% endif %}
+      </span>
+    </div>
+    {% endif %}
+
+    <p class="rop-text-muted text-center mb-4">
+      Your race defines your innate abilities and stat potential.
+      <br><strong>This choice is permanent.</strong>
+    </p>
+
+    <form method="post" action="{% url 'rop-chargen' %}">
+      {% csrf_token %}
+
+      <div class="rop-chargen__card-grid">
+        {% for race_id, race_def in available_races.items %}
+          {% include "website/portal/chargen/_race_card.html" with race_id=race_id race_def=race_def %}
+        {% empty %}
+        <p class="rop-text-muted text-center">No races available. Please go back and select a faction.</p>
+        {% endfor %}
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="rop-btn rop-btn--primary rop-btn--lg"
+                id="chargen-race-submit" disabled>
+          Continue to Profession &rarr;
+        </button>
+        <br>
+        <small class="rop-text-muted">Select a race to continue</small>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--link rop-btn--sm">
+          &larr; Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block header_ext %}
+{{ block.super }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var radios = document.querySelectorAll('input[name="race"]');
+  var submit = document.getElementById('chargen-race-submit');
+  if (!radios.length || !submit) return;
+  function update() {
+    var sel = document.querySelector('input[name="race"]:checked');
+    submit.disabled = !sel;
+  }
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', update);
+  }
+  update();
+});
+</script>
+{% endblock %}

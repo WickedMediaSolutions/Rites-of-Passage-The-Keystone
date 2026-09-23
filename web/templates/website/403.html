@@ -1,0 +1,17 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}403 — Forbidden{% endblock %}
+
+{% block header_ext %}
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+{% endblock %}
+
+{% block content %}
+<div class="rop-error-page">
+  <div class="rop-error-page__icon">&#128274;</div>
+  <div class="rop-error-page__code">403</div>
+  <h2>Forbidden</h2>
+  <p>You do not have permission to access this page. The gates of this hall are barred to you.</p>
+  <a href="/" class="rop-btn rop-btn--secondary">Return Home</a>
+</div>
+{% endblock %}

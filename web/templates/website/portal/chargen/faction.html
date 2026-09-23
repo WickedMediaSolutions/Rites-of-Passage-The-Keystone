@@ -1,0 +1,115 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Character Creation — Faction{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Character Creation</h1>
+  <p class="rop-subtitle">Choose your allegiance</p>
+</div>
+
+{% include "website/portal/chargen/_progress.html" %}
+
+<section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="chargen-faction-heading">
+  <div class="rop-panel__header" id="chargen-faction-heading">
+    Step 2 &mdash; Choose Your Faction
+  </div>
+  <div class="rop-panel__body">
+
+    <p class="rop-text-muted text-center mb-4">
+      This choice defines your kin, your enemies, and the realm you fight for.
+      <br><strong>It is permanent.</strong>
+    </p>
+
+    <form method="post" action="{% url 'rop-chargen' %}" class="rop-chargen__faction-form">
+      {% csrf_token %}
+
+      <div class="rop-chargen__faction-panels">
+
+        {# VALROIAN #}
+        <label class="rop-chargen__faction-panel rop-chargen__faction-panel--good" for="faction-good">
+          <input type="radio" name="faction" value="good" id="faction-good"
+                 class="rop-chargen__faction-radio" required>
+          <span class="rop-chargen__faction-panel-inner">
+            <span class="rop-chargen__faction-panel-art">
+              <img src="{% static 'website/images/'|add:faction_good_image %}"
+                   alt="Valroian" loading="lazy"
+                   onerror="this.onerror=null;this.src='{% static 'website/images/faction-good.png' %}'">
+            </span>
+            <span class="rop-chargen__faction-panel-body">
+              <span class="rop-chargen__faction-panel-name rop-chargen__faction-panel-name--good">Valroian</span>
+              <span class="rop-chargen__faction-panel-desc">
+                Western realm of oath, duty, and legacy. Stand with steel and honour against the darkness.
+              </span>
+              <span class="rop-chargen__faction-panel-select rop-btn rop-btn--steel">
+                Select Valroian
+              </span>
+            </span>
+          </span>
+        </label>
+
+        {# MORDRATH #}
+        <label class="rop-chargen__faction-panel rop-chargen__faction-panel--evil" for="faction-evil">
+          <input type="radio" name="faction" value="evil" id="faction-evil"
+                 class="rop-chargen__faction-radio" required>
+          <span class="rop-chargen__faction-panel-inner">
+            <span class="rop-chargen__faction-panel-art">
+              <img src="{% static 'website/images/'|add:faction_evil_image %}"
+                   alt="Mordrath" loading="lazy"
+                   onerror="this.onerror=null;this.src='{% static 'website/images/faction-evil.png' %}'">
+            </span>
+            <span class="rop-chargen__faction-panel-body">
+              <span class="rop-chargen__faction-panel-name rop-chargen__faction-panel-name--evil">Mordrath</span>
+              <span class="rop-chargen__faction-panel-desc">
+                Eastern dominion of power, will, and ascendancy. Seize strength through iron and shadow.
+              </span>
+              <span class="rop-chargen__faction-panel-select rop-btn rop-btn--crimson">
+                Select Mordrath
+              </span>
+            </span>
+          </span>
+        </label>
+
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="rop-btn rop-btn--primary rop-btn--lg"
+                id="chargen-faction-submit" disabled>
+          Continue to Race &rarr;
+        </button>
+        <br>
+        <small class="rop-text-muted">Select your faction to continue</small>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--link rop-btn--sm">
+          &larr; Cancel
+        </a>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block header_ext %}
+{{ block.super }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var radios = document.querySelectorAll('input[name="faction"]');
+  var submit = document.getElementById('chargen-faction-submit');
+  if (!radios.length || !submit) return;
+  function update() {
+    var sel = document.querySelector('input[name="faction"]:checked');
+    submit.disabled = !sel;
+  }
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', update);
+  }
+  update();
+});
+</script>
+{% endblock %}

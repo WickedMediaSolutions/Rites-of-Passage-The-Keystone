@@ -1,0 +1,673 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}News &amp; Updates{% endblock %}
+
+{% block content %}
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# CINEMATIC NEWS MASTHEAD                                               #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container">
+  <div class="rop-news-masthead">
+    <div class="rop-news-masthead__frame">
+      <img
+        src="{% static 'website/images/news-header.webp' %}"
+        alt=""
+        width="1600"
+        height="600"
+        aria-hidden="true"
+      >
+    </div>
+    <div class="rop-news-masthead__overlay">
+      <h1 class="rop-news-masthead__title">News &amp; Updates</h1>
+      <p class="rop-news-masthead__subtitle">
+        Development reports, realm updates, and announcements from Rites of Passage.
+      </p>
+    </div>
+  </div>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# STONE DIVIDER                                                        #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container">
+  <div class="rop-start-divider" aria-hidden="true">
+    <img
+      src="{% static 'website/images/rop-stone-divider.png' %}"
+      alt=""
+      width="1480"
+      height="40"
+    >
+  </div>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# QUICK ANCHOR NAVIGATION (compact)                                    #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container">
+  <nav class="rop-news-nav" aria-label="News navigation">
+    <a href="#featured" class="rop-news-nav__link rop-news-nav__link--active">Latest</a>
+    <a href="#nexus" class="rop-news-nav__link">Nexus</a>
+    <a href="#archive" class="rop-news-nav__link">Archive</a>
+    <a href="#status" class="rop-news-nav__link">Status</a>
+  </nav>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# FEATURED STORY — SEPTEMBER 7, 2026                                   #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container" id="featured">
+  <article class="rop-news-featured">
+    {# Featured framing rail & bracket #}
+    <span class="rop-news-featured__bracket rop-news-featured__bracket--tl" aria-hidden="true"></span>
+    <span class="rop-news-featured__bracket rop-news-featured__bracket--tr" aria-hidden="true"></span>
+    <span class="rop-news-featured__bracket rop-news-featured__bracket--bl" aria-hidden="true"></span>
+    <span class="rop-news-featured__bracket rop-news-featured__bracket--br" aria-hidden="true"></span>
+
+    <header class="rop-news-featured__header">
+      <div class="rop-news-featured__meta">
+        <span class="rop-news-badge rop-news-badge--crimson">Development Update</span>
+        <time class="rop-news-featured__date" datetime="2026-09-07">September 7, 2026</time>
+      </div>
+      <h2 class="rop-news-featured__title">The Realm Nears Readiness</h2>
+    </header>
+
+    <div class="rop-news-featured__body">
+      <p class="rop-news-dropcap">
+        Rites of Passage has reached a major development milestone.
+      </p>
+
+      <p>
+        After weeks of concentrated development, most of the core game foundation is now in
+        place. The server-side architecture, character systems, combat engine, skills and
+        spells framework, inventory and equipment pipeline, mob definitions and AI scaffolding,
+        quest infrastructure, economy and shop systems, faction and PvP rules, guild and sect
+        structures, social and communication systems, regeneration and progression mechanics,
+        and the public website/player portal have all been built, tested, and integrated.
+      </p>
+
+      <p>
+        What this means is that Rites of Passage is increasingly becoming a
+        <strong>cohesive game</strong> rather than simply a collection of independent
+        systems. Individual components that were once tested in isolation now interact:
+        a character created through the portal's character-generation wizard can explore,
+        fight creatures using combat mechanics that consult equipped gear and trained skills,
+        earn currency, purchase from shops, accept and complete quests, join a guild, align
+        with a sect, and participate in faction-based PvP in contested territory. The
+        foundation supports all of these activities working together as a unified whole.
+      </p>
+
+      <p>
+        This does not mean the entire playable world has been populated room-by-room.
+        The realm itself &mdash; the cities, forests, fortresses, contested marches, and
+        hidden places of the Valroian West and the Mordrath East &mdash; has yet to be
+        fully brought to life. But the systems required to support that world are now
+        substantially in place.
+      </p>
+
+      <p>
+        The focus of development is increasingly moving away from building foundational
+        systems and toward populating the realm, creating rooms and zones, designing
+        monsters and encounters, crafting items and equipment content, worldbuilding,
+        balancing, testing, documentation, polish, and final integration work.
+      </p>
+
+      <p>
+        Development progress across key areas includes:
+      </p>
+
+      <div class="rop-news-featured__highlights">
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">Character Systems</div>
+          <div class="rop-news-highlight__detail">
+            Twenty-four races, ten professions, character creation wizard, base and derived
+            statistics, progression framework, HP/Mana/Stamina resources, and regeneration
+            mechanics.
+          </div>
+        </div>
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">Combat</div>
+          <div class="rop-news-highlight__detail">
+            Physical attack resolution, hit/miss calculation, weapon damage, armor
+            mitigation, damage-type system, and combat-state management.
+          </div>
+        </div>
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">Skills &amp; Spells</div>
+          <div class="rop-news-highlight__detail">
+            Data-driven skill and spell registry with structured resource costs (mana
+            or stamina), targeting, damage types, healing, and skill-use validation.
+          </div>
+        </div>
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">Equipment &amp; Inventory</div>
+          <div class="rop-news-highlight__detail">
+            Fifteen equipment slots (head to off-hand), weapon and armor definitions,
+            consumable items, quest items, and full equip/unequip pipeline.
+          </div>
+        </div>
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">Factions &amp; PvP</div>
+          <div class="rop-news-highlight__detail">
+            Faction-based alignment determined by race selection (Valroian / Mordrath),
+            area-level PvP modes (Safe, Contested, Arena, Free-for-All), PvP eligibility
+            rules, and war-point tracking.
+          </div>
+        </div>
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">World Infrastructure</div>
+          <div class="rop-news-highlight__detail">
+            Mob definitions and factory, mob AI scaffolding, mob spawning and respawning,
+            loot tables, quest definitions and progress tracking, shop catalogues,
+            currency economy, guild and sect registries, and social/emote systems.
+          </div>
+        </div>
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">Player Portal</div>
+          <div class="rop-news-highlight__detail">
+            Account registration and authentication, Dashboard, character creation
+            wizard, Armory foundations, public documentation (Getting Started, Game
+            Guide, Lore, Command Reference), and account management.
+          </div>
+        </div>
+        <div class="rop-news-highlight">
+          <div class="rop-news-highlight__label">Testing &amp; Documentation</div>
+          <div class="rop-news-highlight__detail">
+            Extensive automated testing across twenty development phases covering
+            character foundation through final integration audit.
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Each of these systems has been built with the same philosophy: Rites of Passage
+        is not simply a traditional MUD recreated unchanged. It is a modernized persistent
+        text RPG that preserves the depth, command-driven gameplay, exploration, and
+        character development that define the genre, while providing a foundation that
+        can support a substantial world.
+      </p>
+
+      <p class="rop-news-featured__closing">
+        Development is now entering the stage where the realm itself can increasingly
+        become the focus. The tools are ready. The foundation is solid. The world is
+        waiting to be built.
+      </p>
+    </div>
+
+    {# Decorative bottom rail #}
+    <div class="rop-news-featured__rail" aria-hidden="true"></div>
+  </article>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# NEXUS ANNOUNCEMENT — SEPTEMBER 7, 2026                               #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container" id="nexus">
+  <article class="rop-news-nexus">
+    <span class="rop-news-nexus__accent" aria-hidden="true"></span>
+    <header class="rop-news-nexus__header">
+      <div class="rop-news-nexus__meta">
+        <span class="rop-news-badge rop-news-badge--steel">Nexus Development</span>
+        <time class="rop-news-nexus__date" datetime="2026-09-07">September 7, 2026</time>
+      </div>
+      <h2 class="rop-news-nexus__title">Nexus Client Enters Production</h2>
+    </header>
+
+    <div class="rop-news-nexus__body">
+      <p>
+        Development has begun on <strong>Nexus</strong>, the planned native Windows
+        client for Rites of Passage. Nexus is intended to become the dedicated
+        <strong>player client</strong> for connecting to and experiencing Rites of
+        Passage, providing a purpose-built experience rather than relying exclusively
+        on generic MUD clients or browser-based access.
+      </p>
+
+      <p>
+        The intended workflow and feel of Nexus is inspired heavily by the classic
+        MegaMud client used for MajorMUD, while being designed specifically around
+        Rites of Passage and its Evennia server foundation. Where MegaMud provided a
+        structured interface for navigation, combat, inventory, and character management
+        within a text-based world, Nexus aims to deliver a similarly focused and
+        integrated experience tailored to the unique systems and identity of Rites
+        of Passage.
+      </p>
+
+      <p>
+        Nexus development is in its earliest stages. Production has started, and
+        further updates will be provided as the client progresses toward its initial
+        release. No release date has been set.
+      </p>
+    </div>
+  </article>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# STONE DIVIDER                                                        #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container">
+  <div class="rop-start-divider" aria-hidden="true">
+    <img
+      src="{% static 'website/images/rop-stone-divider.png' %}"
+      alt=""
+      width="1480"
+      height="40"
+    >
+  </div>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# DEVELOPMENT ARCHIVE — RETROSPECTIVE ENTRIES                         #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container" id="archive">
+
+  <div class="rop-news-archive-header">
+    <h2 class="rop-news-archive-header__title">Development Archive</h2>
+    <p class="rop-news-archive-header__subtitle">
+      A chronicle of progress from the earliest foundations to the present day.
+    </p>
+  </div>
+
+  {# Timeline rail wrapper #}
+  <div class="rop-news-timeline">
+
+    {# ── SEPTEMBER 6, 2026 ────────────────────────────────────────── #}
+    <article class="rop-news-entry" id="entry-sep06">
+      <div class="rop-news-entry__marker">
+        <time class="rop-news-entry__date" datetime="2026-09-06">
+          <span class="rop-news-entry__day">06</span>
+          <span class="rop-news-entry__month">Sep</span>
+          <span class="rop-news-entry__year">2026</span>
+        </time>
+        <div class="rop-news-entry__rail" aria-hidden="true"></div>
+      </div>
+      <div class="rop-news-entry__body">
+        <div class="rop-news-entry__meta">
+          <span class="rop-news-badge">World Lore</span>
+        </div>
+        <h3 class="rop-news-entry__title">A Realm Divided</h3>
+        <div class="rop-news-entry__content">
+          <p>
+            The established identity of the Rites of Passage world has come into
+            sharp focus. The western realm stands under <strong>Valroian</strong>
+            influence &mdash; old kingdoms, fortified valleys, high citadels, sacred
+            groves, merchant roads, monasteries, and ancestral holds bound together
+            by uneasy vows of mutual defense. The eastern realm answers to
+            <strong>Mordrath</strong> &mdash; a harsher dominion of black fortresses,
+            iron principalities, volcanic highlands, ancient ruins, and territories
+            ruled by strength, fear, oath, and ambition. Between them lies no clean
+            border: the broad scar of the <strong>Contested Marches</strong>, where
+            fortresses change hands, villages swear new allegiance to survive, and
+            both powers believe they eventually must prevail.
+          </p>
+          <p>
+            The philosophical divide between the two powers is now woven into the
+            identity of the world itself. The Valroian way is defined by
+            <strong>Oath</strong>, <strong>Duty</strong>, and <strong>Legacy</strong>.
+            The Mordrath path is forged in <strong>Power</strong>, <strong>Will</strong>,
+            and <strong>Ascendancy</strong>. Within Mordrath, the dominant sect is the
+            <strong>House of Zod</strong>, wielding influence across the eastern
+            territories. The faction conflict is no longer merely background lore &mdash;
+            it is being integrated into the core fabric of gameplay, determining faction
+            alignment at character creation (by race), governing PvP eligibility, and
+            shaping the allegiance structures of guilds and sects.
+          </p>
+          <p>
+            <a href="{% url 'lore' %}" class="rop-news-entry__link">Read the complete Lore &amp; World codex &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    {# ── SEPTEMBER 4, 2026 ────────────────────────────────────────── #}
+    <article class="rop-news-entry" id="entry-sep04">
+      <div class="rop-news-entry__marker">
+        <time class="rop-news-entry__date" datetime="2026-09-04">
+          <span class="rop-news-entry__day">04</span>
+          <span class="rop-news-entry__month">Sep</span>
+          <span class="rop-news-entry__year">2026</span>
+        </time>
+        <div class="rop-news-entry__rail" aria-hidden="true"></div>
+      </div>
+      <div class="rop-news-entry__body">
+        <div class="rop-news-entry__meta">
+          <span class="rop-news-badge">Website</span>
+        </div>
+        <h3 class="rop-news-entry__title">The Rites of Passage Portal Takes Form</h3>
+        <div class="rop-news-entry__content">
+          <p>
+            The public-facing Rites of Passage website and player portal has undergone
+            extensive development. What began as a simple homepage has been transformed
+            into a comprehensive portal built around the visual language of near-black
+            charcoal, cold grey fortress stone, blackened iron, weathered steel, and
+            restrained antique gold &mdash; a Gothic medieval fantasy presentation
+            worthy of the game it represents.
+          </p>
+          <p>
+            The portal now provides account registration and authentication, a player
+            Dashboard, a browser-based play option via the web client, and a growing
+            suite of public information pages: <a href="{% url 'getting-started' %}">Getting Started</a>
+            for new players, the <a href="{% url 'game-guide' %}">Game Guide</a> as a
+            complete field manual, the <a href="{% url 'lore' %}">Lore &amp; World</a> codex,
+            a public <a href="{% url 'commands' %}">Command Reference</a>,
+            <a href="{% url 'races' %}">Races</a> and
+            <a href="{% url 'professions' %}">Professions</a> compendiums, the
+            <a href="{% url 'downloads' %}">Downloads</a> area, and the foundations of the
+            <a href="{% url 'rop-armory' %}">Armory</a> for character profiles. The portal
+            is intended to become the bridge between the website and the game itself rather
+            than simply a promotional homepage &mdash; every page serves a function for
+            players who will inhabit this world.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    {# ── SEPTEMBER 1, 2026 ────────────────────────────────────────── #}
+    <article class="rop-news-entry" id="entry-sep01">
+      <div class="rop-news-entry__marker">
+        <time class="rop-news-entry__date" datetime="2026-09-01">
+          <span class="rop-news-entry__day">01</span>
+          <span class="rop-news-entry__month">Sep</span>
+          <span class="rop-news-entry__year">2026</span>
+        </time>
+        <div class="rop-news-entry__rail" aria-hidden="true"></div>
+      </div>
+      <div class="rop-news-entry__body">
+        <div class="rop-news-entry__meta">
+          <span class="rop-news-badge">World Building</span>
+        </div>
+        <h3 class="rop-news-entry__title">Tools for a Larger Realm</h3>
+        <div class="rop-news-entry__content">
+          <p>
+            Development attention has turned to the infrastructure required to build
+            and manage a substantial game world. Purpose-built world-editing tools are
+            being developed to provide the framework for constructing the realm &mdash;
+            rooms, zones, connections, and the spatial logic that will define exploration,
+            travel, and territory control across the Valroian West, the Mordrath East,
+            and the Contested Marches between them.
+          </p>
+          <p>
+            Robust world-building infrastructure is essential because the intended scope
+            of the realm is ambitious. The world is not designed to be a handful of
+            connected rooms with a thin veneer of description. It is planned as a layered
+            environment where cities contain districts, districts contain streets, streets
+            contain important locations, and each location can hold encounters, merchants,
+            quest-givers, and points of factional interest. The tooling to construct that
+            depth efficiently and consistently is in active development.
+          </p>
+          <p>
+            As the realm moves from foundation toward population, these internal
+            world-building capabilities will be the instrument through which the world
+            takes physical form &mdash; ready for players to experience through the Nexus
+            player client, the browser-based web client, or traditional MUD clients.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    {# ── AUGUST 29, 2026 ──────────────────────────────────────────── #}
+    <article class="rop-news-entry" id="entry-aug29">
+      <div class="rop-news-entry__marker">
+        <time class="rop-news-entry__date" datetime="2026-08-29">
+          <span class="rop-news-entry__day">29</span>
+          <span class="rop-news-entry__month">Aug</span>
+          <span class="rop-news-entry__year">2026</span>
+        </time>
+        <div class="rop-news-entry__rail" aria-hidden="true"></div>
+      </div>
+      <div class="rop-news-entry__body">
+        <div class="rop-news-entry__meta">
+          <span class="rop-news-badge">World Systems</span>
+        </div>
+        <h3 class="rop-news-entry__title">Building a World That Can Fight Back</h3>
+        <div class="rop-news-entry__content">
+          <p>
+            Development expanded beyond player-facing systems to encompass the broader
+            world infrastructure that makes a multiplayer RPG feel alive. Mob and NPC
+            definitions were established alongside a factory system for creating live
+            creature instances from static data. Mob AI scaffolding provides the
+            foundation for combat behaviour, while mob spawning and respawning systems
+            ensure that zones can be populated with appropriate threats.
+          </p>
+          <p>
+            Quest definitions and progress tracking were implemented &mdash; supporting
+            kill objectives and collect objectives with XP and item rewards &mdash; creating
+            the structural framework that quest content will populate. Shop catalogues and
+            a full currency economy (copper through platinum) were built, allowing items
+            to be bought and sold with fund validation and stock tracking. Guild and sect
+            registries, alongside social and emote systems, provide the scaffolding for
+            player organization and interaction.
+          </p>
+          <p>
+            It is important to distinguish between <strong>systems</strong> and
+            <strong>content</strong>. The systems described here are the engines, rules,
+            and pipelines &mdash; the infrastructure that makes gameplay possible. The
+            content &mdash; the specific monsters that inhabit a given forest, the quests
+            offered by a particular NPC, the items sold by a named merchant &mdash; is
+            the population work that follows. The systems are largely complete. The
+            population is the next horizon.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    {# ── AUGUST 25, 2026 ──────────────────────────────────────────── #}
+    <article class="rop-news-entry" id="entry-aug25">
+      <div class="rop-news-entry__marker">
+        <time class="rop-news-entry__date" datetime="2026-08-25">
+          <span class="rop-news-entry__day">25</span>
+          <span class="rop-news-entry__month">Aug</span>
+          <span class="rop-news-entry__year">2026</span>
+        </time>
+        <div class="rop-news-entry__rail" aria-hidden="true"></div>
+      </div>
+      <div class="rop-news-entry__body">
+        <div class="rop-news-entry__meta">
+          <span class="rop-news-badge">Game Systems</span>
+        </div>
+        <h3 class="rop-news-entry__title">Steel, Spells and Survival</h3>
+        <div class="rop-news-entry__content">
+          <p>
+            The focus of development shifted heavily toward the gameplay systems that
+            make characters more than database records. The combat engine was built with
+            physical attack resolution, hit/miss calculation based on configurable chance
+            thresholds, weapon damage scaling by type, and armor mitigation granting
+            flat damage reduction per equipped piece. A fifteen-slot equipment system
+            (from head and chest down to main-hand and off-hand) was implemented alongside
+            inventory management for weapons, armor, consumables, quest items, and
+            miscellaneous goods.
+          </p>
+          <p>
+            The skills and spells framework was one of the most substantial undertakings
+            of this period. A data-driven registry of over two hundred skills and spells
+            was established, each with defined resource costs (mana or stamina), targeting
+            requirements, damage types spanning physical, elemental, and special categories
+            (piercing, slashing, fire, water, earth, air, poison, disease, holy, unholy,
+            psychic, and bleed), healing capabilities, and full use-validation pipelines.
+            Skills can unlock through profession progression, and their use is governed
+            by resource availability, targeting rules, and combat-state management.
+          </p>
+          <p>
+            This was the point where individual systems began interacting to form actual
+            gameplay. A character's equipped weapon now feeds into combat damage calculation.
+            Their armor class reduces incoming damage. Their available mana or stamina
+            gates which skills and spells they can activate. Their profession determines
+            which abilities are available to unlock. The pieces of a real RPG were clicking
+            into place.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    {# ── AUGUST 21, 2026 ──────────────────────────────────────────── #}
+    <article class="rop-news-entry" id="entry-aug21">
+      <div class="rop-news-entry__marker">
+        <time class="rop-news-entry__date" datetime="2026-08-21">
+          <span class="rop-news-entry__day">21</span>
+          <span class="rop-news-entry__month">Aug</span>
+          <span class="rop-news-entry__year">2026</span>
+        </time>
+        <div class="rop-news-entry__rail" aria-hidden="true"></div>
+      </div>
+      <div class="rop-news-entry__body">
+        <div class="rop-news-entry__meta">
+          <span class="rop-news-badge">Characters</span>
+        </div>
+        <h3 class="rop-news-entry__title">Characters Begin to Take Shape</h3>
+        <div class="rop-news-entry__content">
+          <p>
+            Development focus moved heavily into the systems that define player
+            characters. The character creation pipeline was built, supporting
+            twenty-four distinct races split evenly between the Valroian and Mordrath
+            factions. Race selection determines a character's faction alignment &mdash;
+            a foundational design decision that means players do not independently
+            choose Valroian or Mordrath. Their race is their allegiance.
+          </p>
+          <p>
+            Ten professions were defined, each with different strengths, stat
+            distributions, and skill-unlock paths. The character statistics system
+            was implemented with five core stats &mdash; Strength, Intelligence,
+            Wisdom, Dexterity, and Constitution &mdash; each influenced by race
+            and profession choices. A progression framework ties level advancement
+            to experience gain, with base stats, HP, mana, and stamina all scaling
+            as characters grow in power. Character state management (standing,
+            resting, meditating, combat, and dead) governs regeneration rates and
+            combat eligibility.
+          </p>
+          <p>
+            The character creation wizard on the portal was integrated with this
+            system, allowing new players to select a race, choose a profession,
+            and step into the world with a fully configured character built on
+            the same data structures that drive gameplay server-side.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    {# ── AUGUST 17, 2026 ──────────────────────────────────────────── #}
+    <article class="rop-news-entry" id="entry-aug17">
+      <div class="rop-news-entry__marker">
+        <time class="rop-news-entry__date" datetime="2026-08-17">
+          <span class="rop-news-entry__day">17</span>
+          <span class="rop-news-entry__month">Aug</span>
+          <span class="rop-news-entry__year">2026</span>
+        </time>
+        <div class="rop-news-entry__rail" aria-hidden="true"></div>
+      </div>
+      <div class="rop-news-entry__body">
+        <div class="rop-news-entry__meta">
+          <span class="rop-news-badge">Development</span>
+        </div>
+        <h3 class="rop-news-entry__title">A New Foundation for Rites of Passage</h3>
+        <div class="rop-news-entry__content">
+          <p>
+            Development begins on the current generation of Rites of Passage, built
+            on <strong>Evennia</strong> as its server foundation. Evennia provides a
+            modern Python-based MUD/MUSH/MUX development framework that handles
+            networking, database persistence, session management, and the command
+            dispatch architecture &mdash; allowing development to focus on game
+            design rather than server infrastructure.
+          </p>
+          <p>
+            The goal from the outset has not been simply to recreate a traditional
+            MUD unchanged. Rites of Passage aims to build a modernized persistent
+            text RPG that preserves the depth, command-driven gameplay, exploration,
+            and character development that define the genre, while pushing beyond
+            the limitations of older codebases. The early focus is deliberately on
+            architecture and foundational systems rather than filling the world
+            immediately. A game of this scope needs a solid skeleton before it
+            can wear its flesh.
+          </p>
+          <p>
+            The project structure is established with clear separation between the
+            game's world data layer (pure Python, testable without a running server),
+            the typeclass layer (Evennia's object model), the command layer (player
+            input handling), and the web/portal layer (Django templates and views).
+            This clean architecture will prove essential as the system grows in
+            complexity over the weeks ahead.
+          </p>
+        </div>
+      </div>
+    </article>
+
+  </div>{# /rop-news-timeline #}
+
+</div>{# /rop-container #}
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# STONE DIVIDER                                                        #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container">
+  <div class="rop-start-divider" aria-hidden="true">
+    <img
+      src="{% static 'website/images/rop-stone-divider.png' %}"
+      alt=""
+      width="1480"
+      height="40"
+    >
+  </div>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════ #}
+{# CURRENT DEVELOPMENT STATUS (compact)                                 #}
+{# ═══════════════════════════════════════════════════════════════════ #}
+
+<div class="rop-container" id="status">
+  <div class="rop-news-status">
+    <div class="rop-news-status__header">
+      <h2 class="rop-news-status__title">Current Development Status</h2>
+    </div>
+    <div class="rop-news-status__grid">
+      <div class="rop-news-status__item rop-news-status__item--complete">
+        <div class="rop-news-status__label">Core Systems</div>
+        <div class="rop-news-status__state">Largely Complete</div>
+        <div class="rop-news-status__desc">
+          Character creation, combat, skills/spells, equipment, inventory, progression,
+          and the foundational server architecture are all in place and tested.
+        </div>
+      </div>
+      <div class="rop-news-status__item rop-news-status__item--active">
+        <div class="rop-news-status__label">World Population</div>
+        <div class="rop-news-status__state">In Progress</div>
+        <div class="rop-news-status__desc">
+          The realm's rooms, zones, monsters, encounters, items, and quest content
+          are the current frontier. Systems are ready; content is being built.
+        </div>
+      </div>
+      <div class="rop-news-status__item rop-news-status__item--complete">
+        <div class="rop-news-status__label">Website &amp; Documentation</div>
+        <div class="rop-news-status__state">Largely Complete</div>
+        <div class="rop-news-status__desc">
+          The public portal, player guides, lore codex, command reference, and
+          supporting documentation are substantially in place and serving players.
+        </div>
+      </div>
+      <div class="rop-news-status__item rop-news-status__item--steel">
+        <div class="rop-news-status__label">Nexus Windows Client</div>
+        <div class="rop-news-status__state">Development Started</div>
+        <div class="rop-news-status__desc">
+          Production of the native Windows player client has begun, inspired by
+          classic MegaMud design patterns and tailored specifically for Rites of Passage.
+        </div>
+      </div>
+      <div class="rop-news-status__item rop-news-status__item--ongoing">
+        <div class="rop-news-status__label">Polish &amp; Testing</div>
+        <div class="rop-news-status__state">Ongoing</div>
+        <div class="rop-news-status__desc">
+          Automated testing, balance iteration, documentation review, and quality
+          assurance continue alongside all other development work.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

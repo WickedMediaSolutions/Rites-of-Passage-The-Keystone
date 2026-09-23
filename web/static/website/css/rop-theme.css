@@ -1,0 +1,730 @@
+/* ==========================================================================
+   Rites of Passage — ORNATE STONE DESIGN SYSTEM
+   Canonical visual language: carved blackened stone + distressed antique gold
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+:root {
+  --rop-abyss:         #060504;
+  --rop-black:         #0a0806;
+  --rop-charcoal:      #0f0d09;
+  --rop-black-steel:   #14100c;
+  --rop-stone-deep:    #1a1510;
+  --rop-stone:         #201a14;
+  --rop-stone-raised:  #282018;
+  --rop-stone-high:    #302820;
+  --rop-surface:       #262018;
+  --rop-surface-high:  #2e2820;
+  --rop-aged-stone:    #221e18;
+  --rop-worn-stone:    #2a241c;
+  --rop-gold:          #b8942e;
+  --rop-gold-light:    #d4aa40;
+  --rop-gold-pale:     #e8cc80;
+  --rop-gold-dark:     #7a5c1e;
+  --rop-gold-deep:     #5a4012;
+  --rop-gold-subtle:   rgba(184, 148, 46, 0.08);
+  --rop-gold-border:   rgba(184, 148, 46, 0.15);
+  --rop-bronze:        #8a6e3a;
+  --rop-bronze-light:  #a88850;
+  --rop-bronze-dark:   #5e4820;
+  --rop-crimson:       #8b2222;
+  --rop-crimson-light: #b83030;
+  --rop-crimson-dark:  #5a1010;
+  --rop-crimson-glow:  rgba(139, 34, 34, 0.12);
+  --rop-crimson-border:rgba(160, 80, 80, 0.18);
+  --rop-steel:         #5a80b0;
+  --rop-steel-light:   #6a90c0;
+  --rop-steel-dark:    #3a5a7a;
+  --rop-steel-glow:    rgba(90, 128, 176, 0.08);
+  --rop-steel-border:  rgba(90, 128, 176, 0.14);
+  --rop-parchment:      #d4c4a0;
+  --rop-parchment-light:#e8dcc0;
+  --rop-parchment-dark: #b8a480;
+  --rop-parchment-ink:  #2a2218;
+  --rop-parchment-bg:   #3a3428;
+  --rop-ember:         #c87030;
+  --rop-torch:         #e0a040;
+  --rop-ember-glow:    rgba(200, 112, 48, 0.06);
+  --rop-text:           #d4d6d8;
+  --rop-text-heading:   #d5b96d;
+  --rop-text-bright:    #e4e5e6;
+  --rop-text-muted:     #a09e96;
+  --rop-text-link:      #c8a85b;
+  --rop-text-on-parchment:    #3a2a18;
+  --rop-text-heading-parchment: #2a1a08;
+  --rop-font-display: "Cinzel", "Times New Roman", serif;
+  --rop-font-body:    "Cormorant Garamond", Georgia, serif;
+  --rop-space-xs: 0.25rem;
+  --rop-space-sm: 0.5rem;
+  --rop-space-md: 0.75rem;
+  --rop-space-lg: 1.25rem;
+  --rop-space-xl: 2rem;
+  --rop-radius: 1px;
+  --rop-radius-panel: 2px;
+  --rop-transition: 0.2s ease;
+  --rop-shadow-deep: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --rop-shadow-gold: 0 0 18px rgba(184, 148, 46, 0.08);
+  --rop-shadow-crimson: 0 0 12px rgba(139, 34, 34, 0.1);
+  --rop-shadow-steel: 0 0 12px rgba(90, 128, 176, 0.08);
+}
+
+/* ==========================================================================
+   2. FOUNDATION / RESET
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { position: relative; min-height: 100%; scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: var(--rop-abyss);
+  color: var(--rop-text);
+  font-family: var(--rop-font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: 1.05rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%,  rgba(35, 28, 20, 0.6) 0%, transparent 65%),
+    radial-gradient(ellipse at 5%  35%, rgba(90, 128, 176, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 95% 35%, rgba(160, 80, 80, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 90%, rgba(184, 148, 46, 0.03) 0%, transparent 50%),
+    var(--rop-black);
+  z-index: -3;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--rop-font-display);
+  color: var(--rop-text-heading);
+  line-height: 1.25;
+  margin-top: 0;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+h1 { font-size: 2rem;     margin-bottom: 0.6rem;  letter-spacing: 0.07em; }
+h2 { font-size: 1.5rem;   margin-bottom: 0.5rem;  letter-spacing: 0.06em; }
+h3 { font-size: 1.2rem;   margin-bottom: 0.4rem;  letter-spacing: 0.05em; }
+h4 { font-size: 1.05rem;  margin-bottom: 0.35rem; }
+h5 { font-size: 0.95rem;  margin-bottom: 0.3rem;  text-transform: none; }
+h6 { font-size: 0.88rem;  margin-bottom: 0.25rem; text-transform: none; }
+p  { margin-top: 0; margin-bottom: 0.8rem; }
+a  { color: var(--rop-text-link); text-decoration: none; transition: color var(--rop-transition); }
+a:hover { color: var(--rop-gold-light); text-decoration: underline; }
+code { font-family: monospace; background: rgba(0, 0, 0, 0.35); padding: 0.1em 0.4em; border-radius: 2px; color: var(--rop-gold-pale); font-size: 0.92em; }
+strong { color: var(--rop-text-heading); }
+ul, ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+li { margin-bottom: 0.25rem; }
+hr { border: none; border-top: 1px solid rgba(184, 148, 46, 0.1); margin: 1.5rem 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+/* ==========================================================================
+   3. GLOBAL ARCHITECTURAL SHELL
+   ========================================================================== */
+.rop-world-frame {
+  max-width: 1520px;
+  margin: 0 auto;
+  position: relative;
+  border-left:  1px solid rgba(90, 128, 176, 0.05);
+  border-right: 1px solid rgba(160, 80, 80, 0.05);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.4);
+}
+.rop-world-frame::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, rgba(90,128,176,0.08) 8%, rgba(90,128,176,0.14) 16%, rgba(184,148,46,0.18) 25%, rgba(184,148,46,0.28) 50%, rgba(184,148,46,0.18) 75%, rgba(160,80,80,0.14) 84%, rgba(160,80,80,0.08) 92%, transparent 100%);
+}
+.rop-world-frame::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(90,128,176,0.06) 8%, rgba(184,148,46,0.14) 25%, rgba(184,148,46,0.22) 50%, rgba(184,148,46,0.14) 75%, rgba(160,80,80,0.06) 92%, transparent 100%);
+  opacity: 0.5;
+}
+.rop-container { width: 100%; max-width: 1380px; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+#main-content { padding: 0; position: relative; background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, transparent 4%, transparent 96%, rgba(0,0,0,0.1) 100%); }
+
+/* ==========================================================================
+   4. NAVIGATION BAR
+   ========================================================================== */
+.rop-header {
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  background: linear-gradient(180deg, rgba(14,11,8,0.99) 0%, rgba(22,17,12,0.98) 50%, rgba(22,17,12,0.96) 100%);
+  border-bottom: 1px solid rgba(184, 148, 46, 0.18);
+  box-shadow: inset 0 1px 0 rgba(90,128,176,0.04), inset 0 -1px 0 rgba(160,80,80,0.04), 0 4px 24px rgba(0,0,0,0.6);
+}
+.rop-header::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(90,128,176,0.15) 10%, rgba(184,148,46,0.22) 28%, rgba(184,148,46,0.30) 50%, rgba(184,148,46,0.22) 72%, rgba(160,80,80,0.15) 90%, transparent 100%);
+}
+.rop-navbar { max-width: 1380px; margin: 0 auto; padding: 0.2rem 1.5rem; }
+.rop-navbar-brand { display: flex !important; align-items: center; gap: 0.5rem; text-decoration: none !important; }
+.rop-nav-brand-text {
+  font-family: var(--rop-font-display);
+  font-weight: 700;
+  font-size: 1.0rem;
+  letter-spacing: 0.07em;
+  color: var(--rop-gold-pale) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+}
+.rop-navbar-brand img { height: 38px; width: 38px; object-fit: contain; }
+.rop-nav-left .nav-link,
+.rop-nav-right .nav-link {
+  font-family: var(--rop-font-display);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--rop-text) !important;
+  padding: 0.35rem 0.6rem !important;
+  text-transform: uppercase;
+  transition: color var(--rop-transition), background var(--rop-transition), border-color var(--rop-transition);
+  border-bottom: 2px solid transparent;
+  margin: 0 0.04rem;
+}
+.rop-nav-left .nav-link:hover,
+.rop-nav-right .nav-link:hover {
+  color: var(--rop-gold-light) !important;
+  background: rgba(184, 148, 46, 0.06);
+  border-bottom-color: rgba(184, 148, 46, 0.2);
+}
+.rop-nav-left .nav-link.active,
+.rop-nav-right .nav-link.active {
+  color: var(--rop-gold-pale) !important;
+  background: rgba(184, 148, 46, 0.08);
+  border-bottom-color: var(--rop-gold);
+}
+.rop-nav-play {
+  color: var(--rop-black) !important;
+  background: linear-gradient(180deg, #d4aa40 0%, #b8942e 100%) !important;
+  border: 1px solid var(--rop-gold-light) !important;
+  border-radius: var(--rop-radius) !important;
+  font-weight: 700 !important;
+  font-size: 0.7rem !important;
+  padding: 0.22rem 0.7rem !important;
+  letter-spacing: 0.07em !important;
+  margin-left: 0.4rem;
+  border-bottom: none !important;
+}
+.rop-nav-play:hover { background: linear-gradient(180deg, #e8c860 0%, #c8a038 100%) !important; box-shadow: 0 0 14px rgba(212,170,64,0.35); color: var(--rop-black) !important; text-decoration: none !important; }
+.dropdown-menu { background: var(--rop-stone-deep); border: 1px solid rgba(184, 148, 46, 0.2); box-shadow: 0 8px 28px rgba(0,0,0,0.65); padding: 0.3rem 0; border-radius: var(--rop-radius); }
+.dropdown-item { color: var(--rop-text) !important; font-family: var(--rop-font-display); font-size: 0.78rem; letter-spacing: 0.04em; padding: 0.35rem 1.2rem; text-transform: uppercase; }
+.dropdown-item:hover { background: rgba(184, 148, 46, 0.08); color: var(--rop-gold-light) !important; }
+.dropdown-divider { border-color: rgba(184, 148, 46, 0.1); }
+
+/* ==========================================================================
+   5. BUTTONS
+   ========================================================================== */
+.rop-btn {
+  display: inline-block;
+  font-family: var(--rop-font-display);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none !important;
+  border-radius: var(--rop-radius);
+  transition: all var(--rop-transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.rop-btn--lg { padding: 0.65rem 1.6rem; font-size: 0.9rem; }
+.rop-btn--md { padding: 0.5rem 1.2rem;  font-size: 0.82rem; }
+.rop-btn--sm { padding: 0.35rem 0.85rem; font-size: 0.74rem; }
+.rop-btn--primary {
+  background: linear-gradient(180deg, var(--rop-gold-light) 0%, var(--rop-gold-dark) 100%);
+  color: var(--rop-black) !important;
+  border-color: rgba(184, 148, 46, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.rop-btn--primary:hover { background: linear-gradient(180deg, var(--rop-gold-pale) 0%, var(--rop-gold) 100%); border-color: rgba(184, 148, 46, 0.55); box-shadow: 0 0 20px rgba(184, 148, 46, 0.18); text-decoration: none !important; }
+.rop-btn--secondary { background: transparent; color: var(--rop-gold-light) !important; border-color: rgba(184, 148, 46, 0.22); }
+.rop-btn--secondary:hover { background: rgba(184, 148, 46, 0.08); border-color: rgba(184, 148, 46, 0.4); text-decoration: none !important; }
+.rop-btn--link { background: transparent; color: var(--rop-text-link) !important; border: none; padding-left: 0; padding-right: 0; text-transform: none; letter-spacing: 0.02em; font-weight: 500; }
+.rop-btn--link:hover { color: var(--rop-gold-light) !important; text-decoration: underline; }
+.rop-btn--danger { background: linear-gradient(180deg, var(--rop-crimson-light) 0%, var(--rop-crimson-dark) 100%); color: #fff !important; border-color: rgba(139, 34, 34, 0.35); }
+.rop-btn--danger:hover { background: linear-gradient(180deg, #c84040 0%, #701818 100%); box-shadow: 0 0 16px rgba(139, 34, 34, 0.2); text-decoration: none !important; }
+
+/* ==========================================================================
+   6. PANELS — Ornate Stone architecture
+   ========================================================================== */
+.rop-panel {
+  position: relative;
+  background: linear-gradient(180deg, rgba(28,22,16,0.8) 0%, var(--rop-stone-deep) 100%);
+  border: 1px solid rgba(120, 100, 50, 0.1);
+  border-radius: var(--rop-radius-panel);
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.3), inset 0 1px 0 rgba(184,148,46,0.04);
+}
+.rop-panel::before { content: ""; position: absolute; top: 0; left: 0.4rem; right: 0.4rem; height: 1px; background: rgba(184,148,46,0.08); pointer-events: none; }
+.rop-panel__header {
+  font-family: var(--rop-font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  color: var(--rop-gold-light);
+  text-transform: uppercase;
+  padding: 0.55rem 0.9rem;
+  background: linear-gradient(180deg, rgba(184,148,46,0.08) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(184,148,46,0.08);
+}
+.rop-panel__body { padding: 0.8rem 0.9rem; }
+.rop-panel--ornate {
+  border-color: rgba(184, 148, 46, 0.16);
+  box-shadow: 0 3px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(184,148,46,0.06), inset 0 -1px 0 rgba(184,148,46,0.03);
+}
+.rop-panel--ornate .rop-panel__header {
+  background: linear-gradient(180deg, rgba(184,148,46,0.12) 0%, rgba(184,148,46,0.03) 100%);
+  border-bottom-color: rgba(184,148,46,0.14);
+  letter-spacing: 0.08em;
+}
+.rop-panel--steel { border-color: rgba(90,128,176,0.14); box-shadow: 0 2px 14px rgba(0,0,0,0.3), inset 0 1px 0 rgba(90,128,176,0.04); }
+.rop-panel--steel .rop-panel__header { background: linear-gradient(180deg, rgba(90,128,176,0.1) 0%, transparent 100%); border-bottom-color: rgba(90,128,176,0.12); color: var(--rop-steel-light); }
+.rop-panel--crimson { border-color: rgba(160,80,80,0.14); box-shadow: 0 2px 14px rgba(0,0,0,0.3), inset 0 1px 0 rgba(160,80,80,0.04); }
+.rop-panel--crimson .rop-panel__header { background: linear-gradient(180deg, rgba(160,80,80,0.1) 0%, transparent 100%); border-bottom-color: rgba(160,80,80,0.12); color: var(--rop-crimson-light); }
+.rop-panel--compact .rop-panel__header { padding: 0.4rem 0.75rem; font-size: 0.76rem; }
+.rop-panel--compact .rop-panel__body { padding: 0.55rem 0.75rem; }
+
+/* ==========================================================================
+   7. FORMS
+   ========================================================================== */
+.rop-form-group { margin-bottom: 0.75rem; }
+.rop-form-label { display: block; font-family: var(--rop-font-display); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; color: var(--rop-text-heading); margin-bottom: 0.3rem; text-transform: uppercase; }
+.rop-form-input {
+  display: block;
+  width: 100%;
+  font-family: var(--rop-font-body);
+  font-size: 0.95rem;
+  color: var(--rop-text);
+  background: var(--rop-stone-deep);
+  border: 1px solid rgba(120, 100, 50, 0.14);
+  border-radius: var(--rop-radius);
+  padding: 0.5rem 0.75rem;
+  transition: border-color var(--rop-transition), box-shadow var(--rop-transition);
+}
+.rop-form-input:focus { outline: none; border-color: rgba(184, 148, 46, 0.35); box-shadow: 0 0 0 2px rgba(184, 148, 46, 0.08); }
+.rop-form-input::placeholder { color: var(--rop-text-muted); opacity: 0.6; }
+.rop-form-input--textarea { min-height: 100px; resize: vertical; }
+
+/* ==========================================================================
+   8. DIVIDERS
+   ========================================================================== */
+.rop-arch-divider { max-width: 800px; margin: 0.75rem auto; text-align: center; position: relative; height: 2px; }
+.rop-arch-divider::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(90,128,176,0.1) 15%, rgba(184,148,46,0.2) 50%, rgba(160,80,80,0.1) 85%, transparent);
+}
+.rop-separator { height: 1px; background: rgba(184, 148, 46, 0.08); margin: 0.5rem 0; }
+
+/* ==========================================================================
+   9. PARCHMENT MODE
+   ========================================================================== */
+.rop-parchment {
+  background: linear-gradient(135deg, rgba(200,180,150,0.14) 0%, rgba(180,155,120,0.08) 30%, rgba(210,190,155,0.1) 60%, rgba(170,140,105,0.07) 100%);
+  border: 1px solid rgba(180,150,110,0.14);
+  border-radius: var(--rop-radius-panel);
+  padding: 1.5rem;
+  color: var(--rop-parchment-ink);
+  font-family: var(--rop-font-body);
+  position: relative;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3), inset 0 0 60px rgba(200,160,100,0.04);
+}
+.rop-parchment::before { content: ""; position: absolute; top: 0.35rem; left: 0.35rem; right: 0.35rem; bottom: 0.35rem; border: 1px solid rgba(180,150,100,0.06); border-radius: calc(var(--rop-radius-panel) - 1px); pointer-events: none; }
+.rop-parchment h1, .rop-parchment h2, .rop-parchment h3 { color: var(--rop-text-heading-parchment); font-weight: 700; }
+.rop-parchment p { color: var(--rop-text-on-parchment); }
+.rop-parchment a { color: var(--rop-gold-dark); }
+
+/* ==========================================================================
+   10. MODERN TAB MODE
+   ========================================================================== */
+.rop-mode--modern-tab { display: flex; gap: 1.25rem; align-items: flex-start; flex-wrap: wrap; }
+.rop-tab-nav { flex: 0 0 220px; background: var(--rop-stone-deep); border: 1px solid rgba(120,100,50,0.1); border-radius: var(--rop-radius-panel); overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,0.3); }
+.rop-tab-nav__item { display: block; padding: 0.6rem 0.9rem; font-family: var(--rop-font-display); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; color: var(--rop-text-muted); text-decoration: none !important; border-left: 3px solid transparent; transition: all var(--rop-transition); cursor: pointer; text-transform: uppercase; }
+.rop-tab-nav__item:hover { color: var(--rop-gold-light); background: rgba(184,148,46,0.05); border-left-color: rgba(184,148,46,0.25); }
+.rop-tab-nav__item--active { color: var(--rop-gold-light) !important; background: rgba(184,148,46,0.08); border-left-color: var(--rop-crimson) !important; font-weight: 700; }
+.rop-tab-content { flex: 1; min-width: 300px; }
+
+/* ==========================================================================
+   11. CINEMATIC MODE
+   ========================================================================== */
+.rop-cinematic { position: relative; overflow: hidden; background: var(--rop-black); }
+.rop-cinematic__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,8,6,0.6) 0%, rgba(10,8,6,0.2) 40%, rgba(10,8,6,0.7) 100%); z-index: 1; pointer-events: none; }
+.rop-cinematic__content { position: relative; z-index: 2; }
+
+/* ==========================================================================
+   12. HERO — cathedral dark-fantasy homepage
+   ========================================================================== */
+.rop-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 30% 30%, rgba(90,128,176,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 40%, rgba(160,80,80,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 100%, rgba(184,148,46,0.06) 0%, transparent 60%),
+              var(--rop-black);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(184, 148, 46, 0.1);
+}
+.rop-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px);
+  z-index: 1;
+  pointer-events: none;
+}
+.rop-hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(180deg, transparent 0%, var(--rop-black) 100%); z-index: 2; pointer-events: none; }
+.rop-hero__inner { position: relative; z-index: 3; text-align: center; padding: 2rem; max-width: 700px; }
+.rop-hero__image { max-width: 380px; width: 80%; height: auto; margin-bottom: 1rem; }
+.rop-hero__hook { font-family: var(--rop-font-body); font-size: 1.15rem; font-style: italic; color: var(--rop-text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.rop-hero__actions { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+
+/* ==========================================================================
+   13. STATUS BAND
+   ========================================================================== */
+.rop-home__status-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; padding: 0.4rem 0; margin-bottom: 0; }
+.rop-status-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--rop-font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--rop-text-heading);
+  background: linear-gradient(180deg, rgba(30,24,18,0.7) 0%, rgba(22,17,12,0.8) 100%);
+  border: 1px solid rgba(184, 148, 46, 0.12);
+  border-radius: 2px;
+  padding: 0.25rem 0.65rem;
+}
+.rop-status-bar__indicator { display: inline-flex; align-items: center; gap: 0.3rem; }
+.rop-status__dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.rop-status__dot--online { background: #4caf50; box-shadow: 0 0 6px rgba(76,175,80,0.5); }
+.rop-status__dot--offline { background: #8b2222; box-shadow: 0 0 6px rgba(139,34,34,0.5); }
+.rop-status-bar__text { font-size: 0.72rem; }
+.rop-status-bar__divider { color: rgba(184, 148, 46, 0.25); }
+.rop-home__quick-links { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.rop-quick-link {
+  font-family: var(--rop-font-display);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--rop-text-muted);
+  text-decoration: none !important;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(120, 100, 50, 0.12);
+  border-radius: 2px;
+  transition: all var(--rop-transition);
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.25);
+}
+.rop-quick-link:hover { color: var(--rop-gold-light); border-color: rgba(184, 148, 46, 0.3); }
+
+/* ==========================================================================
+   14. EXPERIENCE BAND
+   ========================================================================== */
+.rop-experience-band { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 0.6rem; margin-bottom: 1.5rem; }
+.rop-experience-band__feature {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  min-height: 340px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--rop-radius-panel);
+  border: 1px solid rgba(184, 148, 46, 0.15);
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none !important;
+  overflow: hidden;
+  position: relative;
+}
+.rop-experience-band__feature::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,8,6,0.85) 100%); z-index: 1; }
+.rop-experience-band__content { position: relative; z-index: 2; padding: 1.5rem 1.25rem; }
+.rop-experience-band__label { display: block; font-family: var(--rop-font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; color: var(--rop-gold); text-transform: uppercase; margin-bottom: 0.25rem; }
+.rop-experience-band__title { display: block; font-family: var(--rop-font-display); font-weight: 700; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--rop-gold-pale); text-transform: uppercase; margin-bottom: 0.35rem; }
+.rop-experience-band__desc { display: block; font-family: var(--rop-font-body); font-size: 1rem; color: var(--rop-text); line-height: 1.5; }
+.rop-experience-band__actions { display: flex; flex-direction: column; gap: 0.6rem; }
+.rop-experience-band__action {
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--rop-radius-panel);
+  border: 1px solid rgba(184, 148, 46, 0.12);
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+  transition: border-color var(--rop-transition), box-shadow var(--rop-transition);
+  position: relative;
+  overflow: hidden;
+  min-height: 85px;
+  flex: 1;
+}
+.rop-experience-band__action:hover { border-color: rgba(184, 148, 46, 0.25); box-shadow: 0 0 16px rgba(184, 148, 46, 0.06); }
+.rop-experience-band__action::before { content: ""; position: absolute; inset: 0; background: rgba(10, 8, 6, 0.55); z-index: 1; }
+.rop-experience-band__action-content { position: relative; z-index: 2; padding: 0.8rem 1rem; }
+.rop-experience-band__action-content .rop-experience-band__title { font-size: 0.95rem; margin-bottom: 0.15rem; }
+.rop-experience-band__action-content .rop-experience-band__desc { font-size: 0.82rem; color: var(--rop-text-muted); }
+
+/* ==========================================================================
+   15. PAGE TITLE
+   ========================================================================== */
+.rop-page-title { position: relative; padding-bottom: 0.6rem; margin-bottom: 1.25rem; text-align: center; }
+.rop-page-title::after { content: ""; display: block; height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(184,148,46,0.18) 25%, rgba(184,148,46,0.18) 75%, transparent 100%); margin-top: 0.45rem; }
+.rop-page-title h1, .rop-page-title h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.06em; color: var(--rop-gold-pale); margin-bottom: 0.15rem; text-transform: uppercase; }
+.rop-subtitle { font-family: var(--rop-font-body); font-size: 1rem; font-style: italic; color: var(--rop-text-muted); margin: 0; }
+
+/* ==========================================================================
+   16. FACTION SHOWCASE
+   ========================================================================== */
+.rop-factions-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.5rem; }
+.rop-faction-card { position: relative; border-radius: var(--rop-radius-panel); overflow: hidden; min-height: 280px; background: var(--rop-stone-deep); border: 1px solid rgba(120,100,50,0.08); display: flex; flex-direction: column; }
+.rop-faction-card__banner { height: 140px; overflow: hidden; position: relative; }
+.rop-faction-card__img { width: 100%; height: 100%; object-fit: cover; }
+.rop-faction-card__banner::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(180deg, transparent 0%, var(--rop-stone-deep) 100%); }
+.rop-faction-card__body { padding: 0.5rem 1.1rem 1.1rem; flex: 1; }
+.rop-faction-card__name { font-family: var(--rop-font-display); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.06em; color: var(--rop-gold-pale); text-transform: uppercase; margin-bottom: 0.2rem; }
+.rop-faction-card__title { font-family: var(--rop-font-body); font-size: 0.85rem; font-style: italic; color: var(--rop-text-muted); margin-bottom: 0.5rem; }
+.rop-faction-card__desc { font-size: 0.88rem; color: var(--rop-text); margin-bottom: 0.5rem; line-height: 1.5; }
+.rop-faction-card__races { font-family: var(--rop-font-display); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--rop-text-muted); text-transform: uppercase; }
+.rop-faction-card--good { border-left: 3px solid rgba(90,128,176,0.3); box-shadow: inset 0 0 30px rgba(90,128,176,0.04); }
+.rop-faction-card--evil { border-left: 3px solid rgba(160,80,80,0.3); box-shadow: inset 0 0 30px rgba(160,80,80,0.04); }
+
+/* ==========================================================================
+   17. NEWS GRID
+   ========================================================================== */
+.rop-news-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.8rem; }
+.rop-news-header__title { font-size: 1.25rem; margin-bottom: 0; }
+.rop-news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.6rem; margin-bottom: 1.5rem; }
+.rop-news-card { background: var(--rop-stone-deep); border: 1px solid rgba(120,100,50,0.08); border-radius: var(--rop-radius-panel); padding: 1rem; transition: border-color var(--rop-transition); }
+.rop-news-card:hover { border-color: rgba(184, 148, 46, 0.15); }
+.rop-news-card__badge { display: inline-block; font-family: var(--rop-font-display); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; padding: 0.15rem 0.5rem; border-radius: 1px; margin-bottom: 0.5rem; text-transform: uppercase; }
+.rop-badge--gold { background: rgba(184, 148, 46, 0.15); color: var(--rop-gold-light); }
+.rop-badge--info { background: rgba(90, 128, 176, 0.15); color: var(--rop-steel-light); }
+.rop-badge--warning { background: rgba(200, 112, 48, 0.15); color: var(--rop-ember); }
+.rop-news-card__title { font-family: var(--rop-font-display); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.04em; color: var(--rop-text-heading); margin-bottom: 0.35rem; }
+.rop-news-card__excerpt { font-size: 0.85rem; color: var(--rop-text-muted); line-height: 1.5; }
+
+/* ==========================================================================
+   18. CTA BANNER
+   ========================================================================== */
+.rop-cta-banner { text-align: center; padding: 2rem 1.5rem; background: radial-gradient(ellipse at 50% 50%, rgba(184,148,46,0.06) 0%, transparent 70%), var(--rop-stone-deep); border: 1px solid rgba(184,148,46,0.12); border-radius: var(--rop-radius-panel); margin-bottom: 1.5rem; }
+.rop-cta-banner__title { font-family: var(--rop-font-display); font-weight: 700; font-size: 1.5rem; letter-spacing: 0.06em; color: var(--rop-gold-pale); text-transform: uppercase; margin-bottom: 0.5rem; }
+.rop-cta-banner__text { font-size: 1rem; color: var(--rop-text); max-width: 600px; margin: 0 auto 1.25rem; line-height: 1.6; }
+.rop-cta-banner__actions { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+
+/* ==========================================================================
+   19. FOOTER
+   ========================================================================== */
+.rop-footer { padding: 1rem 0 1.5rem; margin-top: 1.5rem; font-family: var(--rop-font-display); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--rop-text-muted); text-align: center; border-top: 1px solid rgba(184, 148, 46, 0.08); }
+.rop-footer a { color: var(--rop-gold); text-decoration: none; }
+.rop-footer a:hover { color: var(--rop-gold-light); }
+
+/* ==========================================================================
+   20. UTILITY
+   ========================================================================== */
+.rop-text-center { text-align: center; }
+.rop-text-muted  { color: var(--rop-text-muted); }
+.rop-mb-sm { margin-bottom: 0.5rem; }
+.rop-mb-md { margin-bottom: 0.75rem; }
+.rop-mb-lg { margin-bottom: 1.25rem; }
+.rop-font-display { font-family: var(--rop-font-display); }
+
+/* ==========================================================================
+   21. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .rop-hero { min-height: 260px; }
+  .rop-hero__inner { padding: 1.5rem 1rem; }
+  .rop-hero__image { max-width: 260px; }
+  .rop-experience-band { grid-template-columns: 1fr; }
+  .rop-experience-band__feature { grid-column: auto; grid-row: auto; min-height: 200px; }
+  .rop-factions-showcase { grid-template-columns: 1fr; }
+  .rop-faction-card { min-height: 200px; }
+  .rop-mode--modern-tab { flex-direction: column; }
+  .rop-mode--modern-tab .rop-tab-nav { width: 100%; }
+  .rop-char-hero { flex-direction: column; }
+  .rop-home__status-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* ==========================================================================
+   21. SUPPLEMENTAL — Dashboard, Armory, Chargen, Admin, Pagination
+   ========================================================================== */
+
+/* --- Dashboard Character Hero --- */
+.rop-char-hero { display: flex; gap: 1rem; padding: 1.25rem; background: var(--rop-stone-deep); border: 1px solid rgba(120,100,50,0.1); border-radius: var(--rop-radius-panel); margin-bottom: 1rem; align-items: center; }
+.rop-char-hero__portrait { flex: 0 0 120px; }
+.rop-char-hero__portrait img { width: 120px; height: 120px; object-fit: cover; border-radius: 2px; border: 1px solid rgba(184,148,46,0.15); }
+.rop-char-hero__info { flex: 1; }
+.rop-char-hero__name { font-family: var(--rop-font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: 0.06em; color: var(--rop-gold-pale); margin-bottom: 0.2rem; text-transform: uppercase; }
+.rop-char-hero__welcome { font-family: var(--rop-font-body); font-size: 0.9rem; font-style: italic; color: var(--rop-text-muted); margin-bottom: 0.6rem; }
+.rop-char-hero__meta { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.35rem 1rem; }
+.rop-char-hero__meta-item { display: flex; justify-content: space-between; padding: 0.2rem 0; border-bottom: 1px solid rgba(120,100,50,0.06); }
+.rop-char-hero__meta-label { font-family: var(--rop-font-display); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; color: var(--rop-text-muted); text-transform: uppercase; }
+.rop-char-hero__meta-value { font-size: 0.85rem; color: var(--rop-text-heading); }
+
+/* --- Dashboard Actions --- */
+.rop-dash-actions { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; margin-bottom: 1.5rem; }
+.rop-dash-action { background-size: cover; background-position: center; border-radius: var(--rop-radius-panel); border: 1px solid rgba(120,100,50,0.1); display: flex; align-items: center; text-decoration: none !important; overflow: hidden; position: relative; min-height: 100px; transition: border-color var(--rop-transition), box-shadow var(--rop-transition); }
+.rop-dash-action:hover { border-color: rgba(184,148,46,0.25); box-shadow: 0 0 16px rgba(184,148,46,0.06); }
+.rop-dash-action::before { content: ""; position: absolute; inset: 0; background: rgba(10,8,6,0.55); z-index: 1; }
+.rop-dash-action__content { position: relative; z-index: 2; padding: 1rem; }
+.rop-dash-action__title { font-family: var(--rop-font-display); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.05em; color: var(--rop-gold-pale); text-transform: uppercase; margin-bottom: 0.2rem; }
+.rop-dash-action__desc { font-size: 0.82rem; color: var(--rop-text-muted); }
+.rop-dash-action--disabled { opacity: 0.5; pointer-events: none; }
+.rop-dash-action--disabled .rop-dash-action__title { color: var(--rop-text-muted); }
+.rop-dashboard__banner { width: 100%; max-height: 200px; object-fit: cover; border-radius: var(--rop-radius-panel); border: 1px solid rgba(184,148,46,0.1); margin-bottom: 1rem; }
+.rop-dashboard__banner-wrapper { margin-bottom: 1rem; }
+.rop-dash-section-title { font-family: var(--rop-font-display); font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; color: var(--rop-gold-light); text-transform: uppercase; margin-bottom: 0.6rem; }
+.rop-dash-news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.6rem; margin-bottom: 1.5rem; }
+.rop-dash-news-card { background: var(--rop-stone-deep); border: 1px solid rgba(120,100,50,0.08); border-radius: var(--rop-radius-panel); padding: 1rem; }
+.rop-dash-news-card__date { font-family: var(--rop-font-display); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; color: var(--rop-gold); text-transform: uppercase; margin-bottom: 0.3rem; }
+.rop-dash-news-card__title { font-family: var(--rop-font-display); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em; color: var(--rop-text-heading); margin-bottom: 0.3rem; }
+.rop-dash-news-card__excerpt { font-size: 0.82rem; color: var(--rop-text-muted); line-height: 1.5; }
+
+/* --- No Character State --- */
+.rop-nochar__icon { font-size: 2rem; color: var(--rop-text-muted); }
+
+/* --- Action Cards --- */
+.rop-action-card { background: var(--rop-stone-deep); border: 1px solid rgba(120,100,50,0.1); border-radius: var(--rop-radius-panel); padding: 1rem; text-decoration: none !important; display: block; transition: border-color var(--rop-transition); }
+.rop-action-card:hover { border-color: rgba(184,148,46,0.2); }
+.rop-action-card__title { font-family: var(--rop-font-display); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em; color: var(--rop-gold-light); text-transform: uppercase; margin-bottom: 0.4rem; }
+.rop-action-card__body { font-size: 0.85rem; color: var(--rop-text-muted); }
+
+/* --- Alerts --- */
+.rop-alert { padding: 0.6rem 1rem; border-radius: var(--rop-radius); margin-bottom: 0.75rem; font-size: 0.9rem; }
+.rop-alert--warning { background: rgba(200,112,48,0.1); border: 1px solid rgba(200,112,48,0.2); color: var(--rop-ember); }
+
+/* --- Badges --- */
+.rop-badge { display: inline-block; font-family: var(--rop-font-display); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; padding: 0.15rem 0.5rem; border-radius: 1px; text-transform: uppercase; }
+.rop-badge--gold { background: rgba(184,148,46,0.15); color: var(--rop-gold-light); }
+.rop-badge--info { background: rgba(90,128,176,0.15); color: var(--rop-steel-light); }
+.rop-badge--warning { background: rgba(200,112,48,0.15); color: var(--rop-ember); }
+.rop-badge--danger { background: rgba(139,34,34,0.15); color: var(--rop-crimson-light); }
+.rop-badge--success { background: rgba(76,175,80,0.15); color: #4caf50; }
+.rop-badge--sm { font-size: 0.55rem; padding: 0.1rem 0.4rem; }
+
+/* --- Code --- */
+.rop-code { font-family: monospace; background: rgba(0,0,0,0.35); padding: 0.1em 0.4em; border-radius: 2px; color: var(--rop-gold-pale); font-size: 0.9em; }
+
+/* --- Dividers --- */
+.rop-divider { height: 1px; background: rgba(184,148,46,0.08); margin: 0.75rem 0; }
+
+/* --- Empty State --- */
+.rop-empty-state { text-align: center; padding: 2rem 1rem; }
+.rop-empty-state__icon { font-size: 2.5rem; color: var(--rop-text-muted); margin-bottom: 0.5rem; }
+
+/* --- Error Pages --- */
+.rop-error-page { text-align: center; padding: 3rem 1.5rem; }
+.rop-error-page__code { font-family: var(--rop-font-display); font-size: 4rem; font-weight: 700; color: var(--rop-gold); margin-bottom: 0.5rem; }
+.rop-error-page__icon { font-size: 3rem; color: var(--rop-text-muted); margin-bottom: 1rem; }
+
+/* --- Faction Labels --- */
+.rop-faction-icon { display: inline-block; width: 14px; height: 14px; border-radius: 2px; vertical-align: middle; margin-right: 0.3rem; }
+.rop-faction-icon--good { background: var(--rop-steel); }
+.rop-faction-icon--evil { background: var(--rop-crimson); }
+.rop-faction-label { font-family: var(--rop-font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.rop-faction-label--good { color: var(--rop-steel-light); }
+.rop-faction-label--evil { color: var(--rop-crimson-light); }
+
+/* --- Forms (supplemental) --- */
+.rop-form { max-width: 600px; }
+.rop-form-actions { display: flex; gap: 0.6rem; justify-content: flex-start; margin-top: 1rem; }
+.rop-form-inline { display: flex; gap: 0.5rem; align-items: flex-end; flex-wrap: wrap; }
+.rop-label { font-family: var(--rop-font-display); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; color: var(--rop-text-heading); text-transform: uppercase; }
+.rop-input { font-family: var(--rop-font-body); font-size: 0.95rem; color: var(--rop-text); background: var(--rop-stone-deep); border: 1px solid rgba(120,100,50,0.14); border-radius: var(--rop-radius); padding: 0.5rem 0.75rem; transition: border-color var(--rop-transition); }
+.rop-input:focus { outline: none; border-color: rgba(184,148,46,0.35); box-shadow: 0 0 0 2px rgba(184,148,46,0.08); }
+.rop-input--lg { padding: 0.65rem 1rem; font-size: 1.05rem; }
+
+/* --- Grids --- */
+.rop-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.rop-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+@media (max-width: 768px) { .rop-grid-2, .rop-grid-3 { grid-template-columns: 1fr; } }
+
+/* --- Experience Band (supplemental) --- */
+.rop-experience-band__action-title { font-family: var(--rop-font-display); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em; color: var(--rop-gold-light); text-transform: uppercase; margin-bottom: 0.05rem; }
+.rop-experience-band__action-desc { font-size: 0.78rem; color: var(--rop-text-muted); }
+.rop-experience-band--alt { grid-template-columns: 1fr 1fr; }
+.rop-experience-band__play { background-size: cover; background-position: center; border-radius: var(--rop-radius-panel); border: 1px solid rgba(184,148,46,0.15); display: flex; align-items: center; text-decoration: none !important; overflow: hidden; position: relative; min-height: 120px; grid-column: 1 / -1; transition: border-color var(--rop-transition), box-shadow var(--rop-transition); }
+.rop-experience-band__play:hover { border-color: rgba(184,148,46,0.3); box-shadow: 0 0 20px rgba(184,148,46,0.08); }
+.rop-experience-band__play::before { content: ""; position: absolute; inset: 0; background: rgba(10,8,6,0.5); z-index: 1; }
+.rop-experience-band__play-content { position: relative; z-index: 2; padding: 1.5rem; text-align: center; width: 100%; }
+.rop-experience-band__play-title { font-family: var(--rop-font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: 0.06em; color: var(--rop-gold-pale); text-transform: uppercase; }
+.rop-experience-band__play-subtitle { font-size: 0.9rem; color: var(--rop-text-muted); }
+
+/* --- Media --- */
+.rop-media__img { max-width: 100%; height: auto; display: block; border-radius: var(--rop-radius-panel); border: 1px solid rgba(120,100,50,0.1); }
+
+/* --- Messages --- */
+.rop-messages { margin-bottom: 0.75rem; }
+
+/* --- Pagination --- */
+.rop-pagination { text-align: center; margin: 1rem 0; }
+.rop-pagination__list { display: inline-flex; list-style: none; padding: 0; margin: 0; gap: 0.2rem; }
+.rop-pagination__item { display: inline-block; }
+.rop-pagination__link { display: inline-block; font-family: var(--rop-font-display); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.04em; color: var(--rop-text-muted); text-decoration: none !important; padding: 0.3rem 0.6rem; border: 1px solid rgba(120,100,50,0.1); border-radius: 2px; transition: all var(--rop-transition); }
+.rop-pagination__link:hover { color: var(--rop-gold-light); border-color: rgba(184,148,46,0.25); background: rgba(184,148,46,0.04); }
+.rop-pagination__link--active { color: var(--rop-black) !important; background: var(--rop-gold); border-color: var(--rop-gold); font-weight: 700; }
+.rop-pagination__link--disabled { opacity: 0.4; pointer-events: none; }
+
+/* --- Panel (supplemental) --- */
+.rop-panel__header--danger { background: linear-gradient(180deg, rgba(139,34,34,0.1) 0%, transparent 100%); border-bottom-color: rgba(139,34,34,0.12); color: var(--rop-crimson-light); }
+
+/* --- Stat Items --- */
+.rop-stat-item { display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(120,100,50,0.06); }
+.rop-stat-item__label { font-family: var(--rop-font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: var(--rop-text-muted); text-transform: uppercase; }
+.rop-stat-item__value { font-size: 0.88rem; color: var(--rop-text-heading); }
+
+/* --- Status Bar (supplemental) --- */
+.rop-status-bar--dashboard { padding: 0.3rem 0.8rem; font-size: 0.8rem; }
+
+/* --- Table --- */
+.rop-table { width: 100%; border-collapse: collapse; }
+.rop-table th, .rop-table td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid rgba(120,100,50,0.08); font-size: 0.88rem; }
+.rop-table th { font-family: var(--rop-font-display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; color: var(--rop-gold-light); text-transform: uppercase; }
+.rop-table tr:hover td { background: rgba(184,148,46,0.03); }
+
+/* --- Text --- */
+.rop-text-heading { color: var(--rop-text-heading); }
+.rop-text-primary { color: var(--rop-gold-light); }
+.rop-gold { color: var(--rop-gold); }
+.rop-crimson { color: var(--rop-crimson); }
+.rop-crimson-light { color: var(--rop-crimson-light); }
+.rop-stone-deep { background-color: var(--rop-stone-deep); }
+
+/* --- Card Fallback --- */
+.rop-card-fallback-img { display: block; max-width: 100%; height: auto; border-radius: var(--rop-radius-panel); }

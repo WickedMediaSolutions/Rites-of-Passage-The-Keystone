@@ -1,0 +1,30 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Character Creation{% endblock %}
+
+{% block content %}
+<div class="rop-page-title">
+  <h1>Character Creation</h1>
+  <p class="rop-subtitle">Your legend begins here</p>
+</div>
+
+<div class="rop-panel rop-panel--ornate">
+  <div class="rop-panel__header">Coming Soon</div>
+  <div class="rop-panel__body rop-text-center">
+    <div class="rop-nochar__icon mb-3">&mdash;</div>
+    <p>
+      The full character creation experience is currently in development
+      and will be available in the next update.
+    </p>
+    <p class="rop-text-muted">
+      <small>Choose your faction, race, profession, and forge your
+      unique destiny in the realm of Rites of Passage.</small>
+    </p>
+    <div class="mt-3">
+      <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--secondary">
+        Back to Dashboard
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

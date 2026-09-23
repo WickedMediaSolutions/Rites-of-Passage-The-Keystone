@@ -1,0 +1,55 @@
+{% comment %}
+Rites of Passage — Pagination Partial
+
+Conditional: renders only when a ``page_obj`` (Django Page) is in
+the template context AND the associated paginator shows more than
+one page.  This prevents an empty pagination bar from appearing on
+pages that use TemplateView (home, dashboard, etc.).
+
+When active it produces a compact, dark-fantasy styled paginator
+that works with Django's standard ``ListView`` pagination contract
+(``page_obj``, ``is_paginated``, ``page_obj.has_previous``, etc.).
+{% endcomment %}
+
+{% if page_obj and is_paginated and page_obj.paginator.num_pages > 1 %}
+<nav class="rop-pagination" aria-label="Page navigation">
+  <ul class="rop-pagination__list">
+
+    {# Previous #}
+    <li class="rop-pagination__item {% if not page_obj.has_previous %}rop-pagination__item--disabled{% endif %}">
+      {% if page_obj.has_previous %}
+        <a class="rop-pagination__link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous page">
+          &laquo; Prev
+        </a>
+      {% else %}
+        <span class="rop-pagination__link rop-pagination__link--disabled">&laquo; Prev</span>
+      {% endif %}
+    </li>
+
+    {# Page numbers #}
+    {% for num in page_obj.paginator.page_range %}
+      {% if num == page_obj.number %}
+        <li class="rop-pagination__item rop-pagination__item--active">
+          <span class="rop-pagination__link rop-pagination__link--active">{{ num }}</span>
+        </li>
+      {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+        <li class="rop-pagination__item">
+          <a class="rop-pagination__link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {# Next #}
+    <li class="rop-pagination__item {% if not page_obj.has_next %}rop-pagination__item--disabled{% endif %}">
+      {% if page_obj.has_next %}
+        <a class="rop-pagination__link" href="?page={{ page_obj.next_page_number }}" aria-label="Next page">
+          Next &raquo;
+        </a>
+      {% else %}
+        <span class="rop-pagination__link rop-pagination__link--disabled">Next &raquo;</span>
+      {% endif %}
+    </li>
+
+  </ul>
+</nav>
+{% endif %}

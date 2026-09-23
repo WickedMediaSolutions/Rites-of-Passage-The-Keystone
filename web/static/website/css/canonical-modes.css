@@ -1,0 +1,596 @@
+/* ==========================================================================
+   Rites of Passage — CANONICAL MODES & GLOBAL SHELL
+   Ornate Stone / Modern Tab / Parchment / Cinematic
+   Loaded AFTER rop-theme.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   GLOBAL ARCHITECTURAL SHELL
+   -------------------------------------------------------------------------- */
+.rop-world-frame {
+  max-width: 1560px;
+  margin: 0 auto;
+  position: relative;
+  border-left: 2px solid rgba(90,128,176,0.06);
+  border-right: 2px solid rgba(160,80,80,0.06);
+}
+
+.rop-world-frame::before {
+  content: "";
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(90,128,176,0.14) 10%,
+    rgba(184,148,46,0.18) 25%,
+    rgba(184,148,46,0.25) 50%,
+    rgba(184,148,46,0.18) 75%,
+    rgba(160,80,80,0.14) 90%,
+    transparent 100%);
+}
+.rop-world-frame::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(90,128,176,0.10) 10%,
+    rgba(184,148,46,0.12) 25%,
+    rgba(184,148,46,0.18) 50%,
+    rgba(184,148,46,0.12) 75%,
+    rgba(160,80,80,0.10) 90%,
+    transparent 100%);
+  opacity: 0.7;
+  margin-bottom: 1.2rem;
+}
+
+#main-content {
+  background: linear-gradient(90deg,
+    rgba(0,0,0,0.10) 0%,
+    transparent 4%,
+    transparent 96%,
+    rgba(0,0,0,0.10) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   BODY — cinematic depth, faction accent glow
+   -------------------------------------------------------------------------- */
+body {
+  background:
+    radial-gradient(ellipse at 50% 0%,  rgba(30,24,18,0.55) 0%, transparent 65%),
+    radial-gradient(ellipse at 5%  40%, rgba(90,128,176,0.06) 0%, transparent 35%),
+    radial-gradient(ellipse at 95% 40%, rgba(160,80,80,0.06) 0%, transparent 35%),
+    radial-gradient(ellipse at 50% 90%, rgba(184,148,46,0.04) 0%, transparent 50%),
+    var(--rop-black) !important;
+}
+
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg,
+    transparent, transparent 2px,
+    rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
+  z-index: -1; pointer-events: none; opacity: 0.35;
+}
+
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  border-left: 1px solid rgba(90,128,176,0.05);
+  border-right: 1px solid rgba(160,80,80,0.05);
+  z-index: -1; pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   ORNATE STONE MODE — carved blackened stone + antique gold edges
+   -------------------------------------------------------------------------- */
+.rop-mode--ornate-stone,
+.rop-panel--ornate {
+  border-color: rgba(120,100,50,0.14) !important;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.35),
+              inset 0 1px 0 rgba(184,148,46,0.04) !important;
+}
+
+.rop-mode--ornate-stone .rop-panel__header,
+.rop-panel--ornate .rop-panel__header {
+  background: linear-gradient(180deg,
+    rgba(184,148,46,0.10) 0%,
+    rgba(184,148,46,0.03) 100%) !important;
+  border-bottom: 1px solid rgba(184,148,46,0.12) !important;
+  letter-spacing: 0.07em;
+}
+
+/* --------------------------------------------------------------------------
+   MODERN TAB MODE — dark codex with sidebar navigation
+   -------------------------------------------------------------------------- */
+.rop-mode--modern-tab {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.rop-mode--modern-tab .rop-tab-nav {
+  flex: 0 0 220px;
+  background: var(--rop-stone-deep);
+  border: 1px solid rgba(120,100,50,0.10);
+  border-radius: var(--rop-radius-panel);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+.rop-mode--modern-tab .rop-tab-nav__item {
+  display: block;
+  padding: 0.65rem 1rem;
+  font-family: var(--rop-font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--rop-text-muted);
+  text-decoration: none !important;
+  border-left: 3px solid transparent;
+  transition: all var(--rop-transition);
+  cursor: pointer;
+}
+.rop-mode--modern-tab .rop-tab-nav__item:hover {
+  color: var(--rop-gold-light);
+  background: rgba(184,148,46,0.05);
+  border-left-color: rgba(184,148,46,0.25);
+}
+.rop-mode--modern-tab .rop-tab-nav__item--active {
+  color: var(--rop-gold-light) !important;
+  background: rgba(184,148,46,0.08);
+  border-left-color: var(--rop-crimson) !important;
+  font-weight: 700;
+}
+
+.rop-mode--modern-tab .rop-tab-content {
+  flex: 1;
+  min-width: 300px;
+}
+/* --------------------------------------------------------------------------
+   PARCHMENT MODE — aged manuscript inside dark shell
+   -------------------------------------------------------------------------- */
+.rop-mode--parchment,
+.rop-parchment {
+  background:
+    linear-gradient(135deg,
+      rgba(200,180,150,0.16) 0%,
+      rgba(180,155,120,0.09) 30%,
+      rgba(210,190,155,0.11) 60%,
+      rgba(170,140,105,0.08) 100%) !important;
+  border: 1px solid rgba(180,150,110,0.14) !important;
+  color: var(--rop-text-on-parchment) !important;
+  position: relative;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3),
+              inset 0 0 60px rgba(200,160,100,0.05) !important;
+}
+
+.rop-mode--parchment::before,
+.rop-parchment::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem; left: 0.4rem; right: 0.4rem; bottom: 0.4rem;
+  border: 1px solid rgba(180,150,100,0.06);
+  pointer-events: none;
+}
+
+.rop-mode--parchment h1,
+.rop-mode--parchment h2,
+.rop-mode--parchment h3,
+.rop-parchment h1,
+.rop-parchment h2,
+.rop-parchment h3 {
+  color: var(--rop-text-heading-parchment) !important;
+}
+
+.rop-mode--parchment p,
+.rop-parchment p {
+  color: var(--rop-text-on-parchment) !important;
+}
+
+.rop-mode--parchment a,
+.rop-parchment a {
+  color: #6a4a1e !important;
+}
+
+/* --------------------------------------------------------------------------
+   CINEMATIC MODE — hero / showcase / banner
+   -------------------------------------------------------------------------- */
+.rop-mode--cinematic {
+  position: relative;
+  overflow: hidden;
+  background: var(--rop-black);
+}
+
+.rop-mode--cinematic::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(10,8,6,0.65) 0%,
+    rgba(10,8,6,0.20) 40%,
+    rgba(10,8,6,0.75) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rop-mode--cinematic .rop-cinematic__content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   HERO — Cathedral cinematic entrance
+   -------------------------------------------------------------------------- */
+.rop-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 30% 30%,rgba(90,128,176,0.10) 0%,transparent 50%),
+    radial-gradient(ellipse at 70% 40%,rgba(160,80,80,0.10) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 100%,rgba(184,148,46,0.07) 0%,transparent 60%),
+    var(--rop-black);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(184,148,46,0.10);
+}
+
+.rop-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg,
+    transparent,transparent 2px,
+    rgba(0,0,0,0.025) 2px,rgba(0,0,0,0.025) 4px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rop-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(180deg,transparent 0%,var(--rop-black) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.rop-hero__inner {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 2rem;
+  max-width: 700px;
+}
+
+.rop-hero__image {
+  max-width: 380px;
+  width: 80%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.rop-hero__hook {
+  font-family: var(--rop-font-body);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--rop-text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.rop-hero__actions {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* --------------------------------------------------------------------------
+   FACTION SHOWCASE — Asymmetrical blue vs crimson
+   -------------------------------------------------------------------------- */
+.rop-factions-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.rop-faction-card {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.rop-faction-card--good {
+  background: linear-gradient(135deg,
+    rgba(25,35,50,0.85) 0%,
+    rgba(18,22,32,0.92) 50%,
+    var(--rop-black-steel) 100%);
+  border-right: 1px solid rgba(90,128,176,0.15);
+}
+
+.rop-faction-card--good::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%,
+    rgba(90,128,176,0.14) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.rop-faction-card--evil {
+  background: linear-gradient(225deg,
+    rgba(50,22,22,0.85) 0%,
+    rgba(32,16,16,0.92) 50%,
+    var(--rop-black-steel) 100%);
+  border-left: 1px solid rgba(160,80,80,0.15);
+}
+
+.rop-faction-card--evil::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%,
+    rgba(160,80,80,0.14) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.rop-faction-card__banner {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+.rop-faction-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+
+.rop-faction-card__body {
+  position: relative;
+  z-index: 2;
+}
+
+.rop-faction-card__name {
+  font-family: var(--rop-font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.15rem;
+  text-transform: uppercase;
+}
+
+.rop-faction-card--good .rop-faction-card__name {
+  color: var(--rop-steel-light);
+}
+
+.rop-faction-card--evil .rop-faction-card__name {
+  color: var(--rop-crimson-light);
+}
+
+.rop-faction-card__title {
+  font-family: var(--rop-font-body);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--rop-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.rop-faction-card__desc {
+  font-size: 0.92rem;
+  color: var(--rop-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.rop-faction-card__races {
+  font-family: var(--rop-font-display);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.rop-faction-card--good .rop-faction-card__races {
+  color: var(--rop-steel);
+}
+
+.rop-faction-card--evil .rop-faction-card__races {
+  color: var(--rop-crimson);
+}
+/* --------------------------------------------------------------------------
+   STATUS BAND — compact info strip
+   -------------------------------------------------------------------------- */
+.rop-home__status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  margin-bottom: 0.75rem;
+}
+
+.rop-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--rop-font-display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--rop-text-muted);
+}
+
+.rop-status__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.rop-status__dot--online {
+  background: #4a8;
+  box-shadow: 0 0 6px rgba(68,170,136,0.5);
+}
+
+.rop-status__dot--offline {
+  background: #a44;
+  box-shadow: 0 0 6px rgba(170,68,68,0.5);
+}
+
+.rop-status-bar__divider {
+  color: rgba(184,148,46,0.25);
+}
+
+.rop-home__quick-links {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.rop-quick-link {
+  font-family: var(--rop-font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--rop-text-muted);
+  text-decoration: none !important;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(120,100,50,0.12);
+  border-radius: 2px;
+  transition: all var(--rop-transition);
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.25);
+}
+
+.rop-quick-link:hover {
+  color: var(--rop-gold-light);
+  border-color: rgba(184,148,46,0.30);
+}
+
+/* --------------------------------------------------------------------------
+   EXPERIENCE BAND — Homepage feature layout
+   -------------------------------------------------------------------------- */
+.rop-experience-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.rop-experience-band__feature {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  min-height: 340px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--rop-radius-panel);
+  border: 1px solid rgba(184,148,46,0.15);
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.rop-experience-band__feature::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,transparent 40%,rgba(10,8,6,0.85) 100%);
+}
+
+.rop-experience-band__feature-label {
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+  font-family: var(--rop-font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: var(--rop-gold-pale);
+  text-transform: uppercase;
+}
+
+.rop-experience-band__tile {
+  background: var(--rop-stone-deep);
+  border: 1px solid rgba(120,100,50,0.10);
+  border-radius: var(--rop-radius-panel);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+  transition: border-color var(--rop-transition),box-shadow var(--rop-transition);
+  position: relative;
+  overflow: hidden;
+  min-height: 85px;
+}
+
+.rop-experience-band__tile:hover {
+  border-color: rgba(184,148,46,0.25);
+  box-shadow: 0 0 16px rgba(184,148,46,0.06);
+}
+
+.rop-experience-band__tile--img {
+  background-size: cover;
+  background-position: center;
+}
+
+.rop-experience-band__tile--img::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(10,8,6,0.6);
+}
+
+.rop-experience-band__tile-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--rop-font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--rop-gold-light);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   IMAGE HANDLING
+   -------------------------------------------------------------------------- */
+.rop-media__img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--rop-radius-panel);
+  border: 1px solid rgba(120,100,50,0.10);
+}
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .rop-hero { min-height: 260px; }
+  .rop-hero__inner { padding: 1.5rem 1rem; }
+  .rop-hero__image { max-width: 260px; }
+  .rop-experience-band { grid-template-columns: 1fr; }
+  .rop-experience-band__feature {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 200px;
+  }
+  .rop-factions-showcase { grid-template-columns: 1fr; }
+  .rop-faction-card { min-height: 200px; }
+  .rop-mode--modern-tab { flex-direction: column; }
+  .rop-mode--modern-tab .rop-tab-nav { width: 100%; }
+  .rop-char-hero { flex-direction: column; }
+  .rop-home__status-row { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,87 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Character Creation — Profession{% endblock %}
+
+{% block content %}
+
+<div class="rop-page-title">
+  <h1>Character Creation</h1>
+  <p class="rop-subtitle">Forge your path</p>
+</div>
+
+{% include "website/portal/chargen/_progress.html" %}
+
+<section class="rop-panel rop-panel--ornate mb-4" aria-labelledby="chargen-prof-heading">
+  <div class="rop-panel__header" id="chargen-prof-heading">
+    Step 4 &mdash; Select Your Profession
+  </div>
+  <div class="rop-panel__body">
+
+    {# Selected summary #}
+    {% if chargen_race %}
+    <div class="rop-chargen__summary mb-4">
+      <span>Race: <strong>
+        {% for rid, rdef in all_races.items %}
+          {% if rid == chargen_race %}{{ rdef.name }}{% endif %}
+        {% endfor %}
+      </strong></span>
+      <span class="mx-2">&middot;</span>
+      <span>Faction: <strong>
+        {% if chargen_faction == "good" %}Valroian{% else %}Mordrath{% endif %}
+      </strong></span>
+    </div>
+    {% endif %}
+
+    <p class="rop-text-muted text-center mb-4">
+      Your profession determines your combat role and skill progression.
+      <br><strong>This choice is permanent.</strong>
+    </p>
+
+    <form method="post" action="{% url 'rop-chargen' %}">
+      {% csrf_token %}
+
+      <div class="rop-chargen__card-grid rop-chargen__card-grid--profession">
+        {% for prof_id, prof_def in professions.items %}
+          {% include "website/portal/chargen/_profession_card.html" with prof_id=prof_id prof_def=prof_def %}
+        {% endfor %}
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="rop-btn rop-btn--primary rop-btn--lg"
+                id="chargen-prof-submit" disabled>
+          Continue to Attributes &rarr;
+        </button>
+        <br>
+        <small class="rop-text-muted">Select a profession to continue</small>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--link rop-btn--sm">
+          &larr; Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block header_ext %}
+{{ block.super }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var radios = document.querySelectorAll('input[name="profession"]');
+  var submit = document.getElementById('chargen-prof-submit');
+  if (!radios.length || !submit) return;
+  function update() {
+    var sel = document.querySelector('input[name="profession"]:checked');
+    submit.disabled = !sel;
+  }
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', update);
+  }
+  update();
+});
+</script>
+{% endblock %}

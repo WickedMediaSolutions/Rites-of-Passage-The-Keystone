@@ -1,0 +1,71 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Armory{% endblock %}
+
+{% block content %}
+
+<div class="rop-container">
+  <div class="rop-art">
+    <div class="rop-art__frame">
+      <img src="{% static 'website/images/armory.png' %}" alt="Armory" width="1024" height="439">
+    </div>
+    <span class="rop-art__shade"></span>
+  </div>
+  <h1>Armory</h1>
+  <p class="rop-lead">Hall of Legends — Character Registry</p>
+</div>
+
+<div class="rop-container" style="margin-bottom:1rem;">
+  <form method="get" action="{% url 'rop-armory' %}" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+    <input type="text" name="q" value="{{ search_query|default:'' }}" placeholder="Search by character name…" class="rop-input" style="flex:1;min-width:200px;">
+    <button type="submit" class="rop-btn rop-btn--gold">Search</button>
+    {% if search_query %}<a href="{% url 'rop-armory' %}" class="rop-btn rop-btn--iron">Clear</a>{% endif %}
+  </form>
+  {% if search_query %}
+  <p class="rop-muted" style="margin-top:0.4rem;">{{ character_count }} result{{ character_count|pluralize }} for &ldquo;{{ search_query }}&rdquo; ({{ total_count }} total)</p>
+  {% else %}
+  <p class="rop-muted" style="margin-top:0.4rem;">{{ character_count }} character{{ character_count|pluralize }} registered</p>
+  {% endif %}
+</div>
+
+<div class="rop-container">
+  {% if characters %}
+  <div class="rop-grid rop-grid--4">
+    {% for char in characters %}
+    <a href="{% url 'rop-armory-character' character_name=char.key %}" class="rop-card" style="text-decoration:none;">
+      {% with race_id=char.race_id %}
+      <div class="rop-card__img">
+        {% if race_id %}
+        <img src="{% static '' %}website/images/{{ char.race_image|default:'armory-character-fallback.png' }}"
+             alt="{{ race_id }}" width="1400" height="800" loading="lazy"
+             onerror="this.onerror=null;this.src='{% static 'website/images/armory-character-fallback.png' %}';">
+        {% else %}
+        <img src="{% static 'website/images/armory-character-fallback.png' %}" alt="" width="1400" height="800" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="rop-card__body">
+        <div class="rop-card__title">{{ char.key }}</div>
+        {% if char.level is not None %}<span class="rop-badge">Level {{ char.level }}</span>{% endif %}
+      </div>
+      {% endwith %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner" style="text-align:center;">
+      {% if search_query %}
+      <p class="rop-muted">No characters match &ldquo;{{ search_query }}&rdquo;.</p>
+      <a href="{% url 'rop-armory' %}" class="rop-btn rop-btn--iron rop-btn--sm">Browse All</a>
+      {% else %}
+      <p class="rop-muted">No characters registered yet.</p>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

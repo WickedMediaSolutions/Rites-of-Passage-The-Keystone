@@ -1,0 +1,307 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Getting Started{% endblock %}
+
+{% block content %}
+
+{# ── CINEMATIC MASTHEAD ─────────────────────────────────────────── #}
+<div class="rop-container">
+  <div class="rop-start-masthead">
+    <div class="rop-start-masthead__frame">
+      <img
+        src="{% static 'website/images/getting-started.webp' %}"
+        alt=""
+        width="1200"
+        height="675"
+        aria-hidden="true"
+      >
+    </div>
+    <div class="rop-start-masthead__overlay">
+      <h1 class="rop-start-masthead__title">Getting Started</h1>
+      <p class="rop-start-masthead__subtitle">
+        From account creation to your first steps inside Rites of Passage.
+      </p>
+    </div>
+  </div>
+</div>
+
+{# ── STONE DIVIDER ──────────────────────────────────────────────── #}
+<div class="rop-container">
+  <div class="rop-start-divider" aria-hidden="true">
+    <img
+      src="{% static 'website/images/rop-stone-divider.png' %}"
+      alt=""
+      width="1480"
+      height="40"
+    >
+  </div>
+</div>
+
+{# ── INTRODUCTION ───────────────────────────────────────────────── #}
+<div class="rop-container">
+  <div class="rop-start-intro">
+    <p>
+      New to Rites of Passage — or to MUDs entirely? This guide walks you
+      through every step, from registering an account to understanding your
+      first moments inside the realm. Follow each section in order and you
+      will be ready to begin your journey.
+    </p>
+  </div>
+</div>
+
+{# ── GUIDE SECTIONS ─────────────────────────────────────────────── #}
+<div class="rop-container">
+
+  {# ── 01 · CREATE YOUR ACCOUNT ─────────────────────────────────── #}
+  <div class="rop-start-section">
+    <div class="rop-start-section__marker" aria-hidden="true">01</div>
+    <div class="rop-start-section__body">
+      <h2 class="rop-start-section__heading">Create Your Account</h2>
+      <p>
+        An <strong>account</strong> is your persistent identity. It stores
+        your character, settings, and progress across every session. You
+        will use it to log in each time you return.
+      </p>
+      <ul>
+        <li>Choose a unique <strong>username</strong>.</li>
+        <li>Provide your <strong>email address</strong>.</li>
+        <li>Set a <strong>strong password</strong>.</li>
+        <li>No email verification is required — you can register and
+            play immediately.</li>
+      </ul>
+      <p>
+        After registering you will be taken to your Dashboard, where you
+        can create your character. Returning players should use the
+        <strong>Log In</strong> link instead.
+      </p>
+      <div class="rop-start-section__actions">
+        {% if not user.is_authenticated %}
+        <a href="{% url 'rop-register' %}" class="rop-btn rop-btn--crimson">Register</a>
+        <a href="{% url 'rop-login' %}" class="rop-btn rop-btn--iron">Log In</a>
+        {% else %}
+        <span class="rop-start-logged-in">
+          <span class="rop-status__dot rop-status__dot--online"></span>
+          You are logged in. Visit your
+          <a href="{% url 'rop-dashboard' %}">Dashboard</a>.
+        </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# ── 02 · CREATE YOUR CHARACTER ───────────────────────────────── #}
+  <div class="rop-start-section">
+    <div class="rop-start-section__marker" aria-hidden="true">02</div>
+    <div class="rop-start-section__body">
+      <h2 class="rop-start-section__heading">Create Your Character</h2>
+      <p>
+        Every account holds <strong>exactly one character</strong>. Your
+        character is your avatar in the world — their name, race, and
+        profession are permanent choices that define your entire journey.
+      </p>
+      <ol>
+        <li>From your Dashboard, select <strong>Create Character</strong>
+            to begin the character-creation wizard.</li>
+        <li>Choose a <strong>character name</strong>. This is permanent
+            and cannot be changed later.</li>
+        <li>Select a <strong>race</strong>. Your race grants unique
+            traits and determines your faction allegiance —
+            <strong>Valroian</strong> or <strong>Mordrath</strong>. You
+            do not choose a faction separately.</li>
+        <li>Select a <strong>profession</strong>. Your profession
+            determines your combat role and skill progression.</li>
+        <li>Review your rolled <strong>base stats</strong>. You may
+            reroll up to <strong>3 times</strong> before locking in
+            your final numbers.</li>
+        <li>Confirm your choices on the final review screen. Once
+            confirmed, these decisions are permanent.</li>
+      </ol>
+      <div class="rop-start-callout rop-start-callout--warn">
+        <strong>Permanent choices:</strong> Character name, race, and
+        profession cannot be changed after creation. Review everything
+        carefully before you confirm.
+      </div>
+    </div>
+  </div>
+
+  {# ── 03 · ENTER THE REALM ─────────────────────────────────────── #}
+  <div class="rop-start-section">
+    <div class="rop-start-section__marker" aria-hidden="true">03</div>
+    <div class="rop-start-section__body">
+      <h2 class="rop-start-section__heading">Enter the Realm</h2>
+      <p>
+        Rites of Passage is played directly through your browser — no
+        downloads, no installers. Once your character is created, you can
+        connect to the game world immediately.
+      </p>
+      <div class="rop-start-section__actions">
+        {% if webclient_enabled %}
+        <a href="{% url 'webclient:index' %}" class="rop-btn rop-btn--gold rop-btn--lg">Play Now</a>
+        {% else %}
+        <span class="rop-muted">The web client is not currently available.</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# ── 04 · UNDERSTANDING A MUD ─────────────────────────────────── #}
+  <div class="rop-start-section">
+    <div class="rop-start-section__marker" aria-hidden="true">04</div>
+    <div class="rop-start-section__body">
+      <h2 class="rop-start-section__heading">Understanding a MUD</h2>
+      <p>
+        Rites of Passage is a <strong>MUD</strong> — a Multi-User
+        Dungeon. If you have never played one before, here is what you
+        need to know.
+      </p>
+      <p>
+        The game is <strong>text-driven</strong>. Instead of clicking on
+        things, you interact with the world by <strong>typing
+        commands</strong> into a prompt and pressing Enter. The server
+        responds with text describing what happens.
+      </p>
+      <p>When you first connect, you will see:</p>
+      <ul>
+        <li>A <strong>room name</strong> — where you are standing right
+            now.</li>
+        <li>A <strong>room description</strong> — prose that sets the
+            scene.</li>
+        <li><strong>Visible characters, creatures, and objects</strong>
+            — anything else present in the room.</li>
+        <li><strong>Exits</strong> — directions you can travel (north,
+            south, etc.).</li>
+        <li>A <strong>command prompt</strong> — where you type.</li>
+      </ul>
+      <p>
+        Think of it as a living novel that you control. Every action you
+        take is a sentence you type, and the world writes back.
+      </p>
+    </div>
+  </div>
+
+  {# ── 05 · ESSENTIAL FIRST COMMANDS ────────────────────────────── #}
+  <div class="rop-start-section">
+    <div class="rop-start-section__marker" aria-hidden="true">05</div>
+    <div class="rop-start-section__body">
+      <h2 class="rop-start-section__heading">Essential First Commands</h2>
+      <p>
+        Below are the commands every new player should know. Type each
+        one at the prompt and press Enter.
+      </p>
+      <div class="rop-start-cmd-wrap">
+        <table class="rop-start-cmd-table">
+          <thead>
+            <tr>
+              <th scope="col">Command</th>
+              <th scope="col">What It Does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rop-start-cmd-table__cmd"><code>look</code></td>
+              <td>Examine your surroundings — the room, its contents,
+                  and anyone present.</td>
+            </tr>
+            <tr>
+              <td class="rop-start-cmd-table__cmd"><code>score</code></td>
+              <td>Display your character sheet — stats, level, health,
+                  and more.</td>
+            </tr>
+            <tr>
+              <td class="rop-start-cmd-table__cmd"><code>inventory</code></td>
+              <td>See everything you are currently carrying.</td>
+            </tr>
+            <tr>
+              <td class="rop-start-cmd-table__cmd"><code>equipment</code></td>
+              <td>View the gear you have equipped — weapons, armour,
+                  and accessories.</td>
+            </tr>
+            <tr>
+              <td class="rop-start-cmd-table__cmd"><code>who</code></td>
+              <td>Show other players currently online.</td>
+            </tr>
+            <tr>
+              <td class="rop-start-cmd-table__cmd"><code>help</code></td>
+              <td>Open the in-game help system — your reference for
+                  every command.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:0.75rem;">
+        <a href="{% url 'commands' %}" class="rop-btn rop-btn--iron rop-btn--sm">
+          Browse Full Command Reference
+        </a>
+      </p>
+    </div>
+  </div>
+
+  {# ── 06 · YOUR FIRST FEW MINUTES ──────────────────────────────── #}
+  <div class="rop-start-section">
+    <div class="rop-start-section__marker" aria-hidden="true">06</div>
+    <div class="rop-start-section__body">
+      <h2 class="rop-start-section__heading">Your First Few Minutes</h2>
+      <p>
+        Once you are inside the game, here is a quick checklist to get
+        oriented:
+      </p>
+      <ol>
+        <li>Type <code>look</code> and read your starting location
+            carefully — it tells you where you are and what exits are
+            available.</li>
+        <li>Type <code>score</code> to review your character sheet.
+            Familiarise yourself with your stats, level, and health.</li>
+        <li>Type <code>inventory</code> and <code>equipment</code> to
+            see what you are carrying and wearing.</li>
+        <li>Type <code>who</code> to see if other players are online.</li>
+        <li>Type <code>help</code> whenever you are unsure what a
+            command does or what commands are available.</li>
+      </ol>
+      <p>
+        Take your time. There is no rush — explore at your own pace. The
+        world rewards curiosity.
+      </p>
+    </div>
+  </div>
+
+  {# ── 07 · WHERE TO GO NEXT ────────────────────────────────────── #}
+  <div class="rop-start-section">
+    <div class="rop-start-section__marker" aria-hidden="true">07</div>
+    <div class="rop-start-section__body">
+      <h2 class="rop-start-section__heading">Where to Go Next</h2>
+      <p>
+        Bookmark these resources and return to them as you grow:
+      </p>
+      <div class="rop-start-next">
+        <a href="{% url 'game-guide' %}" class="rop-start-next__item">
+          <span class="rop-start-next__label">Game Guide</span>
+          <span class="rop-start-next__desc">Deep-dive mechanics &amp; systems</span>
+        </a>
+        <a href="{% url 'races' %}" class="rop-start-next__item">
+          <span class="rop-start-next__label">Races</span>
+          <span class="rop-start-next__desc">Traits, lore &amp; faction allegiance</span>
+        </a>
+        <a href="{% url 'professions' %}" class="rop-start-next__item">
+          <span class="rop-start-next__label">Professions</span>
+          <span class="rop-start-next__desc">Combat roles &amp; skill paths</span>
+        </a>
+        <a href="{% url 'lore' %}" class="rop-start-next__item">
+          <span class="rop-start-next__label">Lore &amp; World</span>
+          <span class="rop-start-next__desc">The history of the realm</span>
+        </a>
+        <a href="{% url 'rop-armory' %}" class="rop-start-next__item">
+          <span class="rop-start-next__label">Armory</span>
+          <span class="rop-start-next__desc">Character directory &amp; hall of legends</span>
+        </a>
+        <a href="{% url 'commands' %}" class="rop-start-next__item">
+          <span class="rop-start-next__label">Command Reference</span>
+          <span class="rop-start-next__desc">Every command at your fingertips</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

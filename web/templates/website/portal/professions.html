@@ -1,0 +1,55 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Professions{% endblock %}
+
+{% block content %}
+
+<div class="rop-container">
+  <div class="rop-cap">The Paths of Power</div>
+  <h1 style="text-align:center;margin-bottom:0.3rem;">Professions</h1>
+  <p class="rop-muted" style="text-align:center;margin-bottom:1.5rem;">Ten paths — your profession is your destiny. Permanent. Immutable.</p>
+</div>
+
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+<div class="rop-container">
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h2>All Professions — {{ total_professions }} Paths</h2></div>
+      <div class="rop-grid rop-grid--4">
+        {% for prof_id, prof_def in professions.items %}
+        <div class="rop-card">
+          <div class="rop-card__img">
+            <img src="{% static 'website/images/'|add:prof_def.image %}" alt="{{ prof_def.name }}" width="1400" height="800" loading="lazy"
+                 onerror="this.onerror=null;this.src='{% static 'website/images/profession-fallback.webp' %}'">
+          </div>
+          <div class="rop-card__body">
+            <div class="rop-card__title">{{ prof_def.name }}</div>
+            <div class="rop-card__info">
+              {% if prof_def.mana_stat %}
+              <span class="rop-badge" style="margin-top:0.2rem;">Mana: {{ prof_def.mana_stat.value|title }}</span>
+              {% else %}
+              <span class="rop-badge rop-badge--crimson" style="margin-top:0.2rem;">No Mana</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rop-container" style="text-align:center;margin:2rem 0;">
+  <p class="rop-muted">Forge your path and claim your destiny.</p>
+  {% if not user.is_authenticated %}
+  <a href="{% url 'rop-register' %}" class="rop-btn rop-btn--crimson">Create Account</a>
+  {% else %}
+  <a href="{% url 'rop-dashboard' %}" class="rop-btn rop-btn--gold">Enter Dashboard</a>
+  {% endif %}
+</div>
+
+{% endblock %}

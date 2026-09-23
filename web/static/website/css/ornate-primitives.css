@@ -1,0 +1,578 @@
+/* ==========================================================================
+   Rites of Passage — ORNATE STONE PRIMITIVES
+   Reusable architectural UI components built from CSS textures.
+   Stone, iron, bronze, gold — layered Gothic construction system.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS TEXTURES — Real material identity through CSS
+   ========================================================================== */
+
+/* Aged stone base */
+.rop-stone-surface {
+  background:
+    linear-gradient(180deg, #1a1510 0%, #16120e 30%, #14100c 60%, #181410 100%),
+    radial-gradient(ellipse at 20% 30%, rgba(40,35,28,0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(30,26,20,0.3) 0%, transparent 40%),
+    radial-gradient(ellipse at 40% 80%, rgba(35,30,24,0.25) 0%, transparent 45%);
+}
+
+/* Dark iron / blackened steel */
+.rop-iron-surface {
+  background:
+    linear-gradient(180deg, #1c1a16 0%, #161412 30%, #181614 50%, #141210 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255,255,255,0.008) 1px, rgba(255,255,255,0.008) 2px);
+}
+
+/* Aged bronze */
+.rop-bronze-surface {
+  background:
+    linear-gradient(180deg, #2a2218 0%, #241e15 40%, #1e1a12 60%, #262018 100%),
+    radial-gradient(ellipse at 30% 50%, rgba(180,140,70,0.06) 0%, transparent 50%);
+}
+
+/* Deep recessed well */
+.rop-recessed-well {
+  background:
+    linear-gradient(180deg, #0e0c08 0%, #100e0a 40%, #0c0a06 100%);
+  box-shadow: inset 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Parchment — used INSIDE stone frames */
+.rop-parchment-well {
+  background:
+    linear-gradient(180deg, #3a3428 0%, #353025 30%, #332e24 60%, #383228 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 6px);
+  color: #d4c4a0;
+}
+
+/* ==========================================================================
+   2. ORNATE CORNERS — Gothic architectural joints
+   ========================================================================== */
+
+.rop-orn-cnr {
+  position: absolute; width: 48px; height: 48px; z-index: 5; pointer-events: none;
+}
+
+.rop-orn-cnr--tl {
+  top: 0; left: 0;
+  background:
+    linear-gradient(90deg, rgba(157,113,52,0.5) 0%, rgba(157,113,52,0.3) 12%, transparent 18%) top/100% 3px no-repeat,
+    linear-gradient(180deg, rgba(157,113,52,0.5) 0%, rgba(157,113,52,0.3) 12%, transparent 18%) left/3px 100% no-repeat,
+    linear-gradient(90deg, rgba(200,150,70,0.35) 0%, transparent 40%) 8px 6px/28px 1px no-repeat,
+    linear-gradient(180deg, rgba(200,150,70,0.35) 0%, transparent 40%) 6px 8px/1px 28px no-repeat,
+    radial-gradient(circle at 8px 8px, rgba(200,150,70,0.5) 0%, transparent 6px);
+}
+.rop-orn-cnr--tl::before {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 14px; height: 14px;
+  background: conic-gradient(from 45deg, rgba(200,150,70,0.2), rgba(100,70,30,0.1), rgba(200,150,70,0.2));
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.rop-orn-cnr--tl::after {
+  content: ''; position: absolute; top: 10px; left: 10px;
+  width: 5px; height: 5px;
+  border: 1px solid rgba(200,150,70,0.3);
+  transform: rotate(45deg);
+}
+
+.rop-orn-cnr--tr {
+  top: 0; right: 0;
+  background:
+    linear-gradient(90deg, transparent 82%, rgba(157,113,52,0.3) 88%, rgba(157,113,52,0.5) 100%) top/100% 3px no-repeat,
+    linear-gradient(180deg, rgba(157,113,52,0.5) 0%, rgba(157,113,52,0.3) 12%, transparent 18%) right/3px 100% no-repeat,
+    linear-gradient(90deg, transparent 40%, rgba(200,150,70,0.35) 100%) calc(100% - 36px) 6px/28px 1px no-repeat,
+    linear-gradient(180deg, rgba(200,150,70,0.35) 0%, transparent 40%) calc(100% - 7px) 8px/1px 28px no-repeat,
+    radial-gradient(circle at calc(100% - 8px) 8px, rgba(200,150,70,0.5) 0%, transparent 6px);
+}
+.rop-orn-cnr--tr::before {
+  content: ''; position: absolute; top: 3px; right: 3px;
+  width: 14px; height: 14px;
+  background: conic-gradient(from -45deg, rgba(200,150,70,0.2), rgba(100,70,30,0.1), rgba(200,150,70,0.2));
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+.rop-orn-cnr--tr::after {
+  content: ''; position: absolute; top: 10px; right: 10px;
+  width: 5px; height: 5px;
+  border: 1px solid rgba(200,150,70,0.3);
+  transform: rotate(45deg);
+}
+
+.rop-orn-cnr--bl {
+  bottom: 0; left: 0;
+  background:
+    linear-gradient(90deg, rgba(157,113,52,0.5) 0%, rgba(157,113,52,0.3) 12%, transparent 18%) bottom/100% 3px no-repeat,
+    linear-gradient(180deg, transparent 82%, rgba(157,113,52,0.3) 88%, rgba(157,113,52,0.5) 100%) left/3px 100% no-repeat,
+    linear-gradient(90deg, rgba(200,150,70,0.35) 0%, transparent 40%) 8px calc(100% - 7px)/28px 1px no-repeat,
+    linear-gradient(180deg, transparent 40%, rgba(200,150,70,0.35) 100%) 6px calc(100% - 36px)/1px 28px no-repeat,
+    radial-gradient(circle at 8px calc(100% - 8px), rgba(200,150,70,0.5) 0%, transparent 6px);
+}
+.rop-orn-cnr--bl::before {
+  content: ''; position: absolute; bottom: 3px; left: 3px;
+  width: 14px; height: 14px;
+  background: conic-gradient(from 135deg, rgba(200,150,70,0.2), rgba(100,70,30,0.1), rgba(200,150,70,0.2));
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+.rop-orn-cnr--bl::after {
+  content: ''; position: absolute; bottom: 10px; left: 10px;
+  width: 5px; height: 5px;
+  border: 1px solid rgba(200,150,70,0.3);
+  transform: rotate(45deg);
+}
+
+.rop-orn-cnr--br {
+  bottom: 0; right: 0;
+  background:
+    linear-gradient(90deg, transparent 82%, rgba(157,113,52,0.3) 88%, rgba(157,113,52,0.5) 100%) bottom/100% 3px no-repeat,
+    linear-gradient(180deg, transparent 82%, rgba(157,113,52,0.3) 88%, rgba(157,113,52,0.5) 100%) right/3px 100% no-repeat,
+    linear-gradient(90deg, transparent 40%, rgba(200,150,70,0.35) 100%) calc(100% - 36px) calc(100% - 7px)/28px 1px no-repeat,
+    linear-gradient(180deg, transparent 40%, rgba(200,150,70,0.35) 100%) calc(100% - 7px) calc(100% - 36px)/1px 28px no-repeat,
+    radial-gradient(circle at calc(100% - 8px) calc(100% - 8px), rgba(200,150,70,0.5) 0%, transparent 6px);
+}
+.rop-orn-cnr--br::before {
+  content: ''; position: absolute; bottom: 3px; right: 3px;
+  width: 14px; height: 14px;
+  background: conic-gradient(from -135deg, rgba(200,150,70,0.2), rgba(100,70,30,0.1), rgba(200,150,70,0.2));
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+}
+.rop-orn-cnr--br::after {
+  content: ''; position: absolute; bottom: 10px; right: 10px;
+  width: 5px; height: 5px;
+  border: 1px solid rgba(200,150,70,0.3);
+  transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   3. ORNATE BUTTONS — Mounted metal controls
+   ========================================================================== */
+
+.rop-orn-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: 'Cinzel','Times New Roman',Georgia,serif;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none !important;
+  padding: 0.6rem 1.4rem; cursor: pointer;
+  transition: all 0.2s ease; position: relative; border: none; outline: none;
+}
+
+.rop-orn-btn--crimson {
+  color: #e8cc88;
+  background: linear-gradient(180deg, #6a1810 0%, #4a0e08 100%);
+  border: 1px solid rgba(180,80,40,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5),inset 0 1px 0 rgba(200,100,60,0.2),0 0 0 1px rgba(0,0,0,0.3);
+}
+.rop-orn-btn--crimson:hover {
+  background: linear-gradient(180deg, #8a2014 0%, #5a120c 100%);
+  border-color: rgba(220,100,50,0.4); color: #f0e0b0;
+}
+
+.rop-orn-btn--gold {
+  color: #1a140c;
+  background: linear-gradient(180deg, #c89840 0%, #a07828 100%);
+  border: 1px solid rgba(220,180,80,0.4);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4),inset 0 1px 0 rgba(240,210,140,0.3),0 0 0 1px rgba(0,0,0,0.2);
+}
+.rop-orn-btn--gold:hover {
+  background: linear-gradient(180deg, #d4a848 0%, #b08430 100%);
+  border-color: rgba(240,200,100,0.5);
+}
+
+.rop-orn-btn--iron {
+  color: #c0b498;
+  background: linear-gradient(180deg, #282218 0%, #1a160e 100%);
+  border: 1px solid rgba(157,113,52,0.25);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4),inset 0 1px 0 rgba(200,160,80,0.08);
+}
+.rop-orn-btn--iron:hover {
+  background: linear-gradient(180deg, #322a1e 0%, #201c12 100%);
+  border-color: rgba(200,150,70,0.35); color: #e0d4b0;
+}
+
+/* ==========================================================================
+   4. ORNATE DIVIDER
+   ========================================================================== */
+
+.rop-orn-divider {
+  display: flex; align-items: center; margin: 2rem 0 1.5rem; gap: 12px;
+}
+.rop-orn-divider::before,.rop-orn-divider::after {
+  content: ''; flex: 1; height: 2px;
+  background: linear-gradient(90deg,transparent 0%,rgba(157,113,52,0.2) 20%,rgba(157,113,52,0.3) 50%,rgba(157,113,52,0.2) 80%,transparent 100%);
+}
+.rop-orn-divider__crest {
+  display: flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; position: relative; flex-shrink: 0;
+}
+.rop-orn-divider__crest::before {
+  content: ''; width: 10px; height: 10px;
+  border: 1.5px solid rgba(200,150,70,0.4);
+  transform: rotate(45deg); background: rgba(157,113,52,0.15);
+}
+.rop-orn-divider__crest::after {
+  content: ''; position: absolute;
+  width: 4px; height: 4px;
+  background: rgba(200,150,70,0.5); transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   5. ORNATE PANEL — Multi-layer architectural construction
+   ========================================================================== */
+
+.rop-ornate-panel {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.rop-ornate-panel__outer {
+  position: relative;
+  background:
+    linear-gradient(180deg, #1a1610 0%, #14110c 40%, #16130e 60%, #120f0a 100%),
+    radial-gradient(ellipse at 30% 30%, rgba(40,34,26,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(30,26,20,0.25) 0%, transparent 50%);
+  border: 1px solid rgba(157,113,52,0.08);
+  box-shadow:
+    0 3px 20px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(200,160,80,0.04),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
+  padding: 0;
+}
+
+.rop-ornate-panel__rail-top {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg,
+    transparent 3%, rgba(157,113,52,0.15) 10%, rgba(200,150,70,0.35) 25%,
+    rgba(220,170,80,0.4) 50%, rgba(200,150,70,0.35) 75%,
+    rgba(157,113,52,0.15) 90%, transparent 97%);
+  z-index: 6; pointer-events: none;
+}
+
+.rop-ornate-panel__rail-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg,
+    transparent 5%, rgba(157,113,52,0.08) 15%, rgba(200,150,70,0.2) 35%,
+    rgba(200,150,70,0.25) 50%, rgba(200,150,70,0.2) 65%,
+    rgba(157,113,52,0.08) 85%, transparent 95%);
+  z-index: 6; pointer-events: none;
+}
+
+.rop-ornate-panel__inner {
+  position: relative;
+  margin: 8px;
+  padding: 0;
+  background: linear-gradient(180deg, #13100c 0%, #0f0d09 40%, #110e0a 100%);
+  border: 1px solid rgba(157,113,52,0.06);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 1px 0 rgba(200,160,80,0.03);
+}
+
+.rop-ornate-panel__header-plaque {
+  position: relative;
+  margin: 0 0 0.75rem 0;
+  padding: 0.65rem 1rem 0.5rem;
+  background: linear-gradient(180deg, rgba(40,30,18,0.8) 0%, rgba(25,20,12,0.9) 100%);
+  border-bottom: 2px solid rgba(157,113,52,0.2);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+.rop-ornate-panel__header-plaque::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg,transparent 10%,rgba(200,150,70,0.3) 30%,rgba(200,150,70,0.15) 70%,transparent 90%);
+}
+
+.rop-ornate-panel__plaque-title {
+  font-family: 'Cinzel','Times New Roman',Georgia,serif;
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #d4aa60; text-align: center;
+}
+
+.rop-ornate-panel__well {
+  padding: 0.75rem 1rem 1rem;
+  position: relative;
+}
+.rop-ornate-panel__well::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+
+/* ==========================================================================
+   6. ORNATE FRAMED ART MOUNT — Cinematic image inside stone
+   ========================================================================== */
+
+.rop-art-mount {
+  position: relative;
+  overflow: hidden;
+}
+
+.rop-art-mount__frame {
+  position: relative;
+  border: 6px solid #14110c;
+  box-shadow: inset 0 0 0 1px rgba(157,113,52,0.1), 0 0 0 1px rgba(0,0,0,0.5);
+}
+.rop-art-mount__frame::before {
+  content: ''; position: absolute; inset: -7px;
+  border: 1px solid rgba(157,113,52,0.15);
+  pointer-events: none; z-index: 2;
+}
+.rop-art-mount__frame::after {
+  content: ''; position: absolute; inset: 4px;
+  border: 1px solid rgba(0,0,0,0.3);
+  pointer-events: none; z-index: 1;
+}
+
+.rop-art-mount__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.rop-art-mount__shade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, transparent 0%, rgba(10,8,6,0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   7. ORNATE COMPENDIUM CARD — Race / Profession display
+   ========================================================================== */
+
+.rop-compendium-card {
+  position: relative;
+  background: linear-gradient(180deg, #19150f 0%, #110e09 100%);
+  border: 1px solid rgba(157,113,52,0.12);
+  box-shadow: 0 3px 16px rgba(0,0,0,0.45);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+.rop-compendium-card:hover {
+  border-color: rgba(200,150,70,0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.55), 0 0 0 1px rgba(157,113,52,0.08);
+  transform: translateY(-2px);
+}
+
+.rop-compendium-card__art {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(157,113,52,0.15);
+}
+.rop-compendium-card__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.rop-compendium-card__art::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 30%;
+  background: linear-gradient(180deg, transparent 0%, rgba(10,8,6,0.5) 100%);
+  pointer-events: none;
+}
+
+.rop-compendium-card__body {
+  padding: 0.6rem 0.75rem 0.75rem;
+}
+
+.rop-compendium-card__name {
+  font-family: 'Cinzel','Times New Roman',Georgia,serif;
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #d4aa60;
+  margin-bottom: 0.25rem; position: relative; padding-bottom: 0.35rem;
+}
+.rop-compendium-card__name::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 30px; height: 1px;
+  background: rgba(200,150,70,0.3);
+}
+
+.rop-compendium-card__info {
+  font-family: 'Cormorant Garamond',Georgia,serif;
+  font-size: 0.85rem; color: #a09078; line-height: 1.4;
+}
+
+.rop-compendium-card__faction {
+  font-size: 0.7rem; letter-spacing: 0.05em;
+  text-transform: uppercase; margin-top: 0.3rem;
+}
+
+
+/* ==========================================================================
+   8. ORNATE STAT ITEM
+   ========================================================================== */
+
+.rop-orn-stat {
+  display: flex; flex-direction: column;
+  padding: 0.4rem 0.6rem;
+  background: linear-gradient(180deg, rgba(30,26,20,0.5) 0%, rgba(20,18,14,0.5) 100%);
+  border: 1px solid rgba(157,113,52,0.08);
+  position: relative;
+}
+.rop-orn-stat__label {
+  font-family: 'Cinzel','Times New Roman',Georgia,serif;
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #8a7e68;
+}
+.rop-orn-stat__value {
+  font-family: 'Cormorant Garamond',Georgia,serif;
+  font-size: 0.95rem; font-weight: 500; color: #e0d4b0;
+}
+
+/* ==========================================================================
+   9. ORNATE GRID SYSTEMS
+   ========================================================================== */
+
+.rop-orn-grid-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.rop-orn-grid-3 {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+.rop-orn-grid-4 {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;
+}
+.rop-orn-grid-6 {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.7rem;
+}
+
+/* ==========================================================================
+   10. ORNATE SECTION CAP
+   ========================================================================== */
+
+.rop-section-cap {
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; gap: 8px;
+}
+.rop-section-cap__orn {
+  width: 40px; height: 20px; position: relative; flex-shrink: 0;
+}
+.rop-section-cap__orn::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0;
+  height: 1px; background: rgba(157,113,52,0.25);
+  transform: translateY(-50%);
+}
+.rop-section-cap__orn::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(45deg);
+  width: 6px; height: 6px; border: 1px solid rgba(200,150,70,0.35);
+}
+.rop-section-cap__label {
+  font-family: 'Cinzel','Times New Roman',Georgia,serif;
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(200,160,100,0.6); flex-shrink: 0;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .rop-orn-grid-4 { grid-template-columns: repeat(3, 1fr); }
+  .rop-orn-grid-6 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .rop-orn-grid-2, .rop-orn-grid-3, .rop-orn-grid-4, .rop-orn-grid-6 {
+    grid-template-columns: 1fr;
+  }
+  .rop-orn-cnr { width: 36px; height: 36px; }
+}
+
+/* ==========================================================================
+   12. GLOBAL PAGE BACKGROUND — Stone environment
+   ========================================================================== */
+
+.rop-world-floor {
+  background:
+    /* Dark stone base with granular variation */
+    radial-gradient(ellipse at 50% 0%, rgba(30,24,16,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 60%, rgba(25,20,14,0.3) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 40%, rgba(25,20,14,0.3) 0%, transparent 45%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
+  background-color: #080706;
+  background-attachment: fixed;
+}
+
+.rop-world-floor::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 5% 50%, rgba(90,128,176,0.03) 0%, transparent 35%),
+    radial-gradient(ellipse at 95% 50%, rgba(139,34,34,0.03) 0%, transparent 35%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.rop-world-floor::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  border-left: 1px solid rgba(90,128,176,0.04);
+  border-right: 1px solid rgba(160,80,80,0.04);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   13. ORNATE TABLE — Structured data inside stone
+   ========================================================================== */
+
+.rop-orn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Cormorant Garamond',Georgia,serif;
+  font-size: 0.9rem;
+  color: #c0b498;
+}
+.rop-orn-table thead th {
+  font-family: 'Cinzel','Times New Roman',Georgia,serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d4aa60;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid rgba(157,113,52,0.25);
+  background: rgba(157,113,52,0.05);
+  text-align: left;
+}
+.rop-orn-table tbody td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid rgba(157,113,52,0.06);
+}
+.rop-orn-table tbody tr:hover {
+  background: rgba(157,113,52,0.03);
+}
+
+/* ==========================================================================
+   14. ORNATE BADGE — Small label/status indicator
+   ========================================================================== */
+
+.rop-orn-badge {
+  display: inline-block;
+  font-family: 'Cinzel','Times New Roman',Georgia,serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid rgba(157,113,52,0.3);
+  background: rgba(157,113,52,0.08);
+  color: #d4aa60;
+}
+.rop-orn-badge--crimson {
+  background: rgba(139,34,34,0.1);
+  border-color: rgba(139,34,34,0.3);
+  color: #c87060;
+}
+.rop-orn-badge--steel {
+  background: rgba(90,128,176,0.08);
+  border-color: rgba(90,128,176,0.25);
+  color: #8ab0d0;
+}
+.rop-orn-badge--green {
+  background: rgba(50,140,50,0.08);
+  border-color: rgba(50,140,50,0.3);
+  color: #70b870;
+}

@@ -1,0 +1,3285 @@
+{
+    "zone": "Silvermere",
+    "rooms": {
+        "silvermere_r4_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 4,
+                "col": 48
+            },
+            "name": "Silvermere Node (4, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r4_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 4,
+                "col": 52
+            },
+            "name": "Silvermere Node (4, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r5_c48": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 5,
+                "col": 48
+            },
+            "name": "Silvermere Node (5, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r6_c50": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 6,
+                "col": 50
+            },
+            "name": "Silvermere Node (6, 50)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r6_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 6,
+                "col": 52
+            },
+            "name": "Silvermere Node (6, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r8_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 8,
+                "col": 48
+            },
+            "name": "Silvermere Node (8, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r8_c50": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 8,
+                "col": 50
+            },
+            "name": "Silvermere Node (8, 50)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r8_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 8,
+                "col": 52
+            },
+            "name": "Silvermere Node (8, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r12_c68": {
+            "symbol": "P",
+            "coordinates": {
+                "row": 12,
+                "col": 68
+            },
+            "name": "Silvermere Node (12, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r22_c50": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 22,
+                "col": 50
+            },
+            "name": "Silvermere Node (22, 50)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r22_c52": {
+            "symbol": "G",
+            "coordinates": {
+                "row": 22,
+                "col": 52
+            },
+            "name": "Silvermere Node (22, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r32_c48": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 32,
+                "col": 48
+            },
+            "name": "Silvermere Node (32, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r32_c50": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 32,
+                "col": 50
+            },
+            "name": "Silvermere Node (32, 50)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r32_c52": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 32,
+                "col": 52
+            },
+            "name": "Silvermere Node (32, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r34_c52": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 34,
+                "col": 52
+            },
+            "name": "Silvermere Node (34, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r35_c48": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 35,
+                "col": 48
+            },
+            "name": "Silvermere Node (35, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r36_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 36,
+                "col": 48
+            },
+            "name": "Silvermere Node (36, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r36_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 36,
+                "col": 52
+            },
+            "name": "Silvermere Node (36, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r40_c4": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 40,
+                "col": 4
+            },
+            "name": "Silvermere Node (40, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r44_c4": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 44,
+                "col": 4
+            },
+            "name": "Silvermere Node (44, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r44_c31": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 44,
+                "col": 31
+            },
+            "name": "Silvermere Node (44, 31)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r44_c37": {
+            "symbol": "G",
+            "coordinates": {
+                "row": 44,
+                "col": 37
+            },
+            "name": "Silvermere Node (44, 37)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r44_c45": {
+            "symbol": "R",
+            "coordinates": {
+                "row": 44,
+                "col": 45
+            },
+            "name": "Silvermere Node (44, 45)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r45_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 45,
+                "col": 24
+            },
+            "name": "Silvermere Node (45, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r45_c32": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 45,
+                "col": 32
+            },
+            "name": "Silvermere Node (45, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r45_c40": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 45,
+                "col": 40
+            },
+            "name": "Silvermere Node (45, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r45_c50": {
+            "symbol": "R",
+            "coordinates": {
+                "row": 45,
+                "col": 50
+            },
+            "name": "Silvermere Node (45, 50)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r47_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 47,
+                "col": 20
+            },
+            "name": "Silvermere Node (47, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r47_c24": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 47,
+                "col": 24
+            },
+            "name": "Silvermere Node (47, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r49_c12": {
+            "symbol": "K",
+            "coordinates": {
+                "row": 49,
+                "col": 12
+            },
+            "name": "Silvermere Node (49, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r49_c16": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 49,
+                "col": 16
+            },
+            "name": "Silvermere Node (49, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r49_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 49,
+                "col": 20
+            },
+            "name": "Silvermere Node (49, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r49_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 49,
+                "col": 24
+            },
+            "name": "Silvermere Node (49, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r49_c28": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 49,
+                "col": 28
+            },
+            "name": "Silvermere Node (49, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r50_c71": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 50,
+                "col": 71
+            },
+            "name": "Silvermere Node (50, 71)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c8": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 8
+            },
+            "name": "Silvermere Node (51, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c12": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 12
+            },
+            "name": "Silvermere Node (51, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c16": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 16
+            },
+            "name": "Silvermere Node (51, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 20
+            },
+            "name": "Silvermere Node (51, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 24
+            },
+            "name": "Silvermere Node (51, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c28": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 28
+            },
+            "name": "Silvermere Node (51, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 32
+            },
+            "name": "Silvermere Node (51, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c36": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 36
+            },
+            "name": "Silvermere Node (51, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c40": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 40
+            },
+            "name": "Silvermere Node (51, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c44": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 51,
+                "col": 44
+            },
+            "name": "Silvermere Node (51, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 48
+            },
+            "name": "Silvermere Node (51, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 52
+            },
+            "name": "Silvermere Node (51, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c56": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 56
+            },
+            "name": "Silvermere Node (51, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c60": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 51,
+                "col": 60
+            },
+            "name": "Silvermere Node (51, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c64": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 64
+            },
+            "name": "Silvermere Node (51, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 68
+            },
+            "name": "Silvermere Node (51, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 72
+            },
+            "name": "Silvermere Node (51, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 76
+            },
+            "name": "Silvermere Node (51, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r51_c80": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 51,
+                "col": 80
+            },
+            "name": "Silvermere Node (51, 80)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 53,
+                "col": 4
+            },
+            "name": "Silvermere Node (53, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c8": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 53,
+                "col": 8
+            },
+            "name": "Silvermere Node (53, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c24": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 53,
+                "col": 24
+            },
+            "name": "Silvermere Node (53, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c36": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 53,
+                "col": 36
+            },
+            "name": "Silvermere Node (53, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c44": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 53,
+                "col": 44
+            },
+            "name": "Silvermere Node (53, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c48": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 53,
+                "col": 48
+            },
+            "name": "Silvermere Node (53, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c52": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 53,
+                "col": 52
+            },
+            "name": "Silvermere Node (53, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 53,
+                "col": 60
+            },
+            "name": "Silvermere Node (53, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 53,
+                "col": 72
+            },
+            "name": "Silvermere Node (53, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c80": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 53,
+                "col": 80
+            },
+            "name": "Silvermere Node (53, 80)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r53_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 53,
+                "col": 84
+            },
+            "name": "Silvermere Node (53, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r55_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 55,
+                "col": 4
+            },
+            "name": "Silvermere Node (55, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r55_c31": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 55,
+                "col": 31
+            },
+            "name": "Silvermere Node (55, 31)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r55_c35": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 55,
+                "col": 35
+            },
+            "name": "Silvermere Node (55, 35)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r55_c43": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 55,
+                "col": 43
+            },
+            "name": "Silvermere Node (55, 43)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r55_c59": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 55,
+                "col": 59
+            },
+            "name": "Silvermere Node (55, 59)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r55_c71": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 55,
+                "col": 71
+            },
+            "name": "Silvermere Node (55, 71)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r55_c83": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 55,
+                "col": 83
+            },
+            "name": "Silvermere Node (55, 83)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 57,
+                "col": 4
+            },
+            "name": "Silvermere Node (57, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c20": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 57,
+                "col": 20
+            },
+            "name": "Silvermere Node (57, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c32": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 57,
+                "col": 32
+            },
+            "name": "Silvermere Node (57, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c36": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 57,
+                "col": 36
+            },
+            "name": "Silvermere Node (57, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 57,
+                "col": 44
+            },
+            "name": "Silvermere Node (57, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 57,
+                "col": 60
+            },
+            "name": "Silvermere Node (57, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 57,
+                "col": 72
+            },
+            "name": "Silvermere Node (57, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r57_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 57,
+                "col": 84
+            },
+            "name": "Silvermere Node (57, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r58_c12": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 58,
+                "col": 12
+            },
+            "name": "Silvermere Node (58, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r58_c16": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 58,
+                "col": 16
+            },
+            "name": "Silvermere Node (58, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r58_c28": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 58,
+                "col": 28
+            },
+            "name": "Silvermere Node (58, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r58_c40": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 58,
+                "col": 40
+            },
+            "name": "Silvermere Node (58, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r58_c67": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 58,
+                "col": 67
+            },
+            "name": "Silvermere Node (58, 67)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r58_c79": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 58,
+                "col": 79
+            },
+            "name": "Silvermere Node (58, 79)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 4
+            },
+            "name": "Silvermere Node (59, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c8": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 8
+            },
+            "name": "Silvermere Node (59, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c12": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 12
+            },
+            "name": "Silvermere Node (59, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c16": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 16
+            },
+            "name": "Silvermere Node (59, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 20
+            },
+            "name": "Silvermere Node (59, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c24": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 59,
+                "col": 24
+            },
+            "name": "Silvermere Node (59, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c28": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 28
+            },
+            "name": "Silvermere Node (59, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 32
+            },
+            "name": "Silvermere Node (59, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c36": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 36
+            },
+            "name": "Silvermere Node (59, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c40": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 40
+            },
+            "name": "Silvermere Node (59, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c44": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 59,
+                "col": 44
+            },
+            "name": "Silvermere Node (59, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 48
+            },
+            "name": "Silvermere Node (59, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 52
+            },
+            "name": "Silvermere Node (59, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c56": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 56
+            },
+            "name": "Silvermere Node (59, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c60": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 59,
+                "col": 60
+            },
+            "name": "Silvermere Node (59, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c64": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 64
+            },
+            "name": "Silvermere Node (59, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 68
+            },
+            "name": "Silvermere Node (59, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c72": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 59,
+                "col": 72
+            },
+            "name": "Silvermere Node (59, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 76
+            },
+            "name": "Silvermere Node (59, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c80": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 59,
+                "col": 80
+            },
+            "name": "Silvermere Node (59, 80)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r59_c84": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 59,
+                "col": 84
+            },
+            "name": "Silvermere Node (59, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 4
+            },
+            "name": "Silvermere Node (61, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 24
+            },
+            "name": "Silvermere Node (61, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 32
+            },
+            "name": "Silvermere Node (61, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c40": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 40
+            },
+            "name": "Silvermere Node (61, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 44
+            },
+            "name": "Silvermere Node (61, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c48": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 61,
+                "col": 48
+            },
+            "name": "Silvermere Node (61, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c58": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 61,
+                "col": 58
+            },
+            "name": "Silvermere Node (61, 58)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 60
+            },
+            "name": "Silvermere Node (61, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 72
+            },
+            "name": "Silvermere Node (61, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r61_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 61,
+                "col": 84
+            },
+            "name": "Silvermere Node (61, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 4
+            },
+            "name": "Silvermere Node (63, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 24
+            },
+            "name": "Silvermere Node (63, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 32
+            },
+            "name": "Silvermere Node (63, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c40": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 63,
+                "col": 40
+            },
+            "name": "Silvermere Node (63, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 44
+            },
+            "name": "Silvermere Node (63, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 52
+            },
+            "name": "Silvermere Node (63, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 60
+            },
+            "name": "Silvermere Node (63, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c64": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 63,
+                "col": 64
+            },
+            "name": "Silvermere Node (63, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 72
+            },
+            "name": "Silvermere Node (63, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r63_c83": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 63,
+                "col": 83
+            },
+            "name": "Silvermere Node (63, 83)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r64_c80": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 64,
+                "col": 80
+            },
+            "name": "Silvermere Node (64, 80)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c4": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 65,
+                "col": 4
+            },
+            "name": "Silvermere Node (65, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c8": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 8
+            },
+            "name": "Silvermere Node (65, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c12": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 12
+            },
+            "name": "Silvermere Node (65, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c16": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 16
+            },
+            "name": "Silvermere Node (65, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 20
+            },
+            "name": "Silvermere Node (65, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 24
+            },
+            "name": "Silvermere Node (65, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c28": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 65,
+                "col": 28
+            },
+            "name": "Silvermere Node (65, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 32
+            },
+            "name": "Silvermere Node (65, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c40": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 65,
+                "col": 40
+            },
+            "name": "Silvermere Node (65, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 44
+            },
+            "name": "Silvermere Node (65, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 48
+            },
+            "name": "Silvermere Node (65, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 52
+            },
+            "name": "Silvermere Node (65, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c56": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 65,
+                "col": 56
+            },
+            "name": "Silvermere Node (65, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 60
+            },
+            "name": "Silvermere Node (65, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c62": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 65,
+                "col": 62
+            },
+            "name": "Silvermere Node (65, 62)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 72
+            },
+            "name": "Silvermere Node (65, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 76
+            },
+            "name": "Silvermere Node (65, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c80": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 80
+            },
+            "name": "Silvermere Node (65, 80)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r65_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 65,
+                "col": 84
+            },
+            "name": "Silvermere Node (65, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 67,
+                "col": 4
+            },
+            "name": "Silvermere Node (67, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 67,
+                "col": 24
+            },
+            "name": "Silvermere Node (67, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c28": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 67,
+                "col": 28
+            },
+            "name": "Silvermere Node (67, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c32": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 67,
+                "col": 32
+            },
+            "name": "Silvermere Node (67, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c35": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 67,
+                "col": 35
+            },
+            "name": "Silvermere Node (67, 35)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c39": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 67,
+                "col": 39
+            },
+            "name": "Silvermere Node (67, 39)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c43": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 67,
+                "col": 43
+            },
+            "name": "Silvermere Node (67, 43)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c50": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 67,
+                "col": 50
+            },
+            "name": "Silvermere Node (67, 50)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c54": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 67,
+                "col": 54
+            },
+            "name": "Silvermere Node (67, 54)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c58": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 67,
+                "col": 58
+            },
+            "name": "Silvermere Node (67, 58)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c62": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 67,
+                "col": 62
+            },
+            "name": "Silvermere Node (67, 62)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c70": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 67,
+                "col": 70
+            },
+            "name": "Silvermere Node (67, 70)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c74": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 67,
+                "col": 74
+            },
+            "name": "Silvermere Node (67, 74)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c76": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 67,
+                "col": 76
+            },
+            "name": "Silvermere Node (67, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r67_c82": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 67,
+                "col": 82
+            },
+            "name": "Silvermere Node (67, 82)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 69,
+                "col": 4
+            },
+            "name": "Silvermere Node (69, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c12": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 69,
+                "col": 12
+            },
+            "name": "Silvermere Node (69, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 69,
+                "col": 24
+            },
+            "name": "Silvermere Node (69, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c28": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 69,
+                "col": 28
+            },
+            "name": "Silvermere Node (69, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c32": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 69,
+                "col": 32
+            },
+            "name": "Silvermere Node (69, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c36": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 69,
+                "col": 36
+            },
+            "name": "Silvermere Node (69, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c40": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 69,
+                "col": 40
+            },
+            "name": "Silvermere Node (69, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c44": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 69,
+                "col": 44
+            },
+            "name": "Silvermere Node (69, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c48": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 69,
+                "col": 48
+            },
+            "name": "Silvermere Node (69, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c56": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 69,
+                "col": 56
+            },
+            "name": "Silvermere Node (69, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c59": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 69,
+                "col": 59
+            },
+            "name": "Silvermere Node (69, 59)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c60": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 69,
+                "col": 60
+            },
+            "name": "Silvermere Node (69, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c64": {
+            "symbol": "Y",
+            "coordinates": {
+                "row": 69,
+                "col": 64
+            },
+            "name": "Silvermere Node (69, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 69,
+                "col": 68
+            },
+            "name": "Silvermere Node (69, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 69,
+                "col": 72
+            },
+            "name": "Silvermere Node (69, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 69,
+                "col": 76
+            },
+            "name": "Silvermere Node (69, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r69_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 69,
+                "col": 84
+            },
+            "name": "Silvermere Node (69, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 4
+            },
+            "name": "Silvermere Node (71, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c8": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 71,
+                "col": 8
+            },
+            "name": "Silvermere Node (71, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c12": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 12
+            },
+            "name": "Silvermere Node (71, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c16": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 16
+            },
+            "name": "Silvermere Node (71, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 20
+            },
+            "name": "Silvermere Node (71, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c24": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 71,
+                "col": 24
+            },
+            "name": "Silvermere Node (71, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c28": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 28
+            },
+            "name": "Silvermere Node (71, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 32
+            },
+            "name": "Silvermere Node (71, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c36": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 36
+            },
+            "name": "Silvermere Node (71, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c40": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 71,
+                "col": 40
+            },
+            "name": "Silvermere Node (71, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c44": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 71,
+                "col": 44
+            },
+            "name": "Silvermere Node (71, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c47": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 47
+            },
+            "name": "Silvermere Node (71, 47)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c51": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 51
+            },
+            "name": "Silvermere Node (71, 51)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c55": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 55
+            },
+            "name": "Silvermere Node (71, 55)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c59": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 71,
+                "col": 59
+            },
+            "name": "Silvermere Node (71, 59)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c63": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 63
+            },
+            "name": "Silvermere Node (71, 63)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c67": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 67
+            },
+            "name": "Silvermere Node (71, 67)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c71": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 71
+            },
+            "name": "Silvermere Node (71, 71)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c75": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 75
+            },
+            "name": "Silvermere Node (71, 75)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c79": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 79
+            },
+            "name": "Silvermere Node (71, 79)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c83": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 71,
+                "col": 83
+            },
+            "name": "Silvermere Node (71, 83)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c85": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 71,
+                "col": 85
+            },
+            "name": "Silvermere Node (71, 85)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r71_c87": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 71,
+                "col": 87
+            },
+            "name": "Silvermere Node (71, 87)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 73,
+                "col": 4
+            },
+            "name": "Silvermere Node (73, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c12": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 73,
+                "col": 12
+            },
+            "name": "Silvermere Node (73, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c16": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 73,
+                "col": 16
+            },
+            "name": "Silvermere Node (73, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 73,
+                "col": 24
+            },
+            "name": "Silvermere Node (73, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c32": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 73,
+                "col": 32
+            },
+            "name": "Silvermere Node (73, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c36": {
+            "symbol": "V",
+            "coordinates": {
+                "row": 73,
+                "col": 36
+            },
+            "name": "Silvermere Node (73, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c38": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 73,
+                "col": 38
+            },
+            "name": "Silvermere Node (73, 38)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c40": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 73,
+                "col": 40
+            },
+            "name": "Silvermere Node (73, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 73,
+                "col": 44
+            },
+            "name": "Silvermere Node (73, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c48": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 73,
+                "col": 48
+            },
+            "name": "Silvermere Node (73, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c52": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 73,
+                "col": 52
+            },
+            "name": "Silvermere Node (73, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c56": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 73,
+                "col": 56
+            },
+            "name": "Silvermere Node (73, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c60": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 73,
+                "col": 60
+            },
+            "name": "Silvermere Node (73, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 73,
+                "col": 68
+            },
+            "name": "Silvermere Node (73, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r73_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 73,
+                "col": 84
+            },
+            "name": "Silvermere Node (73, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 4
+            },
+            "name": "Silvermere Node (75, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 24
+            },
+            "name": "Silvermere Node (75, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c28": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 75,
+                "col": 28
+            },
+            "name": "Silvermere Node (75, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c32": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 75,
+                "col": 32
+            },
+            "name": "Silvermere Node (75, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 44
+            },
+            "name": "Silvermere Node (75, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c52": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 75,
+                "col": 52
+            },
+            "name": "Silvermere Node (75, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c64": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 64
+            },
+            "name": "Silvermere Node (75, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 68
+            },
+            "name": "Silvermere Node (75, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 72
+            },
+            "name": "Silvermere Node (75, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 76
+            },
+            "name": "Silvermere Node (75, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c80": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 80
+            },
+            "name": "Silvermere Node (75, 80)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r75_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 75,
+                "col": 84
+            },
+            "name": "Silvermere Node (75, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r76_c51": {
+            "symbol": "#",
+            "coordinates": {
+                "row": 76,
+                "col": 51
+            },
+            "name": "Silvermere Node (76, 51)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 4
+            },
+            "name": "Silvermere Node (77, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c8": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 8
+            },
+            "name": "Silvermere Node (77, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c12": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 12
+            },
+            "name": "Silvermere Node (77, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c16": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 77,
+                "col": 16
+            },
+            "name": "Silvermere Node (77, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 24
+            },
+            "name": "Silvermere Node (77, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c40": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 77,
+                "col": 40
+            },
+            "name": "Silvermere Node (77, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 44
+            },
+            "name": "Silvermere Node (77, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 48
+            },
+            "name": "Silvermere Node (77, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 52
+            },
+            "name": "Silvermere Node (77, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 60
+            },
+            "name": "Silvermere Node (77, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c64": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 64
+            },
+            "name": "Silvermere Node (77, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 68
+            },
+            "name": "Silvermere Node (77, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c72": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 77,
+                "col": 72
+            },
+            "name": "Silvermere Node (77, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 76
+            },
+            "name": "Silvermere Node (77, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r77_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 77,
+                "col": 84
+            },
+            "name": "Silvermere Node (77, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 79,
+                "col": 4
+            },
+            "name": "Silvermere Node (79, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 79,
+                "col": 24
+            },
+            "name": "Silvermere Node (79, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c44": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 79,
+                "col": 44
+            },
+            "name": "Silvermere Node (79, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c48": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 79,
+                "col": 48
+            },
+            "name": "Silvermere Node (79, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 79,
+                "col": 60
+            },
+            "name": "Silvermere Node (79, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c64": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 79,
+                "col": 64
+            },
+            "name": "Silvermere Node (79, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 79,
+                "col": 68
+            },
+            "name": "Silvermere Node (79, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c72": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 79,
+                "col": 72
+            },
+            "name": "Silvermere Node (79, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c76": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 79,
+                "col": 76
+            },
+            "name": "Silvermere Node (79, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r79_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 79,
+                "col": 84
+            },
+            "name": "Silvermere Node (79, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 4
+            },
+            "name": "Silvermere Node (81, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c8": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 8
+            },
+            "name": "Silvermere Node (81, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c12": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 12
+            },
+            "name": "Silvermere Node (81, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c16": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 16
+            },
+            "name": "Silvermere Node (81, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 20
+            },
+            "name": "Silvermere Node (81, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c24": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 81,
+                "col": 24
+            },
+            "name": "Silvermere Node (81, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c28": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 28
+            },
+            "name": "Silvermere Node (81, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 32
+            },
+            "name": "Silvermere Node (81, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c36": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 36
+            },
+            "name": "Silvermere Node (81, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c40": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 40
+            },
+            "name": "Silvermere Node (81, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c44": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 81,
+                "col": 44
+            },
+            "name": "Silvermere Node (81, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c48": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 48
+            },
+            "name": "Silvermere Node (81, 48)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 52
+            },
+            "name": "Silvermere Node (81, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c56": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 56
+            },
+            "name": "Silvermere Node (81, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 60
+            },
+            "name": "Silvermere Node (81, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c64": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 81,
+                "col": 64
+            },
+            "name": "Silvermere Node (81, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c68": {
+            "symbol": "F",
+            "coordinates": {
+                "row": 81,
+                "col": 68
+            },
+            "name": "Silvermere Node (81, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c71": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 71
+            },
+            "name": "Silvermere Node (81, 71)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c75": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 75
+            },
+            "name": "Silvermere Node (81, 75)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c79": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 79
+            },
+            "name": "Silvermere Node (81, 79)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r81_c83": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 81,
+                "col": 83
+            },
+            "name": "Silvermere Node (81, 83)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 4
+            },
+            "name": "Silvermere Node (83, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 24
+            },
+            "name": "Silvermere Node (83, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 44
+            },
+            "name": "Silvermere Node (83, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 52
+            },
+            "name": "Silvermere Node (83, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 60
+            },
+            "name": "Silvermere Node (83, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c64": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 64
+            },
+            "name": "Silvermere Node (83, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 68
+            },
+            "name": "Silvermere Node (83, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 72
+            },
+            "name": "Silvermere Node (83, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 76
+            },
+            "name": "Silvermere Node (83, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r83_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 83,
+                "col": 84
+            },
+            "name": "Silvermere Node (83, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 4
+            },
+            "name": "Silvermere Node (85, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 24
+            },
+            "name": "Silvermere Node (85, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c36": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 85,
+                "col": 36
+            },
+            "name": "Silvermere Node (85, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 44
+            },
+            "name": "Silvermere Node (85, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c52": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 52
+            },
+            "name": "Silvermere Node (85, 52)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c56": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 56
+            },
+            "name": "Silvermere Node (85, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c64": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 85,
+                "col": 64
+            },
+            "name": "Silvermere Node (85, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c68": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 68
+            },
+            "name": "Silvermere Node (85, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c72": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 85,
+                "col": 72
+            },
+            "name": "Silvermere Node (85, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c76": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 76
+            },
+            "name": "Silvermere Node (85, 76)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r85_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 85,
+                "col": 84
+            },
+            "name": "Silvermere Node (85, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c4": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 4
+            },
+            "name": "Silvermere Node (87, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c8": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 87,
+                "col": 8
+            },
+            "name": "Silvermere Node (87, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 24
+            },
+            "name": "Silvermere Node (87, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c36": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 36
+            },
+            "name": "Silvermere Node (87, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 44
+            },
+            "name": "Silvermere Node (87, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c56": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 56
+            },
+            "name": "Silvermere Node (87, 56)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c60": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 60
+            },
+            "name": "Silvermere Node (87, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c64": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 87,
+                "col": 64
+            },
+            "name": "Silvermere Node (87, 64)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c68": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 87,
+                "col": 68
+            },
+            "name": "Silvermere Node (87, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c72": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 72
+            },
+            "name": "Silvermere Node (87, 72)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c80": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 87,
+                "col": 80
+            },
+            "name": "Silvermere Node (87, 80)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r87_c84": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 87,
+                "col": 84
+            },
+            "name": "Silvermere Node (87, 84)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c8": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 8
+            },
+            "name": "Silvermere Node (89, 8)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c12": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 12
+            },
+            "name": "Silvermere Node (89, 12)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c16": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 89,
+                "col": 16
+            },
+            "name": "Silvermere Node (89, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c20": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 20
+            },
+            "name": "Silvermere Node (89, 20)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c24": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 24
+            },
+            "name": "Silvermere Node (89, 24)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c28": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 28
+            },
+            "name": "Silvermere Node (89, 28)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c32": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 32
+            },
+            "name": "Silvermere Node (89, 32)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c36": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 36
+            },
+            "name": "Silvermere Node (89, 36)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c40": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 40
+            },
+            "name": "Silvermere Node (89, 40)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c44": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 44
+            },
+            "name": "Silvermere Node (89, 44)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c60": {
+            "symbol": "M",
+            "coordinates": {
+                "row": 89,
+                "col": 60
+            },
+            "name": "Silvermere Node (89, 60)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c71": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 71
+            },
+            "name": "Silvermere Node (89, 71)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c75": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 75
+            },
+            "name": "Silvermere Node (89, 75)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r89_c79": {
+            "symbol": "*",
+            "coordinates": {
+                "row": 89,
+                "col": 79
+            },
+            "name": "Silvermere Node (89, 79)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r94_c4": {
+            "symbol": "S",
+            "coordinates": {
+                "row": 94,
+                "col": 4
+            },
+            "name": "Silvermere Node (94, 4)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r95_c68": {
+            "symbol": "R",
+            "coordinates": {
+                "row": 95,
+                "col": 68
+            },
+            "name": "Silvermere Node (95, 68)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r99_c16": {
+            "symbol": "H",
+            "coordinates": {
+                "row": 99,
+                "col": 16
+            },
+            "name": "Silvermere Node (99, 16)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r99_c81": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 99,
+                "col": 81
+            },
+            "name": "Silvermere Node (99, 81)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        },
+        "silvermere_r99_c83": {
+            "symbol": "L",
+            "coordinates": {
+                "row": 99,
+                "col": 83
+            },
+            "name": "Silvermere Node (99, 83)",
+            "description": "A dark passageway in Silvermere.",
+            "exits": {}
+        }
+    }
+}

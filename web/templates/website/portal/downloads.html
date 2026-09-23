@@ -1,0 +1,40 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Downloads{% endblock %}
+
+{% block content %}
+
+<div class="rop-container">
+  <div class="rop-art">
+    <div class="rop-art__frame">
+      <img src="{% static 'website/images/downloads-nexus.png' %}" alt="Nexus Client" width="1200" height="675">
+    </div>
+    <span class="rop-art__shade"></span>
+  </div>
+  <h1>Downloads</h1>
+  <p class="rop-lead">The native Windows client for Rites of Passage</p>
+</div>
+
+<div class="rop-container"><div class="rop-divider"><span class="rop-divider__icon"></span></div></div>
+
+<div class="rop-container">
+
+  <div class="rop-panel">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h2>Nexus — Windows Game Client</h2></div>
+      <p>The Nexus is the native Windows client for Rites of Passage, delivering the definitive dark-fantasy experience with full graphics, sound, and performance.</p>
+      <div class="rop-alert rop-alert--info" style="margin-top:0.75rem;">The Nexus client is currently in development and not yet available for download. Until its release, all gameplay is available through the browser-based web client — no download required.</div>
+      {% if webclient_enabled %}
+      <div style="margin-top:0.75rem;">
+        <a href="{% url 'webclient:index' %}" class="rop-btn rop-btn--gold">Play in Browser Instead</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

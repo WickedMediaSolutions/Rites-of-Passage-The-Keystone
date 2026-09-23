@@ -1,0 +1,34 @@
+{% extends "website/base.html" %}
+
+{% block titleblock %}Delete Account{% endblock %}
+
+{% block content %}
+
+<div class="rop-container">
+  <div class="rop-cap">Account Oblivion</div>
+  <h1>Delete Account</h1>
+</div>
+
+<div class="rop-container">
+  <div class="rop-panel" style="border-color:rgba(180,60,50,0.2);">
+    <span class="rop-panel__rail rop-panel__rail--top"></span>
+    <span class="rop-panel__rail rop-panel__rail--bottom"></span>
+    <div class="rop-panel__inner">
+      <div class="rop-panel__plaque"><h3 style="color:#d87060;">Permanent Account Deletion</h3></div>
+      <div class="rop-alert rop-alert--warning">You are about to permanently delete <strong>&ldquo;{{ account_username }}&rdquo;</strong> <em>and</em> its character. This <em>cannot</em> be reversed.</div>
+      <form method="post" action="{% url 'rop-account-delete' %}" novalidate>
+        {% csrf_token %}
+        <div class="rop-form-group">
+          <label class="rop-label" for="id_confirmation">Type <strong>{{ account_username }}</strong> to confirm:</label>
+          <input type="text" name="confirmation" id="id_confirmation" class="rop-input" placeholder="{{ account_username }}" required autocomplete="off">
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <button type="submit" class="rop-btn rop-btn--crimson">Permanently Delete Account</button>
+          <a href="{% url 'rop-account-settings' %}" class="rop-btn rop-btn--iron">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

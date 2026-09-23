@@ -1,0 +1,61 @@
+"""
+Exits
+
+Exits are connectors between Rooms. An exit always has a destination property
+set and has a single command defined on itself with the same name as its key,
+for allowing Characters to traverse the exit to its destination.
+
+"""
+
+from evennia.objects.objects import DefaultExit
+
+from world.data.constants import DIRECTION_ABBREVIATIONS
+from .objects import ObjectParent
+
+
+# ── directional abbreviation map ──────────────────────────────────────
+# Evennia generates one ExitCommand per exit, keyed by the exit name.
+# The command's aliases are copied from exit.aliases.all() at creation
+# time.  Because neither the Silvermere zone builder nor the Atlas
+# importer add abbreviation aliases, players cannot use "n", "s", "w",
+# "e", etc. to traverse exits.  We fix that here by patching every
+# directional exit command with the correct abbreviation aliases the
+# moment its cmdset is built.
+#
+# The canonical DIRECTION_ABBREVIATIONS dict lives in:
+#     world.data.constants
+# ───────────────────────────────────────────────────────────────────────
+
+
+class Exit(ObjectParent, DefaultExit):
+    """
+    Exits are connectors between rooms. Exits are normal Objects except
+    they defines the `destination` property and overrides some hooks
+    and methods to represent the exits.
+
+    See mygame/typeclasses/objects.py for a list of
+    properties and methods available on all Objects child classes like this.
+
+    """
+
+    def create_exit_cmdset(self, exidbobj):
+        """
+        Build the ExitCommand cmdset, then inject directional
+        abbreviation aliases so that ``n``, ``s``, ``e``, ``w``, etc.
+        work everywhere without requiring builders to manually add
+        aliases to every exit.
+        """
+        cmdset = super().create_exit_cmdset(exidbobj)
+
+        key_lower: str = exidbobj.db_key.strip().lower()
+        abbreviations: list[str] | None = DIRECTION_ABBREVIATIONS.get(key_lower)
+        if abbreviations:
+            for cmd in cmdset.commands:
+                for abbr in abbreviations:
+                    if abbr not in cmd.aliases:
+                        cmd.aliases.append(abbr)
+                # Rebuild the internal _keyaliases / _matchset caches so
+                # that match() recognises the newly injected aliases.
+                cmd._optimize()
+
+        return cmdset

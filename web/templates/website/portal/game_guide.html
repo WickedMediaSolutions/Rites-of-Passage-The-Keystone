@@ -1,0 +1,1215 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block titleblock %}Game Guide{% endblock %}
+
+{% block content %}
+
+{# CINEMATIC MASTHEAD #}
+<div class="rop-container">
+  <div class="rop-guide-masthead">
+    <div class="rop-guide-masthead__frame">
+      <img
+        src="{% static 'website/images/game-guide.webp' %}"
+        alt=""
+        width="1200"
+        height="675"
+        aria-hidden="true"
+      >
+    </div>
+    <div class="rop-guide-masthead__overlay">
+      <h1 class="rop-guide-masthead__title">Game Guide</h1>
+      <p class="rop-guide-masthead__subtitle">
+        Your complete field manual for surviving, fighting, and progressing through Rites of Passage.
+      </p>
+    </div>
+  </div>
+</div>
+
+{# STONE DIVIDER #}
+<div class="rop-container">
+  <div class="rop-start-divider" aria-hidden="true">
+    <img
+      src="{% static 'website/images/rop-stone-divider.png' %}"
+      alt=""
+      width="1480"
+      height="40"
+    >
+  </div>
+</div>
+
+{# LAYOUT WRAPPER (sidebar + content) #}
+<div class="rop-container">
+  <div class="rop-guide-layout">
+
+    {# LEFT SIDEBAR NAVIGATION #}
+    <nav class="rop-guide-nav" aria-label="Guide sections" id="guide-nav">
+      <div class="rop-guide-nav__sticky">
+        <div class="rop-guide-nav__heading">On This Page</div>
+        <ul class="rop-guide-nav__list">
+          <li><a href="#playing" class="rop-guide-nav__link">01 &nbsp;Playing the Game</a></li>
+          <li><a href="#movement" class="rop-guide-nav__link">02 &nbsp;Movement &amp; Exploration</a></li>
+          <li><a href="#character" class="rop-guide-nav__link">03 &nbsp;Character Information</a></li>
+          <li><a href="#communication" class="rop-guide-nav__link">04 &nbsp;Communication</a></li>
+          <li><a href="#combat" class="rop-guide-nav__link">05 &nbsp;Combat</a></li>
+          <li><a href="#equipment" class="rop-guide-nav__link">06 &nbsp;Equipment &amp; Items</a></li>
+          <li><a href="#skills" class="rop-guide-nav__link">07 &nbsp;Skills &amp; Spells</a></li>
+          <li><a href="#races-profs" class="rop-guide-nav__link">08 &nbsp;Races &amp; Professions</a></li>
+          <li><a href="#factions-pvp" class="rop-guide-nav__link">09 &nbsp;Factions &amp; PvP</a></li>
+          <li><a href="#progression" class="rop-guide-nav__link">10 &nbsp;Progression</a></li>
+          <li><a href="#quests" class="rop-guide-nav__link">11 &nbsp;Quests</a></li>
+          <li><a href="#economy" class="rop-guide-nav__link">12 &nbsp;Economy &amp; Shops</a></li>
+          <li><a href="#death" class="rop-guide-nav__link">13 &nbsp;Death &amp; Recovery</a></li>
+          <li><a href="#organizations" class="rop-guide-nav__link">14 &nbsp;Guilds &amp; Sects</a></li>
+          <li><a href="#commands" class="rop-guide-nav__link">15 &nbsp;Command Reference</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    {# MAIN CONTENT #}
+    <div class="rop-guide-content">
+
+{# 01 PLAYING THE GAME #}
+<section class="rop-guide-section" id="playing">
+  <div class="rop-guide-section__marker" aria-hidden="true">01</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Playing the Game</h2>
+
+    <p>
+      Rites of Passage is a text-based multiplayer roleplaying game (MUD).
+      You explore a persistent world described in rich prose, interact with
+      other players and creatures, and advance your character through combat,
+      questing, and exploration &mdash; all through typed commands.
+    </p>
+
+    <h3>Rooms &amp; Descriptions</h3>
+    <p>
+      The world is divided into <strong>rooms</strong>. Each room has a
+      descriptive name and a detailed paragraph you see when you enter.
+      Rooms list visible <strong>exits</strong> &mdash; the directions you can
+      travel &mdash; as well as any players, creatures, or objects present.
+    </p>
+
+    <h3>Command Entry</h3>
+    <p>
+      Type a command and press Enter. Commands are case-insensitive.
+      A command typically consists of a verb followed by arguments:
+    </p>
+    <div class="rop-guide-callout">
+      <code>look</code> &mdash; examine your surroundings<br>
+      <code>attack goblin</code> &mdash; attack a creature named goblin<br>
+      <code>get sword</code> &mdash; pick up a sword from the room
+    </div>
+
+    <p>
+      If you are new to MUDs, we strongly recommend reading the
+      <a href="{% url 'getting-started' %}">Getting Started</a> guide
+      first &mdash; it covers account creation, connecting, and your very first
+      minutes inside the realm.
+    </p>
+  </div>
+</section>
+
+{# 02 MOVEMENT & EXPLORATION #}
+<section class="rop-guide-section" id="movement">
+  <div class="rop-guide-section__marker" aria-hidden="true">02</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Movement &amp; Exploration</h2>
+
+    <p>
+      Movement uses the cardinal and ordinal compass directions.
+      You may type the full direction name or its abbreviation:
+    </p>
+
+    <div class="rop-guide-cmd-grid">
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">north</span>
+        <span class="rop-guide-cmd-grid__alias">n</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">south</span>
+        <span class="rop-guide-cmd-grid__alias">s</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">east</span>
+        <span class="rop-guide-cmd-grid__alias">e</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">west</span>
+        <span class="rop-guide-cmd-grid__alias">w</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">northeast</span>
+        <span class="rop-guide-cmd-grid__alias">ne</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">northwest</span>
+        <span class="rop-guide-cmd-grid__alias">nw</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">southeast</span>
+        <span class="rop-guide-cmd-grid__alias">se</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">southwest</span>
+        <span class="rop-guide-cmd-grid__alias">sw</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">up</span>
+        <span class="rop-guide-cmd-grid__alias">u</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">down</span>
+        <span class="rop-guide-cmd-grid__alias">d</span>
+      </div>
+    </div>
+
+    <h3>Examining Your Surroundings</h3>
+    <p>
+      <code class="rop-guide-cmd">look</code> (or just <code class="rop-guide-cmd">l</code>)
+      displays your current room description, visible exits, and everything
+      present in the room. Use it constantly &mdash; it is your eyes in a text world.
+    </p>
+    <p>
+      You can also <code class="rop-guide-cmd">look &lt;target&gt;</code> to examine
+      a specific person, creature, or object in the room.
+    </p>
+
+    <h3>Entering and Leaving</h3>
+    <p>
+      Some exits are doors or portals rather than open passages. Where
+      applicable, use <code class="rop-guide-cmd">enter</code> or
+      simply type the exit name to go through.
+    </p>
+  </div>
+</section>
+
+{# 03 CHARACTER INFORMATION #}
+<section class="rop-guide-section" id="character">
+  <div class="rop-guide-section__marker" aria-hidden="true">03</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Character Information</h2>
+
+    <p>
+      Rites of Passage provides several commands to inspect your character
+      and the world around you. These are your most-used commands.
+    </p>
+
+    <h3>Score / Info</h3>
+    <p>
+      <code class="rop-guide-cmd">score</code> (alias:
+      <code class="rop-guide-cmd">info</code>) displays your full
+      character sheet:
+    </p>
+    <ul>
+      <li>Name, level, race, profession, and faction</li>
+      <li>HP, Mana, and Stamina bars</li>
+      <li>Current XP and XP required to reach the next level</li>
+      <li>Base stats: STR, INT, WIS, DEX, CON</li>
+      <li>Current character state (standing, resting, meditating, combat, dead)</li>
+      <li>Currency balance</li>
+      <li>Number of skills unlocked and active quests</li>
+      <li>Guild and sect affiliations</li>
+      <li>PvP statistics: war points, kills, and deaths</li>
+    </ul>
+
+    <h3>Inventory</h3>
+    <p>
+      <code class="rop-guide-cmd">inventory</code> (aliases:
+      <code class="rop-guide-cmd">inv</code>, <code class="rop-guide-cmd">i</code>)
+      lists every item you are carrying along with its quantity.
+    </p>
+
+    <h3>Equipment</h3>
+    <p>
+      <code class="rop-guide-cmd">equipment</code> (alias:
+      <code class="rop-guide-cmd">eq</code>)
+      shows what you currently have equipped in each of your fifteen
+      equipment slots.
+    </p>
+
+    <h3>Who</h3>
+    <p>
+      <code class="rop-guide-cmd">who</code> displays a table of every
+      character currently online, showing their name, level, race,
+      profession, faction, guild, and sect. Players are sorted by
+      level, highest first.
+    </p>
+  </div>
+</section>
+
+{# 04 COMMUNICATION #}
+<section class="rop-guide-section" id="communication">
+  <div class="rop-guide-section__marker" aria-hidden="true">04</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Communication</h2>
+
+    <p>
+      Rites of Passage offers several ways to communicate with other
+      players, from room-wide speech to private whispers.
+    </p>
+
+    <h3>Speaking</h3>
+    <p>
+      <code class="rop-guide-cmd">say &lt;message&gt;</code> speaks to
+      everyone in the same room. Your message is visible to all other
+      characters present.
+    </p>
+
+    <h3>Private Messages</h3>
+    <p>
+      <code class="rop-guide-cmd">tell &lt;player&gt; &lt;message&gt;</code>
+      sends a private message to a specific player anywhere in the game.
+      You may also use <code class="rop-guide-cmd">page</code> as an
+      alternative.
+    </p>
+    <p>
+      <code class="rop-guide-cmd">whisper &lt;player&gt; &lt;message&gt;</code>
+      sends a private message to someone in the same room.
+    </p>
+
+    <h3>Social Emotes</h3>
+    <p>
+      <code class="rop-guide-cmd">social &lt;action&gt; [target]</code>
+      (alias: <code class="rop-guide-cmd">emote</code>) performs a
+      visible emote, optionally directed at another character.
+    </p>
+    <p>
+      Currently available socials:
+      <code class="rop-guide-cmd">wave</code> and
+      <code class="rop-guide-cmd">bow</code>.
+    </p>
+    <div class="rop-guide-callout">
+      <strong>Example:</strong>
+      <code>social bow</code> &mdash; bow gracefully<br>
+      <code>social wave at Kaelen</code> &mdash; wave at another player
+    </div>
+
+    <h3>Ignore</h3>
+    <p>
+      If a player on your ignore list is the target of your social, they
+      will not see it, but you and the rest of the room will.
+    </p>
+  </div>
+</section>
+
+{# 05 COMBAT #}
+<section class="rop-guide-section" id="combat">
+  <div class="rop-guide-section__marker" aria-hidden="true">05</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Combat</h2>
+
+    <p>
+      Combat in Rites of Passage is room-based. You attack targets in
+      the same room using your equipped weapon and base stats. Combat
+      is turn-based with 5-second rounds.
+    </p>
+
+    <h3>Starting Combat</h3>
+    <p>
+      <code class="rop-guide-cmd">attack &lt;target&gt;</code> (alias:
+      <code class="rop-guide-cmd">kill</code>) initiates combat against
+      a target in your current room. Both you and the target enter a
+      combat state.
+    </p>
+    <div class="rop-guide-callout">
+      <strong>Example:</strong>
+      <code>attack goblin</code> &mdash; engage the nearest goblin
+    </div>
+
+    <h3>Hit &amp; Miss</h3>
+    <p>
+      Each attack has a base 75% chance to hit, modified by your stats
+      and equipment. A successful hit deals damage based on your weapon's
+      base damage plus your strength modifier, reduced by the target's
+      total armour value.
+    </p>
+
+    <h3>Weapon Damage</h3>
+    <p>
+      Damage is determined by the weapon in your main hand. If you are
+      unarmed, you deal a reduced base amount. Different weapons deal
+      different damage types &mdash; piercing, slashing, concussion, or
+      whipping.
+    </p>
+
+    <h3>Using Skills in Combat</h3>
+    <p>
+      <code class="rop-guide-cmd">use &lt;skill&gt; [on &lt;target&gt;]</code>
+      (alias: <code class="rop-guide-cmd">cast</code>) activates a skill
+      or spell. Skills may cost Mana or Stamina and can deal damage, heal,
+      or apply other effects. See
+      <a href="#skills">Skills &amp; Spells</a> below for details.
+    </p>
+
+    <h3>Combat State</h3>
+    <p>
+      While in combat, your character state changes to
+      <strong>combating</strong>. This state appears in your
+      <code class="rop-guide-cmd">score</code> display. You cannot
+      rest or meditate while in combat.
+    </p>
+
+    <div class="rop-guide-alert rop-guide-alert--crimson">
+      <strong>Dead characters cannot attack or use skills.</strong>
+      You must respawn before you can fight again.
+    </div>
+  </div>
+</section>
+
+{# 06 EQUIPMENT & ITEMS #}
+<section class="rop-guide-section" id="equipment">
+  <div class="rop-guide-section__marker" aria-hidden="true">06</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Equipment &amp; Items</h2>
+
+    <p>
+      Everything you carry or wear is managed through your inventory
+      and equipment. Items are persistent and travel with your
+      character across sessions.
+    </p>
+
+    <h3>Inventory Management</h3>
+    <p>
+      <code class="rop-guide-cmd">inventory</code> (aliases:
+      <code class="rop-guide-cmd">inv</code>, <code class="rop-guide-cmd">i</code>)
+      lists all items you own. Stackable items such as potions display
+      a quantity count.
+    </p>
+
+    <h3>Equipment Slots</h3>
+    <p>
+      Rites of Passage features <strong>fifteen</strong> equipment slots:
+    </p>
+    <div class="rop-guide-slot-grid">
+      <div class="rop-guide-slot-item"><span>Head</span></div>
+      <div class="rop-guide-slot-item"><span>Chest</span></div>
+      <div class="rop-guide-slot-item"><span>Legs</span></div>
+      <div class="rop-guide-slot-item"><span>Hands</span></div>
+      <div class="rop-guide-slot-item"><span>Feet</span></div>
+      <div class="rop-guide-slot-item"><span>Wrists</span></div>
+      <div class="rop-guide-slot-item"><span>L. Finger</span></div>
+      <div class="rop-guide-slot-item"><span>R. Finger</span></div>
+      <div class="rop-guide-slot-item"><span>Neck</span></div>
+      <div class="rop-guide-slot-item"><span>L. Ear</span></div>
+      <div class="rop-guide-slot-item"><span>R. Ear</span></div>
+      <div class="rop-guide-slot-item"><span>Waist</span></div>
+      <div class="rop-guide-slot-item"><span>Back</span></div>
+      <div class="rop-guide-slot-item"><span>Main Hand</span></div>
+      <div class="rop-guide-slot-item"><span>Off Hand</span></div>
+    </div>
+
+    <h3>Equipping and Unequipping</h3>
+    <p>
+      <code class="rop-guide-cmd">equip &lt;item&gt; [slot]</code>
+      (aliases: <code class="rop-guide-cmd">wear</code>,
+      <code class="rop-guide-cmd">wield</code>) equips an item from
+      your inventory to the appropriate slot. If you omit the slot,
+      the game attempts to auto-detect it.
+    </p>
+    <p>
+      <code class="rop-guide-cmd">unequip &lt;item&gt;</code> (alias:
+      <code class="rop-guide-cmd">remove</code>) removes an item from
+      its equipment slot and returns it to your inventory.
+    </p>
+
+    <h3>Equipment Slot Aliases</h3>
+    <p>When specifying a slot manually, you may use these shorthands:</p>
+    <div class="rop-guide-callout">
+      <code>mainhand</code> or <code>main_hand</code> &mdash;
+      <code>offhand</code> or <code>off_hand</code> &mdash; <code>ring1</code> &mdash;
+      <code>ring2</code> &mdash; <code>ear1</code> &mdash; <code>ear2</code>
+    </div>
+
+    <h3>Item Categories</h3>
+    <div class="rop-guide-cmd-grid rop-guide-cmd-grid--4">
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Weapons</span>
+        <span class="rop-guide-cmd-grid__alias">equip to main/off hand</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Armour</span>
+        <span class="rop-guide-cmd-grid__alias">equip to body slots</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Consumables</span>
+        <span class="rop-guide-cmd-grid__alias">stackable, useable</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Quest / Misc</span>
+        <span class="rop-guide-cmd-grid__alias">non-equippable</span>
+      </div>
+    </div>
+
+    <h3>Picking Up and Dropping</h3>
+    <p>
+      <code class="rop-guide-cmd">get &lt;item&gt;</code> picks up an
+      item from the room into your inventory.
+      <code class="rop-guide-cmd">drop &lt;item&gt;</code> removes it
+      from your inventory and places it on the ground.
+    </p>
+
+    <h3>Giving Items</h3>
+    <p>
+      <code class="rop-guide-cmd">give &lt;item&gt; to &lt;player&gt;</code>
+      transfers an item from your inventory to another player in the
+      same room.
+    </p>
+  </div>
+</section>
+
+{# 07 SKILLS & SPELLS #}
+<section class="rop-guide-section" id="skills">
+  <div class="rop-guide-section__marker" aria-hidden="true">07</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Skills &amp; Spells</h2>
+
+    <p>
+      Skills and spells are the core of your character's combat and
+      utility capabilities. They are unlocked automatically as you
+      level up &mdash; no trainers, no quests required.
+    </p>
+
+    <h3>Viewing Your Skills</h3>
+    <p>
+      Your <code class="rop-guide-cmd">score</code> display shows
+      how many skills you have unlocked. Each profession receives a
+      unique progression of skills as they advance.
+    </p>
+
+    <h3>Using a Skill</h3>
+    <p>
+      <code class="rop-guide-cmd">use &lt;skill&gt; [on &lt;target&gt;]</code>
+      (alias: <code class="rop-guide-cmd">cast</code>) activates a skill.
+    </p>
+    <div class="rop-guide-callout">
+      <strong>Examples:</strong><br>
+      <code>use bash on goblin</code> &mdash; a stamina-based attack<br>
+      <code>cast fireball on skeleton</code> &mdash; a mana-based spell<br>
+      <code>cast heal_critical</code> &mdash; a self-targeting spell
+    </div>
+
+    <h3>Resource Costs</h3>
+    <p>
+      Skills consume either <strong>Mana</strong> or
+      <strong>Stamina</strong>. Some skills have no cost. The amount
+      required varies by skill. Your <code class="rop-guide-cmd">score</code>
+      display shows your current resource pools so you can plan ahead.
+    </p>
+
+    <h3>Targeting</h3>
+    <p>
+      Some skills require a target (an enemy to damage), others are
+      self-only (buffs, healing), and some have no target at all.
+      The skill will tell you if it requires a target when you attempt
+      to use it without one.
+    </p>
+
+    <h3>Skill Categories</h3>
+    <div class="rop-guide-cmd-grid">
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Universal</span>
+        <span class="rop-guide-cmd-grid__alias">available to all professions</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Profession</span>
+        <span class="rop-guide-cmd-grid__alias">unique to your profession</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Weapon</span>
+        <span class="rop-guide-cmd-grid__alias">tied to weapon proficiency</span>
+      </div>
+    </div>
+
+    <h3>Passive Skills</h3>
+    <p>
+      Some skills are <strong>passive</strong> &mdash; they provide a
+      permanent benefit and cannot be activated with
+      <code class="rop-guide-cmd">use</code>. They are automatically
+      applied as soon as you unlock them.
+    </p>
+
+    <h3>Profession Skill Lists</h3>
+    <p>
+      Each of the ten professions receives different skills at different
+      levels. For a complete list, see the
+      <a href="{% url 'professions' %}">Professions</a> page.
+    </p>
+  </div>
+</section>
+
+{# 08 RACES & PROFESSIONS #}
+<section class="rop-guide-section" id="races-profs">
+  <div class="rop-guide-section__marker" aria-hidden="true">08</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Races &amp; Professions</h2>
+
+    <h3>Races</h3>
+    <p>
+      Your race is chosen during character creation and is
+      <strong>permanent</strong>. Race determines two critical things:
+    </p>
+    <ol>
+      <li>
+        <strong>Your faction</strong> &mdash; Valroian or Mordrath.
+        Faction governs PvP alignment and is never chosen independently.
+      </li>
+      <li>
+        <strong>Your base stats and stat limits</strong> &mdash; each race
+        has a unique distribution of STR, INT, WIS, DEX, and CON,
+        as well as racial traits and resistances.
+      </li>
+    </ol>
+    <p>
+      There are 24 races (12 Valroian, 12 Mordrath). Explore the full
+      compendium on the <a href="{% url 'races' %}">Races</a> page.
+    </p>
+
+    <h3>Professions</h3>
+    <p>
+      Your profession is also permanent. It determines:
+    </p>
+    <ul>
+      <li>Which skills and spells you unlock at each level</li>
+      <li>Your resource gains per level (HP, Mana, Stamina)</li>
+      <li>Your primary stat for mana calculation (Intelligence or Wisdom)</li>
+      <li>Your core playstyle &mdash; melee, caster, hybrid, or specialist</li>
+    </ul>
+    <p>
+      There are <strong>10 professions</strong>:
+      Mage, Warlock, Warrior, Cleric, Thief, Templar, Monk, Alchemist,
+      Ninja, and Druid. Full details on the
+      <a href="{% url 'professions' %}">Professions</a> page.
+    </p>
+
+    <div class="rop-guide-alert rop-guide-alert--info">
+      <strong>Both race and profession are permanent.</strong>
+      Choose carefully &mdash; they define your character for the entire game.
+    </div>
+  </div>
+</section>
+
+{# 09 FACTIONS & PVP #}
+<section class="rop-guide-section" id="factions-pvp">
+  <div class="rop-guide-section__marker" aria-hidden="true">09</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Factions &amp; PvP</h2>
+
+    <h3>The Two Factions</h3>
+    <p>
+      The realm is divided between two great powers:
+    </p>
+    <div class="rop-guide-faction-duo">
+      <div class="rop-guide-faction-duo__side">
+        <h4 class="rop-guide-faction-duo__name rop-guide-faction-duo__name--valroian">Valroian</h4>
+        <p>The alliance of free peoples. Twelve races united under a common banner.</p>
+      </div>
+      <div class="rop-guide-faction-duo__side">
+        <h4 class="rop-guide-faction-duo__name rop-guide-faction-duo__name--mordrath">Mordrath</h4>
+        <p>The dark dominion. Twelve races bound to shadow and ambition.</p>
+      </div>
+    </div>
+
+    <h3>Faction Rules</h3>
+    <ul>
+      <li>Your faction is determined entirely by your <strong>race</strong>.</li>
+      <li>You cannot change faction after character creation.</li>
+      <li>Your faction is displayed on your <code class="rop-guide-cmd">score</code> sheet.</li>
+    </ul>
+
+    <h3>PvP System</h3>
+    <p>
+      Player-versus-player combat is governed by <strong>zone-based
+      rules</strong>. There is no PvP toggle &mdash; whether you can fight
+      another player depends entirely on your location.
+    </p>
+
+    <table class="rop-guide-table">
+      <thead>
+        <tr>
+          <th>Zone Type</th>
+          <th>PvP Rules</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rop-guide-table__zone rop-guide-table__zone--safe">Safe</td>
+          <td>No PvP of any kind. You cannot attack or be attacked by other players.</td>
+        </tr>
+        <tr>
+          <td class="rop-guide-table__zone rop-guide-table__zone--contested">Contested</td>
+          <td>Opposing-faction players may fight each other. Same-faction combat is never allowed.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="rop-guide-alert rop-guide-alert--warning">
+      <strong>Same-faction PvP is never permitted</strong> anywhere in
+      the game. Valroian cannot attack Valroian. Mordrath cannot attack
+      Mordrath.
+    </div>
+
+    <h3>PvP Statistics</h3>
+    <p>
+      <code class="rop-guide-cmd">pvp</code> displays your PvP record:
+      <strong>War Points</strong> (earned per valid PvP kill),
+      <strong>PvP Kills</strong>, and <strong>PvP Deaths</strong>.
+    </p>
+  </div>
+</section>
+
+{# 10 PROGRESSION #}
+<section class="rop-guide-section" id="progression">
+  <div class="rop-guide-section__marker" aria-hidden="true">10</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Progression</h2>
+
+    <h3>Experience Points (XP)</h3>
+    <p>
+      You gain XP by defeating enemies and completing quests. XP is
+      displayed on your <code class="rop-guide-cmd">score</code> sheet
+      along with the amount required to reach your next level.
+    </p>
+
+    <h3>Levels (1&ndash;100)</h3>
+    <p>
+      Rites of Passage supports progression from Level 1 to Level 100.
+      Leveling is <strong>automatic</strong> &mdash; there are no trainers
+      to visit. When your XP reaches the threshold for the next level,
+      you advance immediately.
+    </p>
+
+    <h3>What Happens on Level-Up</h3>
+    <p>Each time you gain a level:</p>
+    <ul>
+      <li>Your maximum HP, Mana, and Stamina increase (amount varies by profession)</li>
+      <li>New skills and spells are automatically unlocked based on your profession's progression table</li>
+      <li>Weapon proficiencies are initialised for any new weapon skills</li>
+    </ul>
+
+    <h3>Level Scaling</h3>
+    <p>
+      Early levels come quickly. As you climb higher, each level
+      requires progressively more XP. The curve is designed so that
+      reaching the maximum level of 100 is a long-term achievement.
+    </p>
+
+    <h3>Death and XP</h3>
+    <p>
+      Dying costs a percentage of your progress toward your next level,
+      but you can <strong>never lose a level</strong>. See
+      <a href="#death">Death &amp; Recovery</a> for the full details.
+    </p>
+  </div>
+</section>
+
+{# 11 QUESTS #}
+<section class="rop-guide-section" id="quests">
+  <div class="rop-guide-section__marker" aria-hidden="true">11</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Quests</h2>
+
+    <p>
+      Quests provide structured objectives with XP and item rewards.
+      Manage them through the <code class="rop-guide-cmd">quest</code>
+      command.
+    </p>
+
+    <h3>Quest Command</h3>
+    <p>
+      <code class="rop-guide-cmd">quest</code> (alias:
+      <code class="rop-guide-cmd">quests</code>) is your quest journal.
+    </p>
+
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">quest</span>
+        <span class="rop-guide-cmd-ref__desc">List all known quests and their current state</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">quest accept &lt;quest&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Accept an available quest</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">quest abandon &lt;quest&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Abandon an active quest</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">quest complete &lt;quest&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Complete a quest whose objectives are finished</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">quest status &lt;quest&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">View detailed objective progress for a quest</span>
+      </div>
+    </div>
+
+    <h3>Quest Types</h3>
+    <p>
+      Quests in Rites of Passage feature two objective types:
+    </p>
+    <ul>
+      <li>
+        <strong>Kill objectives</strong> &mdash; defeat a specific number
+        of a particular creature
+      </li>
+      <li>
+        <strong>Collect objectives</strong> &mdash; gather a specific number
+        of a particular item
+      </li>
+    </ul>
+
+    <h3>Rewards</h3>
+    <p>
+      Completing a quest awards XP and often grants items directly
+      into your inventory. Some quests have level requirements or
+      prerequisite quests that must be completed first.
+    </p>
+  </div>
+</section>
+
+{# 12 ECONOMY & SHOPS #}
+<section class="rop-guide-section" id="economy">
+  <div class="rop-guide-section__marker" aria-hidden="true">12</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Economy &amp; Shops</h2>
+
+    <h3>Currency</h3>
+    <p>
+      The realm trades in coins. Currency is stored internally as
+      copper pieces and displayed in the most readable denomination:
+    </p>
+    <div class="rop-guide-cmd-grid rop-guide-cmd-grid--4">
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Copper</span>
+        <span class="rop-guide-cmd-grid__alias">c &mdash; base unit</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Silver</span>
+        <span class="rop-guide-cmd-grid__alias">s &mdash; 100 copper</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Gold</span>
+        <span class="rop-guide-cmd-grid__alias">g &mdash; 10,000 copper</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Platinum</span>
+        <span class="rop-guide-cmd-grid__alias">p &mdash; 1,000,000 copper</span>
+      </div>
+    </div>
+    <p>
+      <code class="rop-guide-cmd">currency</code> (aliases:
+      <code class="rop-guide-cmd">money</code>,
+      <code class="rop-guide-cmd">gold</code>) displays your current
+      balance. Your currency also appears on your
+      <code class="rop-guide-cmd">score</code> sheet.
+    </p>
+
+    <h3>Shops</h3>
+    <p>
+      Shops are persistent vendors where you can buy and sell items.
+      <code class="rop-guide-cmd">shop</code> lists all known shops.
+      <code class="rop-guide-cmd">shop &lt;name&gt;</code> browses a
+      specific shop's inventory, showing buy prices, sell prices, and
+      stock levels.
+    </p>
+
+    <h3>Buying</h3>
+    <p>
+      <code class="rop-guide-cmd">buy &lt;item&gt; from &lt;shop&gt;</code>
+      purchases one unit. Add a quantity:
+      <code class="rop-guide-cmd">buy 3 health_potion from general_store</code>.
+    </p>
+
+    <h3>Selling</h3>
+    <p>
+      <code class="rop-guide-cmd">sell &lt;item&gt; to &lt;shop&gt;</code>
+      sells one unit from your inventory.
+      <code class="rop-guide-cmd">sell 5 wooden_plank to blacksmith</code>
+      sells a stack.
+    </p>
+
+    <h3>Known Shops</h3>
+    <div class="rop-guide-cmd-grid">
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">General Store</span>
+        <span class="rop-guide-cmd-grid__alias">potions, torches, planks</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Blacksmith</span>
+        <span class="rop-guide-cmd-grid__alias">weapons, armour</span>
+      </div>
+      <div class="rop-guide-cmd-grid__item">
+        <span class="rop-guide-cmd-grid__cmd">Alchemist's Shop</span>
+        <span class="rop-guide-cmd-grid__alias">discount potions</span>
+      </div>
+    </div>
+
+    <div class="rop-guide-alert rop-guide-alert--info">
+      <strong>Dead characters cannot buy or sell.</strong> Respawn first.
+    </div>
+  </div>
+</section>
+
+{# 13 DEATH & RECOVERY #}
+<section class="rop-guide-section" id="death">
+  <div class="rop-guide-section__marker" aria-hidden="true">13</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Death &amp; Recovery</h2>
+
+    <p>
+      Death is a setback, not the end. When your HP reaches zero,
+      your character dies and enters the <strong>dead</strong> state.
+    </p>
+
+    <h3>What Happens When You Die</h3>
+    <ul>
+      <li>Your character state changes to <strong>DEAD</strong></li>
+      <li>Regeneration stops &mdash; dead characters do not recover HP, Mana, or Stamina</li>
+      <li>You cannot attack, use skills, buy, or sell</li>
+    </ul>
+
+    <h3>XP Penalty</h3>
+    <p>
+      Dying incurs an XP penalty equal to <strong>5%</strong> of your
+      progress toward the next level. This penalty is clamped so that
+      you <strong>cannot lose a level</strong> &mdash; you will never drop
+      below your current level's XP threshold.
+    </p>
+
+    <h3>Respawning</h3>
+    <p>
+      When you respawn, you are restored to a designated respawn point
+      (typically your faction's starting town or tutorial area). Your
+      resources are restored to <strong>50%</strong> of maximum:
+    </p>
+    <ul>
+      <li>HP restored to 50% of max</li>
+      <li>Mana restored to 50% of max</li>
+      <li>Stamina restored to 50% of max</li>
+    </ul>
+
+    <p>
+      Your inventory, equipment, currency, skills, and quest progress
+      all persist through death.
+    </p>
+
+    <h3>PvP Deaths</h3>
+    <p>
+      When killed by another player in valid PvP, the killer earns
+      a war point and a PvP kill credit. The victim's PvP death count
+      increases. These statistics are visible via the
+      <code class="rop-guide-cmd">pvp</code> command and on your
+      <code class="rop-guide-cmd">score</code> sheet.
+    </p>
+  </div>
+</section>
+
+{# 14 GUILDS & SECTS #}
+<section class="rop-guide-section" id="organizations">
+  <div class="rop-guide-section__marker" aria-hidden="true">14</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Guilds &amp; Sects</h2>
+
+    <p>
+      Characters may join one <strong>guild</strong> and one
+      <strong>sect</strong>. These are separate affiliations that
+      appear on your <code class="rop-guide-cmd">score</code> sheet
+      and in the <code class="rop-guide-cmd">who</code> listing.
+    </p>
+
+    <h3>Guilds</h3>
+    <p>
+      <code class="rop-guide-cmd">guild</code> manages your guild
+      membership.
+    </p>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">guild</span>
+        <span class="rop-guide-cmd-ref__desc">Show your current guild (or list available guilds)</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">guild join &lt;name&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Join a guild by name</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">guild leave</span>
+        <span class="rop-guide-cmd-ref__desc">Leave your current guild</span>
+      </div>
+    </div>
+
+    <p>
+      Available guilds: <strong>Mercenaries Guild</strong>,
+      <strong>Merchants Guild</strong>, <strong>Adventurers Guild</strong>,
+      <strong>Shadow Syndicate</strong>.
+    </p>
+
+    <h3>Sects</h3>
+    <p>
+      <code class="rop-guide-cmd">sect</code> manages your sect
+      membership with the same syntax.
+    </p>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">sect</span>
+        <span class="rop-guide-cmd-ref__desc">Show your current sect (or list available sects)</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">sect join &lt;name&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Join a sect by name</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row">
+        <span class="rop-guide-cmd-ref__cmd">sect leave</span>
+        <span class="rop-guide-cmd-ref__desc">Leave your current sect</span>
+      </div>
+    </div>
+
+    <p>
+      Available sects: <strong>Order of Light</strong>,
+      <strong>Keepers of the Flame</strong>, <strong>House of Shadow</strong>,
+      <strong>Crimson Circle</strong>.
+    </p>
+  </div>
+</section>
+
+{# 15 COMMAND REFERENCE #}
+<section class="rop-guide-section" id="commands">
+  <div class="rop-guide-section__marker" aria-hidden="true">15</div>
+  <div class="rop-guide-section__body">
+    <h2 class="rop-guide-section__heading">Command Reference</h2>
+
+    <p>
+      A complete reference of player commands, grouped by category.
+      Use the search box to filter commands by name or keyword.
+    </p>
+
+    {# Client-side search #}
+    <div class="rop-guide-search" id="guide-search">
+      <label for="guide-search-input" class="rop-guide-search__label">Filter Commands</label>
+      <input
+        type="text"
+        id="guide-search-input"
+        class="rop-input rop-guide-search__input"
+        placeholder="Type a command name or keyword…"
+        autocomplete="off"
+      >
+    </div>
+
+    <noscript>
+      <p class="rop-muted">Enable JavaScript for the command search filter.</p>
+    </noscript>
+
+    {# MOVEMENT #}
+    <h3 class="rop-guide-cmd-cat" data-cat="movement">Movement</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="north n s south e east w west ne northeast nw northwest se southeast sw southwest u up d down">
+        <span class="rop-guide-cmd-ref__cmd">north / n, south / s, etc.</span>
+        <span class="rop-guide-cmd-ref__desc">Move in a compass direction. All cardinal and ordinal directions work with full names or abbreviations.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="look l">
+        <span class="rop-guide-cmd-ref__cmd">look [target]</span>
+        <span class="rop-guide-cmd-ref__desc">Examine your current room or a specific target. Alias: <code>l</code></span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="enter">
+        <span class="rop-guide-cmd-ref__cmd">enter</span>
+        <span class="rop-guide-cmd-ref__desc">Enter a portal, doorway, or vehicle.</span>
+      </div>
+    </div>
+
+    {# INFORMATION #}
+    <h3 class="rop-guide-cmd-cat" data-cat="information">Information</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="score info">
+        <span class="rop-guide-cmd-ref__cmd">score</span>
+        <span class="rop-guide-cmd-ref__desc">Display your full character sheet. Alias: <code>info</code></span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="inventory inv i">
+        <span class="rop-guide-cmd-ref__cmd">inventory</span>
+        <span class="rop-guide-cmd-ref__desc">List carried items. Aliases: <code>inv</code>, <code>i</code></span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="equipment eq">
+        <span class="rop-guide-cmd-ref__cmd">equipment</span>
+        <span class="rop-guide-cmd-ref__desc">Show equipped items by slot. Alias: <code>eq</code></span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="who doing">
+        <span class="rop-guide-cmd-ref__cmd">who</span>
+        <span class="rop-guide-cmd-ref__desc">List all characters online with level, race, profession, faction, guild, and sect.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="help">
+        <span class="rop-guide-cmd-ref__cmd">help [topic]</span>
+        <span class="rop-guide-cmd-ref__desc">Open the in-game help system. Use <code>help &lt;command&gt;</code> for specific command help.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="currency money gold">
+        <span class="rop-guide-cmd-ref__cmd">currency</span>
+        <span class="rop-guide-cmd-ref__desc">Display your coin balance. Aliases: <code>money</code>, <code>gold</code></span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="pvp">
+        <span class="rop-guide-cmd-ref__cmd">pvp</span>
+        <span class="rop-guide-cmd-ref__desc">Show your PvP statistics: war points, kills, and deaths.</span>
+      </div>
+    </div>
+
+    {# COMMUNICATION #}
+    <h3 class="rop-guide-cmd-cat" data-cat="communication">Communication</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="say">
+        <span class="rop-guide-cmd-ref__cmd">say &lt;message&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Speak to everyone in the current room.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="tell page">
+        <span class="rop-guide-cmd-ref__cmd">tell &lt;player&gt; &lt;message&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Send a private message to a player anywhere in the game.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="whisper">
+        <span class="rop-guide-cmd-ref__cmd">whisper &lt;player&gt; &lt;message&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Send a private message to someone in your room.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="social emote wave bow">
+        <span class="rop-guide-cmd-ref__cmd">social &lt;action&gt; [target]</span>
+        <span class="rop-guide-cmd-ref__desc">Perform a social emote. Alias: <code>emote</code>. Built-in actions: <code>wave</code>, <code>bow</code></span>
+      </div>
+    </div>
+
+    {# COMBAT #}
+    <h3 class="rop-guide-cmd-cat" data-cat="combat">Combat</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="attack kill">
+        <span class="rop-guide-cmd-ref__cmd">attack &lt;target&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Engage a target in melee combat. Alias: <code>kill</code>. Both must be in the same room.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="use cast">
+        <span class="rop-guide-cmd-ref__cmd">use &lt;skill&gt; [on &lt;target&gt;]</span>
+        <span class="rop-guide-cmd-ref__desc">Activate a skill or spell. Alias: <code>cast</code>. Example: <code>use bash on goblin</code></span>
+      </div>
+    </div>
+
+    {# ITEMS #}
+    <h3 class="rop-guide-cmd-cat" data-cat="items">Items</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="get">
+        <span class="rop-guide-cmd-ref__cmd">get &lt;item&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Pick up an item from the room into your inventory.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="drop">
+        <span class="rop-guide-cmd-ref__cmd">drop &lt;item&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Drop an item from your inventory onto the ground.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="give">
+        <span class="rop-guide-cmd-ref__cmd">give &lt;item&gt; to &lt;player&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Transfer an item to another player in the same room.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="equip wear wield">
+        <span class="rop-guide-cmd-ref__cmd">equip &lt;item&gt; [slot]</span>
+        <span class="rop-guide-cmd-ref__desc">Equip an item to a slot. Aliases: <code>wear</code>, <code>wield</code></span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="unequip remove">
+        <span class="rop-guide-cmd-ref__cmd">unequip &lt;item&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Remove an equipped item. Alias: <code>remove</code></span>
+      </div>
+    </div>
+
+    {# SKILLS #}
+    <h3 class="rop-guide-cmd-cat" data-cat="skills spells">Skills &amp; Spells</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="use cast skill spell">
+        <span class="rop-guide-cmd-ref__cmd">use &lt;skill&gt; [on &lt;target&gt;]</span>
+        <span class="rop-guide-cmd-ref__desc">Use a skill or cast a spell. Costs Mana or Stamina depending on the skill. Alias: <code>cast</code></span>
+      </div>
+    </div>
+
+    {# QUESTS #}
+    <h3 class="rop-guide-cmd-cat" data-cat="quests">Quests</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="quest quests">
+        <span class="rop-guide-cmd-ref__cmd">quest [accept|abandon|complete|status] &lt;quest&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Manage quests. Alias: <code>quests</code>. No arguments lists all known quests.</span>
+      </div>
+    </div>
+
+    {# SHOPS #}
+    <h3 class="rop-guide-cmd-cat" data-cat="shops economy buy sell">Shops &amp; Economy</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="shop">
+        <span class="rop-guide-cmd-ref__cmd">shop [list|&lt;shop name&gt;]</span>
+        <span class="rop-guide-cmd-ref__desc">List shops or browse a shop inventory. No arguments lists all shops.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="buy purchase">
+        <span class="rop-guide-cmd-ref__cmd">buy [quantity] &lt;item&gt; from &lt;shop&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Purchase an item from a shop. Example: <code>buy 3 health_potion from general_store</code></span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="sell">
+        <span class="rop-guide-cmd-ref__cmd">sell [quantity] &lt;item&gt; to &lt;shop&gt;</span>
+        <span class="rop-guide-cmd-ref__desc">Sell an item to a shop. Example: <code>sell rusty_sword to blacksmith</code></span>
+      </div>
+    </div>
+
+    {# ORGANIZATIONS #}
+    <h3 class="rop-guide-cmd-cat" data-cat="guilds sects organizations">Organizations</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="guild">
+        <span class="rop-guide-cmd-ref__cmd">guild [join &lt;name&gt;|leave]</span>
+        <span class="rop-guide-cmd-ref__desc">View or manage guild membership. No arguments shows current guild and available guilds.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="sect">
+        <span class="rop-guide-cmd-ref__cmd">sect [join &lt;name&gt;|leave]</span>
+        <span class="rop-guide-cmd-ref__desc">View or manage sect membership. No arguments shows current sect and available sects.</span>
+      </div>
+    </div>
+
+    {# OTHER #}
+    <h3 class="rop-guide-cmd-cat" data-cat="other">Other</h3>
+    <div class="rop-guide-cmd-ref">
+      <div class="rop-guide-cmd-ref__row" data-cmds="home">
+        <span class="rop-guide-cmd-ref__cmd">home</span>
+        <span class="rop-guide-cmd-ref__desc">Teleport to your home location.</span>
+      </div>
+      <div class="rop-guide-cmd-ref__row" data-cmds="quit">
+        <span class="rop-guide-cmd-ref__cmd">quit</span>
+        <span class="rop-guide-cmd-ref__desc">Disconnect from the game.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:1.25rem;">
+      For every documented command with detailed descriptions, visit the
+      <a href="{% url 'commands' %}">full Command Reference</a>.
+    </p>
+
+  </div>
+</section>
+
+    </div>{# END .rop-guide-content #}
+  </div>{# END .rop-guide-layout #}
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function(){
+  var input = document.getElementById('guide-search-input');
+  if (!input) return;
+
+  var rows = document.querySelectorAll('.rop-guide-cmd-ref__row');
+  var cats = document.querySelectorAll('.rop-guide-cmd-cat');
+
+  input.addEventListener('input', function(){
+    var q = input.value.toLowerCase().trim();
+
+    rows.forEach(function(r){
+      var data = (r.getAttribute('data-cmds') || '').toLowerCase();
+      var text = r.textContent.toLowerCase();
+      var match = !q || data.indexOf(q) !== -1 || text.indexOf(q) !== -1;
+      r.style.display = match ? '' : 'none';
+    });
+
+    cats.forEach(function(c){
+      var next = c.nextElementSibling;
+      if (!next || !next.classList.contains('rop-guide-cmd-ref')) return;
+      var visible = next.querySelectorAll('.rop-guide-cmd-ref__row[style*="display: none"]');
+      var total = next.querySelectorAll('.rop-guide-cmd-ref__row');
+      c.style.display = (visible.length === total.length && q) ? 'none' : '';
+    });
+  });
+})();
+</script>
+{% endblock %}
