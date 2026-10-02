@@ -368,6 +368,85 @@ UNIVERSAL_SKILLS = {
 
 
 # ---------------------------------------------------------------------------
+# Skill-unlock level band
+#
+# The keys of PROFESSIONS[prof_id]["skills"] and UNIVERSAL_SKILLS are the
+# canonical "required level" for each skill.  Skill unlock levels 1 through
+# 80 are fully supported by these structures.  No level-81+ unlock behaviour
+# is defined or implied — authoring above 80 is out of scope.
+# ---------------------------------------------------------------------------
+
+SKILL_UNLOCK_MIN_LEVEL = 1
+SKILL_UNLOCK_MAX_LEVEL = 80
+
+
+# ---------------------------------------------------------------------------
+# Canonical spell / ability professions
+#
+# These are the professions that own normal mana-and-spell progression.
+# Warrior, Thief and Ninja are deliberately absent: they must not gain
+# normal mana/spell progression unless an explicitly authored non-spell
+# skill already belongs to them in PROFESSIONS[prof_id]["skills"].
+#
+# NOTE: this is descriptive metadata only.  It is never used to *grant*
+# anything — the canonical source of truth for eligibility remains
+# PROFESSIONS[profession_id]["skills"].
+# ---------------------------------------------------------------------------
+
+SPELL_PROFESSIONS = frozenset({
+    "mage",      # Mage
+    "cleric",    # Cleric
+    "warlock",   # Warlock
+    "templar",   # Templar
+    "monk",      # Monk
+    "alchemist", # Alchemist
+    "druid",     # Druid
+})
+
+
+def is_spell_profession(profession_id: str) -> bool:
+    """Return True if *profession_id* is a canonical spell/ability profession."""
+    return profession_id in SPELL_PROFESSIONS
+
+
+def validate_skill_unlock_levels() -> list[str]:
+    """
+    Return a list of human-readable problems with the authored skill-unlock
+    levels.  An empty list means every level key in PROFESSIONS[*]["skills"]
+    and UNIVERSAL_SKILLS falls inside the supported 1-80 band.
+
+    Diagnostic only — this never mutates data and is never called from the
+    hot path.
+    """
+    problems: list[str] = []
+
+    for prof_id, prof_data in PROFESSIONS.items():
+        for level in prof_data.get("skills", {}):
+            if not isinstance(level, int):
+                problems.append(
+                    f"{prof_id}: skill-unlock level {level!r} is not an int"
+                )
+            elif not (SKILL_UNLOCK_MIN_LEVEL <= level <= SKILL_UNLOCK_MAX_LEVEL):
+                problems.append(
+                    f"{prof_id}: skill-unlock level {level} is outside the "
+                    f"supported {SKILL_UNLOCK_MIN_LEVEL}-{SKILL_UNLOCK_MAX_LEVEL} band"
+                )
+
+    for level in UNIVERSAL_SKILLS:
+        if not isinstance(level, int):
+            problems.append(
+                f"UNIVERSAL_SKILLS: unlock level {level!r} is not an int"
+            )
+        elif not (SKILL_UNLOCK_MIN_LEVEL <= level <= SKILL_UNLOCK_MAX_LEVEL):
+            problems.append(
+                f"UNIVERSAL_SKILLS: unlock level {level} is outside the "
+                f"supported {SKILL_UNLOCK_MIN_LEVEL}-{SKILL_UNLOCK_MAX_LEVEL} band"
+            )
+
+    return problems
+
+
+# ---------------------------------------------------------------------------
 # All 4 universal weapon proficiencies (granted at level 1 universally).
 # ---------------------------------------------------------------------------
 

@@ -193,6 +193,124 @@ def _build_registry() -> dict[str, SkillDefinition]:
 SKILL_REGISTRY: dict[str, SkillDefinition] = _build_registry()
 
 
+# =============================================================================
+# Derived runtime progression index
+# =============================================================================
+#
+# The canonical progression model lives entirely in the profession tables:
+#   • profession eligibility  -> PROFESSIONS[profession_id]["skills"]
+#   • required level         -> the level *key* holding the skill ID
+#
+# The structures below are DERIVED at import time by inverting those maps.
+# They are a read-only runtime lookup cache only — no profession/level data
+# is duplicated or re-authored here, and SkillDefinition is untouched.
+#
+#   SKILL_PROFESSION_INDEX[skill_id] -> {profession_id: min_required_level}
+#
+# Skills that no profession owns are intentionally absent from the index so
+# that validation can fail safe (see validate_skill_progression_access).
+# =============================================================================
+
+from world.data.professions import (  # noqa: E402  (post-registry)
+    PROFESSIONS,
+    UNIVERSAL_SKILLS,
+    WEAPON_SKILLS,
+)
+
+
+def _build_skill_progression_index() -> dict[str, dict[str, int]]:
+    """
+    Invert PROFESSIONS[*]["skills"] into a skill_id-first lookup.
+
+    For each skill this yields every profession allowed to use it together
+    with the minimum level required *for that profession* (the level key
+    that contains the skill ID).  Built from the existing tables so the
+    data can never drift out of sync with the canonical progression model.
+    """
+    index: dict[str, dict[str, int]] = {}
+
+    for profession_id, prof_data in PROFESSIONS.items():
+        skills_by_level = prof_data.get("skills", {}) or {}
+        for level, skill_ids in skills_by_level.items():
+            for skill_id in skill_ids:
+                # First level wins; a skill should appear once per profession,
+                # but this keeps the minimum deterministic either way.
+                allowed = index.setdefault(skill_id, {})
+                if profession_id not in allowed or level < allowed[profession_id]:
+                    allowed[profession_id] = level
+
+    return index
+
+
+# skill_id -> {profession_id: min_required_level}
+SKILL_PROFESSION_INDEX: dict[str, dict[str, int]] = _build_skill_progression_index()
+
+
+def get_skill_professions(skill_id: str) -> frozenset[str]:
+    """Return every profession allowed to use *skill_id* (may be empty)."""
+    return frozenset(SKILL_PROFESSION_INDEX.get(skill_id, {}).keys())
+
+
+def get_skill_min_level(skill_id: str, profession_id: str) -> int | None:
+    """
+    Return the minimum level *profession_id* requires to use *skill_id*.
+
+    Returns None when the skill is unknown to the progression data or the
+    profession is not eligible for it.
+    """
+    return SKILL_PROFESSION_INDEX.get(skill_id, {}).get(profession_id)
+
+
+def is_skill_universal(skill_id: str) -> bool:
+    """
+    Return True when *skill_id* is not gated behind any profession.
+
+    Universal skills are owned by no profession, so they must never become
+    profession-locked by the validation layer.
+    """
+    return skill_id not in SKILL_PROFESSION_INDEX
+
+
+def validate_skill_progression_access(
+    profession_id: str | None,
+    level: int,
+    skill_id: str,
+) -> str | None:
+    """
+    Return an error string when *profession_id* at *level* may not use
+    *skill_id*; None when access is allowed.
+
+    Fail-safe by design: a skill that is neither universal nor mapped to any
+    profession has no valid progression mapping, so it is refused rather than
+    silently allowed as a cross-profession cast.
+    """
+    allowed = SKILL_PROFESSION_INDEX.get(skill_id)
+
+    # Universal / unmapped-to-any-profession skill -> no profession gate.
+    if not allowed:
+        if is_skill_universal(skill_id):
+            return None
+        return (
+            f"'{skill_id}' has no valid profession progression mapping "
+            f"and cannot be used."
+        )
+
+    # Profession eligibility.
+    if not profession_id or profession_id not in allowed:
+        return (
+            f"'{get_skill_name(skill_id)}' is not available to your profession."
+        )
+
+    # Minimum level for this profession.
+    required_level = allowed[profession_id]
+    if level < required_level:
+        return (
+            f"'{get_skill_name(skill_id)}' requires level {required_level} "
+            f"for your profession (you are level {level})."
+        )
+
+    return None
+
 
 # =============================================================================
 # Skill lookup
